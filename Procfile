@@ -1,1 +1,1 @@
-web: gunicorn accountaFit.wsgi --log-file -
+web: gunicorn accountaFit.wsgi:application --log-file - --log-level debug
