@@ -1,1 +1,1 @@
-web: gunicorn blogPost.wsgi --log-file -
+web: gunicorn accountaFit.wsgi --log-file -
