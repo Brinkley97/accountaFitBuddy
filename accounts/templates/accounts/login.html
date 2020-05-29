@@ -1,0 +1,43 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Login</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!-- reference your copy Font Awesome here (from our CDN or by hosting yourself) -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+
+
+  </head>
+  <body>
+    <div class="container-fluid background_image">
+      <div class="container moveDown">
+        <div class="card centerIt">
+          <div class="card-body">
+              <center><h2 class="card-title mb-0">Login</h2></center>
+              <center>
+                <div class="row changeColor">
+                  <form class="site-form" action="{% url 'accounts:login'%}" method="post">
+                    {% csrf_token %}
+                    {{form.as_p}}
+                    {% if request.GET.next %}
+                      <input type="hidden" name="next" value="{{request.GET.next}}">
+                  </form>
+                </div>
+                {% endif %}
+                <button class="btn btn-primary" type="submit">Login</button>
+              </center>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

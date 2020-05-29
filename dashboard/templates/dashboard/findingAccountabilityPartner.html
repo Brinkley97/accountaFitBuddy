@@ -1,0 +1,30 @@
+{% extends 'base_layout.html' %}
+
+{% load static %}
+
+{% block content %}
+<a href="{% url 'article:list' %}">
+  <button" class="btn btn-primary">Back</button>
+</a>
+  <h1>Find Accountability Partners</h1>
+  <div class="container-fluid backgroundColor">
+    <div class="row">
+      {% for user in users %}
+        {% if user not in friends  %}
+          <div class="col-sm-6 text-center">
+            <div class="card fixOthers">
+              <a href="{% url 'dashboard:profilePage_with_pk' pk=user.pk %}">
+                <h3>{{ user.username }}</h3>
+              </a>
+              <a href="{% url 'dashboard:changeFriend' operation='add' pk=user.pk %}">
+                <button type="button" class="btn btn-success">Add AP</button>
+              </a>
+            </div>
+          </div>
+        {% endif %}
+        {% empty %}
+          <li>No Friends</li>
+      {%  endfor %}
+    </div>
+  </div>
+{% endblock %}

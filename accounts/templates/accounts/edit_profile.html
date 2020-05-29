@@ -1,0 +1,16 @@
+{% extends 'base_layout.html' %}
+
+{% block content %}
+
+  <h1>Edit Account Info</h1>
+  <form method="post">
+    {% csrf_token %}
+    {{form.as_p}}
+
+    <button type="submit" name="button">Submit</button>
+
+  </form>
+
+  <p>I accept the terms and conditions</p>
+
+{% endblock%}

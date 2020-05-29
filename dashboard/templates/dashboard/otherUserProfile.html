@@ -1,0 +1,108 @@
+{% extends 'dashboard/dashboard_detail.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<!--Navbar-->
+<nav class="nav nav-pills nav-justified">
+  <a class="nav-item nav-link" href="{% url 'accounts:edit_profile' %}">Edit Profile</a>
+  <!-- <p>Edit your username, first name, last name, email, and password.</p> -->
+
+  <a class="nav-item nav-link" href="{% url 'dashboard:edit_health' %}">Edit Health Info</a>
+  <!-- <p>Edit your gender, fitness level, age, height, and weight</p> -->
+
+  <a class="nav-item nav-link" href="{% url 'dashboard:general' %}">Edit General Info</a>
+  <!-- <p>Edit your profile picture, location, group size, and availability</p> -->
+
+</nav>
+<!--Navbar-->
+<!-- not going to correct user; check out views.py and findAccountabilityPartners.html -->
+
+<!-- Section -->
+<div class="jumbotron jumbotron-fluid">
+  <div class="col-md-12 center">
+    <span class="profile-picture">
+      {% for info in otherG %}
+        <img id="article" src=" {{ info.thumbnail.url}}" style="width: 200px; display: block; margin-left: auto; margin-right: auto; padding-bottom: 10px;">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-lg-6 col-md-6 text-center">
+              <h4>{{ info.author.first_name }} {{ info.author.last_name }}</h4>
+            </div>
+            <div class="col-lg-6 col-md-6 text-center">
+              <h4>@{{ info.author }}</h4>
+            </div>
+          </div>
+        </div>
+        {%  endfor %}
+    </span>
+<!-- add gym buddy -->
+    <!-- <a href="#" class="btn btn-sm btn-block btn-success">
+      <i class="ace-icon fa fa-plus-circle bigger-120"></i>
+      <span class="bigger-110">Add gym buddy</span>
+    </a> -->
+    <!-- filter to current clicked user -->
+    <!-- {% for user in users %}
+    <a href="{% url 'dashboard:changeFriend' operation='add' pk=user.pk %}">
+      <button type="button" class="btn btn-success">Add AP</button>
+    </a>
+    {%  endfor %} -->
+
+    <a href="#" class="btn btn-sm btn-block btn-primary">
+      <i class="ace-icon fa fa-envelope-o bigger-110"></i>
+      <span class="bigger-110">Send a message</span>
+    </a>
+  </div>
+</div>
+<!-- Section -->
+<div class="container">
+  {% for info in otherH %}
+    <div class="row">
+      <div class="col-lg-6 col-md-12 col-sm-12 text-center">
+        <div class="card centerIt" style="width: 470px;">
+          <div class="card-body">
+            <div class="healthInfo">
+              <h3>Health Info</h3>
+              <p>gender: {{info.gender}}</p>
+              <p>age: {{info.age}}</p>
+              <p>height: {{info.height}} inches</p>
+              <p>weight: {{info.weight}} lbs</p>
+              <p>fitness level: {{info.fit}}</p>
+              <p>goal: {{info.goal}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+  {%  endfor %}
+  {% for data in otherG %}
+      <div class="col-lg-6 col-md-12 col-sm-12 text-center">
+        <div class="card centerIt" style="width: 470px;">
+          <div class="card-body">
+            <div class="generalInfo">
+              <h3>General Info</h3>
+              <p>location: {{data.location}}</p>
+              <p>group size: {{data.group}}</p>
+              <p>often: {{data.often}}</p>
+            </div>
+          </div>
+        </div>
+        <div class="card centerIt" style="width: 470px;">
+          <div class="card-body">
+            <h3>Social Media</h3>
+            <div><a href="#" target="_blank">www.alexdoe.com</a></div>
+            <div><a href="#"><i class="fab fa-facebook-f"></i></a></div>
+            <div><a href="#"><i class="fab fa-twitter"></i></a></div>
+          </div>
+        </div>
+      </div>
+  {%  endfor %}
+  </div>
+</div>
+
+<br>
+<br>
+<br>
+<br>
+
+{% endblock %}

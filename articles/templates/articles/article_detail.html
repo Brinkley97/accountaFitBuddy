@@ -1,0 +1,26 @@
+{% extends 'base_layout.html' %}
+
+{% block content %}
+<div class="container-fluid background_img">
+
+  <div class="container">
+    <div class="card adjustCard" id="moveDown">
+      <div class="card-body">
+        <!-- justify-content-between = float right for date -->
+        <div class="row justify-content-between">
+          <p>@{{user.username}}</p>
+          <p>{{article.date}}</p>
+        </div>
+
+        <h2 class="text-center">{{article.title}}</h2>
+
+        <p class="giveColor">{{article.body}}</p>
+        <img id="article" src="{{ article.thumb.url}}">
+      </div>
+      <a href="{% url 'article:list' %}">
+        <button" class="btn btn-primary">Back</button>
+      </a>
+    </div>
+  </div>
+
+{% endblock %}

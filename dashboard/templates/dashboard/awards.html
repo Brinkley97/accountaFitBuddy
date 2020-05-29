@@ -1,0 +1,32 @@
+{% extends 'base_layout.html' %}
+
+{% load static %}
+
+
+{% block content %}
+<a href="{% url 'article:list' %}">
+  <button" class="btn btn-primary">Back</button>
+</a>
+<h1>Awards</h1>
+
+<div class="container">
+    <div class="progress">
+      <div class="progress-bar bg-info" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">Rate three users</div>
+    </div>
+    <br>
+    <div class="progress">
+      <div class="progress-bar bg-primary" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">Find three partners</div>
+    </div>
+    <br>
+    <div class="progress">
+      <div class="progress-bar bg-primary" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">Record 3 workouts
+      </div>
+    </div>
+    <br>
+    <div class="progress">
+      <div class="progress-bar bg-success" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">Join</div>
+    </div>
+</div>
+
+
+{% endblock %}

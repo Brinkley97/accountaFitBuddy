@@ -1,0 +1,148 @@
+body {
+  /* overflow-x: hidden; */
+  /* overflow-y: auto; */
+
+}
+
+/* HOMEPAGE */
+.page{
+  height: 98vh;
+  background-color: #E7E5E7;
+}
+.backgroundImg{
+  height: 25vh;
+  width: 350px;
+  margin-top: 400px;
+  display: block;
+  margin: 0 auto;
+  /* opacity: 0.7; */
+  /* margin-left: 5%; */
+
+}
+.btn-lg.round{
+    /* border-radius: 10px; */
+    /* width: 30% */
+}
+
+.fontMe{
+  font-family: 'Amatic SC', cursive;
+  font-weight: 400;
+  font-size: 70px;
+  letter-spacing: 7px;
+  color: rgb(192, 9, 20);
+}
+
+
+
+
+/* DASHBOARD */
+.thickness{
+  height: 30px;
+}
+
+
+#article{
+  width: 200px;
+}
+
+
+/* LOGIN */
+.moveDown{
+  padding-top: 200px;
+}
+
+/* using it for health and general card as well */
+.centerIt{
+  width: 28.5em;
+  margin:0 auto;
+  opacity: 0.5;
+}
+
+.background_image{
+  background-image: url(/static/login3.jpg);
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  height: 100vh;
+  width: 100%;
+}
+
+/* Sign Up */
+
+
+/* HEALTH FORM */
+
+.backImg{
+  background-image: url(/static/login.jpg);
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  height: 100vh;
+  width: 100%;
+}
+
+/* AWARDS */
+.bg-info{
+  width: 25%;
+}
+.bg-primary{
+  width: 70%;
+}
+
+.bg-success{
+  width: 100%;
+}
+
+
+/* ARTICLE CREATE */
+
+.bgimage{
+  background-image: url(/static/notebook.jpg);
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  height: 93vh;
+  width: 100%;
+}
+
+/* ARTICLE DETAILS */
+.background_img{
+  background-image: url(/static/paper.jpg);
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  height: 96.1vh;
+  width: 100%;
+  /* opacity: 0.7; */
+}
+
+.adjustCard{
+  opacity: 0.8;
+}
+/* center it vertically */
+#moveDown{
+
+}
+/* ALL FORMS */
+
+
+.helptext, .helptext, ul{
+  font-size: 0.7em
+  color: #bbb;
+  /* visibility: hidden; */
+}
+
+li{
+  color: red;
+}
+
+/* MAP */
+
+/* FP */
+.backgroundColor{
+  background-color: #E9F9FF;
+}
+.fixOthers{
+  margin-bottom: 80px !important;
+  /* width: 300px; */
+}

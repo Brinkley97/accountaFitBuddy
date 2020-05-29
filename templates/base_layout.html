@@ -1,0 +1,80 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+
+    <link rel="stylesheet" href="{{ STATIC_URL }} https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384 Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+  <!-- reference your copy Font Awesome here (from our CDN or by hosting yourself) -->
+    <link rel="stylesheet" href="{{ STATIC_URL }} https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
+    <!-- Material Design icon font -->
+    <link rel="stylesheet" href="{{ STATIC_URL }} https://fonts.googleapis.com/icon?family=Material+Icons">
+
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <title>Dashboard</title>
+  </head>
+
+  <body>
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-dark bg-dark">
+      <div class="container">
+        <a href="{% url 'article:create' %}">
+          <button class="btn btn-warning" id="logoutNow" type="button" name="button">
+            Start a discussion
+          </button>
+        </a>
+        <form class="" action="{% url 'accounts:login' %}" method="post">
+          {% csrf_token %}
+          <button class="btn btn-primary" type="submit">Login</button>
+        </form>
+        <form class="" action="/" method="post">
+          {% csrf_token %}
+          <button class="btn btn-primary" type="submit">Logout</button>
+        </form>
+      </div>
+    </nav>
+
+
+    <!--  END OF NAVBAR  -->
+    <div class="wrapper">
+      {% block content %}
+
+      {% endblock %}
+    </div>
+<!-- FOOTER -->
+    <div class="fixed-bottom">
+      <div class="container-fluid">
+        <div class="row thickness">
+          <div class="col-2 bg-warning">
+            <center><i class="fas fa-medal"><a href="{% url 'dashboard:awardsPage'%}">Awards</a></i></center>
+          </div>
+          <div class="col-2 bg-info">
+            <center><i class="fas fa-users"><a href="{% url 'dashboard:mapPage'%}">My Accountability Partners</a></i></center>
+          </div>
+          <div class="col-4 bg-danger">
+            <center><i class="fas fa-users"><a href="{% url 'article:list' %}">FTC Logo</a></i></center>
+          </div>
+          <div class="col-2 bg-success">
+            <center><i class="fas fa-search-location"><a href="{% url 'dashboard:fapPage'%}">Find Accountability Partners</a></i></center>
+          </div>
+          <div class="col-2 bg-warning">
+            <center><i class="far fa-id-badge"><a href="{% url 'dashboard:profilePage'%}">My Profile</a></i></center>
+          </div>
+        </div>
+      </div>
+    </div>
+<!-- END OF FOOTER -->
+    <script type="text/javascript" href="{% static 'comming-soon.js' %}"></script>
+    <script type="text/javascript" href="{% static 'main.js' %}"></script>
+    <!-- <script type="text/javascript">
+      function myFunction() {
+        alert("I am an alert box!");
+      }
+    </script> -->
+    <script src= "{{ STATIC_URL }} https://code.getmdl.io/1.3.0/material.min.js"></script>
+
+  </body>
+<html>

@@ -1,0 +1,31 @@
+{% extends 'base_layout.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<div class="container-fluid bgimage">
+  <div class="container">
+    <!-- <center> -->
+      <h2>Start a discussion</h2>
+      <div class="card centerIt">
+        <div class="card-body">
+          <div class="row">
+            <form class="site-form" action="{% url 'article:create' %}" method="post" enctype="multipart/form-data">
+              {% csrf_token %}
+              {{form.as_p}}
+              <button class="btn btn-primary" type="submit">Create</button>
+            </form>
+            <a href="{% url 'article:list' %}">
+              <button" class="btn btn-primary">Back</button>
+            </a>
+          </div>
+        </div>
+      </div>
+    <!-- </center> -->
+  </div>
+</div>
+
+
+
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends 'dashboard/dashboard_detail.html' %}
+
+{% block content %}
+<a href="{% url 'dashboard:health' %}">
+  <button" class="btn btn-primary">Back</button>
+</a>
+<div class="container-fluid backImg">
+  <div class="container">
+    <h1>General Info</h1>
+
+    <form class="" action="{% url 'dashboard:general' %}" method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      <div class="card centerIt">
+        <div class="card-body">
+      <!-- generalInfo from views.py; {'generalInfo': form} -->
+          {{generalInfo.as_p}}
+        </div>
+      </div>
+      <button class="btn btn-primary" type="submit" name="button">Signup</button>
+    </form>
+
+
+   </div>
+</div>
+{% endblock %}

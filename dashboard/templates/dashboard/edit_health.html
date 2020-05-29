@@ -1,0 +1,14 @@
+{% extends 'dashboard/dashboard_detail.html' %}
+
+{% block content %}
+    <h1>Edit Health Info</h1>
+<!-- need action attribute to save to db and redener -->
+    <form method="post" action="{% url 'dashboard:edit_health' %}">
+      {% csrf_token %}
+      <!-- form from views.py; {'form': form} -->
+
+      {{form.as_p}}
+
+      <button type="submit" name="button">Update</button>
+    </form>
+{% endblock %}
