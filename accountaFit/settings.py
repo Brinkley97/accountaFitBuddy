@@ -29,7 +29,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'tl0*l05!osx8esekuf2^*j!ulw8pfzuweodk_7uw1tzhb8y@a^'
 
 #pulling environment variable from .bash_profile
-SECRET_KEY = os.environ.get('SECRET_KEY')
+# SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -50,8 +50,6 @@ INSTALLED_APPS = [
     'accounts',
     'dashboard',
 ]
-
-AUTH_PROFILE_MODULE = "accounts.UserProfile"
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -113,6 +111,9 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+PASSWORD_HASHERS = [
+    'django.contrib.auth.hashers.MD5PasswordHasher',
+]
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.0/topics/i18n/
