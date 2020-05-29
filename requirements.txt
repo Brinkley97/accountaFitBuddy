@@ -7,3 +7,4 @@ whitenoise
 dj-database-url
 postgres
 requests
+Pillow
