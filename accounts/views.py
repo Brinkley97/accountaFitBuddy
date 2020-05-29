@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.forms import AuthenticationForm
 from accounts.forms import MyRegistrationForm
 from django.contrib.auth import login, logout
+import Image
 
 
 
