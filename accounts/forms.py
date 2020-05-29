@@ -10,6 +10,7 @@ class MyRegistrationForm(UserCreationForm):
     class Meta:
         """docstring for Meta ."""
         model = User
+
         fields = (
             'username',
             'first_name',
@@ -26,3 +27,11 @@ class MyRegistrationForm(UserCreationForm):
             user.save()
 
         return user
+
+def clean_username(self):
+    username = self.cleaned_data["username"]
+    try:
+        CustomUser.objects.get(username=username)
+    except CustomUser.DoesNotExist:
+        return username
+    raise forms.ValidationError(self.error_messages['duplicate_username'])
