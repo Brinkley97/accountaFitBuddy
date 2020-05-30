@@ -10,7 +10,7 @@
   <div class="container-fluid backgroundColor">
     <div class="row">
       {% for user in users %}
-        {% if user not in friends  %}
+        {% if user not in friends %}
           <div class="col-sm-6 text-center">
             <div class="card fixOthers">
               <a href="{% url 'dashboard:profilePage_with_pk' pk=user.pk %}">

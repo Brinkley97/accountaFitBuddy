@@ -56,6 +56,7 @@ class Friend(models.Model):
             # check to see if the current object has that user as a friend
             current_user=current_user
         )
+
         friend.users.add(new_friend)
 
     @classmethod

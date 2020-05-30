@@ -42,6 +42,7 @@ def awards_detail(request):
 @login_required(login_url="/accounts/login/")
 def myAccountabilityPartners_detail(request):
     healthInfo = Health.objects.all()
+    # set exclude(author=request.user.id) for healthInfo above and for healthInfo and generalInfo in findAP function
     generalInfo = General.objects.exclude(author=request.user.id)
     users = User.objects.exclude(id=request.user.id)
     friend = Friend.objects.get(current_user=request.user)
@@ -58,8 +59,10 @@ def findAccountabilityPartners_detail(request):
     generalInfo = General.objects.all()
     # exclude the current user
     users = User.objects.exclude(id=request.user.id)
-    friend = Friend.objects.get(current_user=request.user)
+    # auto add user with ",created" and "_or_create" see difference between this and myAP 
+    friend, created = Friend.objects.get_or_create(current_user=request.user)
     friends = friend.users.all()
+
 
     args = {
         'infoH':healthInfo,'infoG':generalInfo, 'users':users, 'friends':friends
