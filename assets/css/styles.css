@@ -33,8 +33,6 @@ body {
 }
 
 
-
-
 /* DASHBOARD */
 .thickness{
   height: 30px;
@@ -45,19 +43,17 @@ body {
   width: 200px;
 }
 
-
-/* LOGIN */
-.moveDown{
-  padding-top: 200px;
-}
-
-/* using it for health and general card as well */
+/* Login, Health, and General cards */
 .centerIt{
   width: 28.5em;
   margin:0 auto;
-  opacity: 0.5;
+  opacity: 0.8;
 }
 
+#signupCenter{
+  width: 40em;
+
+}
 .background_image{
   background-image: url(/static/login3.jpg);
   background-size: cover;
@@ -121,6 +117,7 @@ body {
 }
 /* center it vertically */
 #moveDown{
+
 
 }
 /* ALL FORMS */

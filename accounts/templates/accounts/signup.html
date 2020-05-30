@@ -6,17 +6,25 @@
 </a>
 
   <div class="container-fluid background_image">
-    <div class="container">
-      <h1>Signup</h1>
-      <form class="mdl-textfield mdl-js-textfield" action="{% url 'accounts:signup'%}" method="post">
-        {% csrf_token %}
-        {{form.as_p}}
-        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1" required>
-          <label class="form-check-label" for="defaultCheck1">I accept the terms and conditions.</label>
-        <br>
-        <br>
-        <button class="btn btn-primary" type="submit">Next</button>
-      </form>
+    <div class="container moveDown">
+      <div class="card centerIt" id="signupCenter">
+        <div class="card-body">
+          <center>
+            <h2 class="card-title mb-0">Signup</h2>
+            <div class="row changeColor">
+              <form class="mdl-textfield mdl-js-textfield" action="{% url 'accounts:signup'%}" method="post">
+                {% csrf_token %}
+                {{form.as_p}}
+                <input class="form-check-input" type="checkbox" value="" id="defaultCheck1" required>
+                  <label class="form-check-label" for="defaultCheck1">I accept the terms and conditions.</label>
+                <br>
+                <br>
+                <button class="btn btn-primary" type="submit">Next</button>
+              </form>
+            </div>
+          </center>
+        </div>
+      </div>
     </div>
   </div>
 
