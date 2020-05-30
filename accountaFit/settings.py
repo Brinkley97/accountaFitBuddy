@@ -142,7 +142,6 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'assets/css'),
     os.path.join(BASE_DIR, 'assets/img'),
     os.path.join(BASE_DIR, 'assets/js'),
-    '/var/www/static/'
     )
 STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
