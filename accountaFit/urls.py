@@ -43,5 +43,5 @@ urlpatterns = [
 urlpatterns += staticfiles_urlpatterns()
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
-#links to the settings and pulls MEDIA_URL and MEDIA_ROOT to display images 
+#links to the settings and pulls MEDIA_URL and MEDIA_ROOT to display images
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

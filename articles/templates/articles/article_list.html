@@ -20,10 +20,10 @@
 <!-- ARTICLES -->
 <div class="container-fluid">
   <div class="articles">
-      {% for article in theArticles%}
+      {% for article in theArticles %}
       <div class="row">
         <div class="col-lg-6 col-md-6 text-center">
-          <img id="article" src="{{ article.thumb.url }}">
+          <img class="article" src="{{ article.uploadFile.url }}">
         </div>
         <div class="col-lg-6 col-md-6 text-center">
           <h2>
@@ -42,4 +42,5 @@
     {% endfor %}
   </div>
 </div>
+
 {% endblock %}

@@ -6,12 +6,12 @@ from django.contrib.auth.models import User
 # capital for the first letter for the class/ model name is conventional
 class Article(models.Model):
     """docstring for Article. Auto_now_add will automatically add the tiime and date"""
-    title = models.CharField(max_length=100, unique=True)
+    title = models.CharField(max_length=100, unique=True, blank=True)
     slug = models.SlugField(unique=True)
     body = models.TextField()
     date = models.DateTimeField(auto_now_add=True)
     author = models.ForeignKey(User, default=None, on_delete=models.CASCADE)
-    thumb = models.ImageField(default="default.png", blank=True)
+    uploadFile = models.FileField(blank=True)
 
 
     def __str__(self):
