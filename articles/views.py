@@ -5,6 +5,8 @@ from django.contrib.auth.decorators import login_required
 from .import forms
 
 
+
+
 # Create your views here.
 def article_list(request):
     articles = Article.objects.all().order_by('date')
@@ -24,11 +26,16 @@ def other_user_profile(request):
 def article_create(request):
     if request.method == 'POST':
         form = forms.CreateArticle(request.POST, request.FILES)
+        files = request.FILES.getlist('uploadFile')
         if form.is_valid():
-            instance = form.save(commit=False)
-            instance.author = request.user
-            # instance.published_date = timezone.now()
-            instance.save()
+            for f in files:
+                instance = form.save(commit=False)
+                instance.author = request.user
+                instance.save()
+            else:
+                instance = form.save(commit=False)
+                instance.author = request.user
+                instance.save()
             return redirect('article:list')
         args = {
             'form':form

@@ -5,4 +5,8 @@ class CreateArticle(forms.ModelForm):
     """docstring for CreateArticle."""
     class Meta:
         model = models.Article
-        fields = ['title','body','slug','thumb']
+        fields = ['title','body','slug','uploadFile']
+
+        labels = {
+            'uploadFile':('Upload File')
+        }
