@@ -22,11 +22,11 @@ Are you ready to take your well-being to another level with accountFit?
 You should be at the welcome screen 
 
 
-## What makes my app different?
+## Features to consider
 1. Have an option to upload results from the 16Personalities test (https://www.16personalities.com/personality-types)
 2. Have an option to upload blood type
 3. Have an option to input body type
 
 ---
 ## License & copyright
-# getFit
+# Copyright 2018-2020 FitToCode. Released under the [FTC](https://fittocode.com) license.
