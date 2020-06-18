@@ -6,24 +6,36 @@
 <a href="{% url 'article:list' %}">
   <button" class="btn btn-primary">Back</button>
 </a>
-<h1>My Accountability Partners</h1>
-
-<div class="container">
-  <div class="row">
-    {% for friend in friends %}
-      {% if friend in friends  %}
-        <div class="col-sm-6 text-center">
-          <a href="{% url 'dashboard:profilePage_with_pk' pk=friend.pk %}">
-            <h3>{{ friend.username }}</h3>
-          </a>
-          <a href="{% url 'dashboard:changeFriend' operation='remove' pk=friend.pk %}">
-            <button type="button" class="btn btn-default">Remove AP</button>
-          </a>
-        </div>
-      {% endif %}
-    {%  endfor %}
+  <h1>My Accountability Partners</h1>
+  <div class="container-fluid">
+    <div class="row">
+      {% for friend in friends %}
+        {% if friend in friends  %}
+          <div class="col-sm-6 text-center">
+            <div class="card fixOthers">
+              {% for healthInfo in healthInfo_list %}
+                {% if healthInfo.author_id == friend.id %}
+                  <div class="row">
+                    <div class="col-md-6 text-center">
+                      <img class="article" src="{{ healthInfo.thumbnail.url }}">
+                    </div>
+                    <div class="col-md-6 text-center">
+                      <a href="{% url 'dashboard:profilePage_with_pk' pk=user.pk %}">
+                        <h3>{{ friend.username }}</h3>
+                      </a>
+                      <p>Location: {{ healthInfo.location }}</p>
+                      <p>Goal: {{ healthInfo.goal }}</p>
+                      <a href="{% url 'dashboard:changeFriend' operation='remove' pk=friend.pk %}">
+                        <button type="button" class="btn btn-default">Remove AP</button>
+                      </a>
+                    </div>
+                  </div>
+                {% endif %}
+              {% endfor %}
+            </div>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
   </div>
-</div>
-
-
 {% endblock %}

@@ -26,15 +26,15 @@
 <div class="jumbotron jumbotron-fluid">
   <div class="col-md-12 center">
     <span class="profile-picture">
-      {% for data in infoG %}
-        <img id="article" src=" {{ data.thumbnail.url }}" style="width: 200px; display: block; margin-left: auto; margin-right: auto; padding-bottom: 10px;">
+      {% for infoH in infoH_list %}
+        <img id="article" src=" {{ infoH.thumbnail.url }}" style="width: 200px; display: block; margin-left: auto; margin-right: auto; padding-bottom: 10px;">
         <div class="container-fluid">
           <div class="row">
             <div class="col-lg-6 col-md-6 text-center">
-              <h4>{{ user.first_name }} {{ user.last_name }}</h4>
+              <h4>{{ infoH.author.first_name }} {{ infoH.author.last_name }}</h4>
             </div>
             <div class="col-lg-6 col-md-6 text-center">
-              <h4>@{{ data.author }}</h4>
+              <h4>@{{ infoH.author }}</h4>
             </div>
           </div>
         </div>
@@ -55,42 +55,43 @@
 </div>
 <!-- Section -->
 <div class="container">
-  {% for data in infoH %}
+  {% for infoH in infoH_list %}
     <div class="row">
       <div class="col-lg-6 col-md-12 col-sm-12 text-center">
         <div class="card centerIt" style="width: 470px;">
           <div class="card-body">
             <div class="healthInfo">
               <h3>Health Info</h3>
-              <p>gender: {{data.gender}}</p>
-              <p>age: {{data.age}}</p>
-              <p>height: {{data.height}} inches</p>
-              <p>weight: {{data.weight}} lbs</p>
-              <p>fitness level: {{data.fit}}</p>
-              <p>goal: {{data.goal}}</p>
+              <p>gender: {{infoH.gender}}</p>
+              <p>age: {{infoH.age}}</p>
+              <p>weight: {{infoH.weight}} lbs</p>
+              <p>fitness level: {{infoH.fit}}</p>
+              <p>goal: {{infoH.goal}}</p>
+              <p>location: {{infoH.location}}</p>
             </div>
           </div>
         </div>
       </div>
   {%  endfor %}
-  {% for data in infoG %}
+  {% for infoG in infoG_list %}
       <div class="col-lg-6 col-md-12 col-sm-12 text-center">
         <div class="card centerIt" style="width: 470px;">
           <div class="card-body">
             <div class="generalInfo">
               <h3>General Info</h3>
-              <p>location: {{data.location}}</p>
-              <p>group size: {{data.group}}</p>
-              <p>often: {{data.often}}</p>
+              <p>group size: {{infoG.group}}</p>
+              <p>often: {{infoG.often}}</p>
             </div>
           </div>
         </div>
         <div class="card centerIt" style="width: 470px;">
           <div class="card-body">
             <h3>Social Media</h3>
-            <div><a href="#" target="_blank">www.alexdoe.com</a></div>
-            <div><a href="#"><i class="fab fa-facebook-f"></i></a></div>
-            <div><a href="#"><i class="fab fa-twitter"></i></a></div>
+            <p>IG: {{infoG.ig}}</p>
+            <p>Facebook: {{infoG.fb}}</p>
+            <p>Twitter: {{infoG.twitter}}</p>
+            <p>Snapchat: {{infoG.snap}}</p>
+            <p>WhatsApp: {{infoG.whatsapp}}</p>
           </div>
         </div>
       </div>
