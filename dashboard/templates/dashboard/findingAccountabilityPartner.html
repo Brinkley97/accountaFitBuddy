@@ -13,18 +13,29 @@
         {% if user not in friends %}
           <div class="col-sm-6 text-center">
             <div class="card fixOthers">
-              <a href="{% url 'dashboard:profilePage_with_pk' pk=user.pk %}">
-                <h3>{{ user.username }}</h3>
-              </a>
-              <a href="{% url 'dashboard:changeFriend' operation='add' pk=user.pk %}">
-                <button type="button" class="btn btn-success">Add AP</button>
-              </a>
+              {% for healthInfo in healthInfo_list %}
+                {% if healthInfo.author_id == user.id %}
+                  <div class="row">
+                    <div class="col-md-6 text-center">
+                      <img class="article" src="{{ healthInfo.thumbnail.url }}">
+                    </div>
+                    <div class="col-md-6 text-center">
+                      <a href="{% url 'dashboard:profilePage_with_pk' pk=user.pk %}">
+                        <h3>{{ user.username }}</h3>
+                      </a>
+                      <p>Location: {{ healthInfo.location }}</p>
+                      <p>Goal: {{ healthInfo.goal }}</p>
+                      <a href="{% url 'dashboard:changeFriend' operation='add' pk=user.pk %}">
+                        <button type="button" class="btn btn-success">Add AP</button>
+                      </a>
+                    </div>
+                  </div>
+                {% endif %}
+              {% endfor %}
             </div>
           </div>
         {% endif %}
-        {% empty %}
-          <li>No Friends</li>
-      {%  endfor %}
+      {% endfor %}
     </div>
   </div>
 {% endblock %}

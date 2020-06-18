@@ -24,7 +24,7 @@ def profile_detail(request, pk=None):
         friends = friend.users.all()
 
         args = {
-            'otherH':otherHealthInfo,'otherG':otherGeneralInfo, 'users':users, 'friends':friends
+            'otherH_list':otherHealthInfo,'otherG_list':otherGeneralInfo, 'users':users, 'friends':friends
         }
 
         return render(request, 'dashboard/otherUserProfile.html', args)
@@ -32,7 +32,7 @@ def profile_detail(request, pk=None):
         users = User.objects.filter(username=request.user)
         healthInfo = Health.objects.filter(author=request.user)
         generalInfo = General.objects.filter(author=request.user)
-    return render(request, 'dashboard/profile.html', context={'infoH':healthInfo,'infoG':generalInfo, 'users':users})
+    return render(request, 'dashboard/profile.html', context={'infoH_list':healthInfo,'infoG_list':generalInfo, 'users':users})
 
 
 @login_required(login_url="/accounts/login/")
@@ -41,7 +41,7 @@ def awards_detail(request):
 
 @login_required(login_url="/accounts/login/")
 def myAccountabilityPartners_detail(request):
-    healthInfo = Health.objects.all()
+    healthInfoList = Health.objects.exclude(author=request.user.id)
     # set exclude(author=request.user.id) for healthInfo above and for healthInfo and generalInfo in findAP function
     generalInfo = General.objects.exclude(author=request.user.id)
     users = User.objects.exclude(id=request.user.id)
@@ -49,13 +49,13 @@ def myAccountabilityPartners_detail(request):
     friends = friend.users.all()
 
     args = {
-        'infoH':healthInfo,'infoG':generalInfo, 'users':users, 'friends':friends
+        'healthInfo_list':healthInfoList,'infoG':generalInfo, 'users':users, 'friends':friends
     }
     return render(request, 'dashboard/myAccountabilityPartner.html', args)
 
 @login_required(login_url="/accounts/login/")
 def findAccountabilityPartners_detail(request):
-    healthInfo = Health.objects.all()
+    healthInfoList = Health.objects.all()
     generalInfo = General.objects.all()
     # exclude the current user
     users = User.objects.exclude(id=request.user.id)
@@ -65,7 +65,7 @@ def findAccountabilityPartners_detail(request):
 
 
     args = {
-        'infoH':healthInfo,'infoG':generalInfo, 'users':users, 'friends':friends
+        'healthInfo_list':healthInfoList,'infoG':generalInfo, 'users':users, 'friends':friends
     }
 
     return render(request, 'dashboard/findingAccountabilityPartner.html', args)

@@ -12,16 +12,17 @@ class InsertHealth(forms.ModelForm):
         model = models.Health
 
         fields = (
+            'thumbnail',
             'gender',
             'age',
-            'height',
             'weight',
             'fit',
-            'goal'
+            'goal',
+            'location',
             )
 
         labels = {
-            'height':_('Add your height in inches.'),
+            'location':_('What is your desired location?'),
 
             'weight':_('Weight in lbs'),
         }
@@ -32,32 +33,37 @@ class InsertGeneral(forms.ModelForm):
     class Meta:
         model = models.General
 
-        fields = ['location','group','often', 'thumbnail']
+        fields = ['group','often','ig','fb','twitter','snap','whatsapp']
 
         labels = {
-        'location':_('What is your desired location?'),
 
         'group':_('Select up to how many you would like including yourself'),
 
-        'often':_('How often do you go per week?')
+        'often':_('How often do you go per week?'),
+
+        'ig':_('Instagram'),
+        'fb':_('Facebook'),
+        'twitter':_('Twitter'),
+        'snap':_('Snapchat'),
+        'whatsapp':_('WhatsApp'),
         }
 
 class EditProfileForm(UserChangeForm):
     class Meta:
         model = models.Health
         fields = (
+            'thumbnail',
             'gender',
             'age',
-            'height',
             'weight',
             'fit',
             'goal',
-            'password'
+            'location'
 
             )
 
         labels = {
-            'height':_('Add your height in inches.'),
+            'location':_('What is your desired location?'),
 
             'weight':_('Weight in lbs'),
         }

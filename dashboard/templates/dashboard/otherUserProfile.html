@@ -23,15 +23,15 @@
 <div class="jumbotron jumbotron-fluid">
   <div class="col-md-12 center">
     <span class="profile-picture">
-      {% for info in otherG %}
-        <img id="article" src=" {{ info.thumbnail.url}}" style="width: 200px; display: block; margin-left: auto; margin-right: auto; padding-bottom: 10px;">
+      {% for otherH in otherH_list %}
+        <img id="article" src=" {{ otherH.thumbnail.url }}" style="width: 200px; display: block; margin-left: auto; margin-right: auto; padding-bottom: 10px;">
         <div class="container-fluid">
           <div class="row">
             <div class="col-lg-6 col-md-6 text-center">
-              <h4>{{ info.author.first_name }} {{ info.author.last_name }}</h4>
+              <h4>{{ otherH.author.first_name }} {{ otherH.author.last_name }}</h4>
             </div>
             <div class="col-lg-6 col-md-6 text-center">
-              <h4>@{{ info.author }}</h4>
+              <h4>@{{ otherH.author }}</h4>
             </div>
           </div>
         </div>
@@ -57,42 +57,45 @@
 </div>
 <!-- Section -->
 <div class="container">
-  {% for info in otherH %}
+  {% for otherH in otherH_list %}
     <div class="row">
       <div class="col-lg-6 col-md-12 col-sm-12 text-center">
         <div class="card centerIt" style="width: 470px;">
           <div class="card-body">
             <div class="healthInfo">
               <h3>Health Info</h3>
-              <p>gender: {{info.gender}}</p>
-              <p>age: {{info.age}}</p>
-              <p>height: {{info.height}} inches</p>
-              <p>weight: {{info.weight}} lbs</p>
-              <p>fitness level: {{info.fit}}</p>
-              <p>goal: {{info.goal}}</p>
+              <p>gender: {{otherH.gender}}</p>
+              <p>age: {{otherH.age}}</p>
+              <p>weight: {{otherH.weight}} lbs</p>
+              <p>fitness level: {{otherH.fit}}</p>
+              <p>goal: {{otherH.goal}}</p>
+              <p>location: {{otherH.location}}</p>
             </div>
           </div>
         </div>
       </div>
   {%  endfor %}
-  {% for data in otherG %}
+  {% for otherG in otherG_list %}
       <div class="col-lg-6 col-md-12 col-sm-12 text-center">
         <div class="card centerIt" style="width: 470px;">
           <div class="card-body">
             <div class="generalInfo">
               <h3>General Info</h3>
-              <p>location: {{data.location}}</p>
-              <p>group size: {{data.group}}</p>
-              <p>often: {{data.often}}</p>
+              <p>group size: {{otherG.group}}</p>
+              <p>often: {{otherG.often}}</p>
             </div>
           </div>
         </div>
         <div class="card centerIt" style="width: 470px;">
           <div class="card-body">
             <h3>Social Media</h3>
-            <div><a href="#" target="_blank">www.alexdoe.com</a></div>
-            <div><a href="#"><i class="fab fa-facebook-f"></i></a></div>
-            <div><a href="#"><i class="fab fa-twitter"></i></a></div>
+            <p>IG: {{otherG.ig}}</p>
+            <p>Facebook: {{otherG.fb}}</p>
+            <p>Twitter: {{otherG.twitter}}</p>
+            <p>Snapchat: {{otherG.snap}}</p>
+            <p>WhatsApp: {{otherG.whatsapp}}</p>
+            <!-- <div><a href="#"><i class="fab fa-facebook-f"></i></a></div>
+            <div><a href="#"><i class="fab fa-twitter"></i></a></div> -->
           </div>
         </div>
       </div>
