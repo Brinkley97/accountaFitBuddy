@@ -18,7 +18,8 @@
   </head>
 
   <body>
-    <!-- NAVBAR -->
+
+<!-- NAV BAR -->
     <nav class="navbar navbar-dark bg-dark">
       <div class="container">
         <a href="{% url 'article:create' %}">
@@ -36,8 +37,7 @@
         </form>
       </div>
     </nav>
-    <!--  END OF NAVBAR  -->
-
+<!--  END OF NAV BAR  -->
 <!-- FOOTER -->
     <div class="fixed-bottom">
       <div class="container-fluid">
@@ -60,13 +60,12 @@
         </div>
       </div>
     </div>
-
+<!-- END OF FOOTER -->
     <div class="wrapper">
       {% block content %}
 
       {% endblock %}
     </div>
-<!-- END OF FOOTER -->
     <script type="text/javascript" href="{% static 'comming-soon.js' %}"></script>
     <script type="text/javascript" href="{% static 'main.js' %}"></script>
     <script src= "{{ STATIC_URL }} https://code.getmdl.io/1.3.0/material.min.js"></script>
