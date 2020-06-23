@@ -3,6 +3,7 @@ from .models import Article
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from .import forms
+import os
 
 
 
@@ -26,7 +27,6 @@ def other_user_profile(request):
 def article_create(request):
     if request.method == 'POST':
         form = forms.CreateArticle(request.POST, request.FILES)
-        files = request.FILES.getlist('uploadFile')
         if form.is_valid():
             for f in files:
                 instance = form.save(commit=False)

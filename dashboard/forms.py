@@ -69,7 +69,13 @@ class EditProfileForm(UserChangeForm):
         }
 
         def save(self, commit=True):
+            user = super().save(commit=False)
             if commit:
                 user.save()
-
             return user
+
+
+            # https://stackoverflow.com/questions/12848605/django-modelform-what-is-savecommit-false-used-for
+            # https://www.google.com/search?sxsrf=ALeKk03BT3ijP7yWNAi4NkOGWF42wKF24Q%3A1592520882021&ei=svDrXplt0Of9BqLZq8gH&q=++++++++user+%3D+super%28%29.save%28commit%3DFalse%29&oq=++++++++user+%3D+super%28%29.save%28commit%3DFalse%29&gs_lcp=CgZwc3ktYWIQAzoECAAQR1CbuAtYm7gLYIy6C2gAcAJ4AIABkgGIAZIBkgEDMC4xmAEAoAECoAEBqgEHZ3dzLXdpeg&sclient=psy-ab&ved=0ahUKEwiZjuHLuozqAhXQc98KHaLsCnkQ4dUDCAw&uact=5
+            # https://docs.djangoproject.com/en/3.0/topics/auth/customizing/
+            # https://github.com/Brinkley97/accountaFitBuddy/commit/75f0d6a353b5be9f767fd3c38a11a547195f6cc5

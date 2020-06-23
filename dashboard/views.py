@@ -4,6 +4,8 @@ from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from .import forms
 from django.contrib.auth.models import User
+from django.contrib.auth.forms import UserChangeForm
+
 
 
 
@@ -112,7 +114,7 @@ def editHealth_view(request):
     else:
         form = forms.EditProfileForm(instance=request.user)
         args = {'form': form}
-        return render(request, 'dashboard/edit_health.html', args)
+    return render(request, 'dashboard/edit_health.html', args)
 
 def change_friends(request, operation, pk):
     friend = User.objects.get(pk=pk)

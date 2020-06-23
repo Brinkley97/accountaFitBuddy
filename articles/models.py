@@ -11,7 +11,8 @@ class Article(models.Model):
     body = models.TextField()
     date = models.DateTimeField(auto_now_add=True)
     author = models.ForeignKey(User, default=None, on_delete=models.CASCADE)
-    uploadFile = models.FileField(blank=True)
+    image = models.ImageField(default="default.png", blank=True)
+    video = models.FileField(default="default.mp4", blank=True)
 
 
     def __str__(self):
