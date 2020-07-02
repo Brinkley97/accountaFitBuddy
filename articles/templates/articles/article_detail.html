@@ -9,12 +9,19 @@
           <p>@{{user.username}}</p>
           <p>{{article.date}}</p>
         </div>
-
         <h2 class="text-center">{{article.title}}</h2>
-
         <p class="giveColor">{{article.body}}</p>
-        <img class="article" src="{{ article.image.url }}">
-        <video src="{{ article.video.url }}" autoplay></video>
+        {% if article.image != "default.png" %}
+          <img class="image" src="{{ article.image.url }}"/>
+        {% endif %}
+        <br>
+        {% if article.video != "default.mp4" %}
+          <video class="video" controls>
+            <source id="videos" src="{{ article.video.url }}">
+          </video>
+        {% endif %}
+
+
       </div>
       <a href="{% url 'article:list' %}">
         <button class="btn btn-primary">Back</button>
