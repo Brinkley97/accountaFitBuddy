@@ -37,11 +37,10 @@ def article_create(request):
                 instance = form.save(commit=False)
                 instance.author = request.user
                 videoFile = request.FILES['video'].name
-                extention = os.path.splitext(videoFile)[0]
+                extention = os.path.splitext(videoFile)[1]
                 if extention == '.MOV':
                     instance.videoFile = os.path.splitext(videoFile)[0] + '.mp4'
-                    form.save()
-                    # return HttpResponse(form.save())
+                    instance.save()
                 else:
                     instance.videoFile = videoFile
             else:
