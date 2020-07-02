@@ -44,6 +44,9 @@ body {
   height: 300px;
 }
 
+.wrapWord{
+  word-wrap: break-word;
+}
 /* Login, Health, and General cards */
 .centerIt{
   width: 28.5em;

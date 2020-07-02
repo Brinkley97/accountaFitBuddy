@@ -4,6 +4,8 @@ from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from .import forms
 import os
+# to stop the code and view in terminal use print(text here)pdb.set_trace()
+import pdb
 
 
 
@@ -27,11 +29,21 @@ def other_user_profile(request):
 def article_create(request):
     if request.method == 'POST':
         form = forms.CreateArticle(request.POST, request.FILES)
+        files = request.FILES.getlist('video')
+        # print(files)
+        # pdb.set_trace()
         if form.is_valid():
             for f in files:
                 instance = form.save(commit=False)
                 instance.author = request.user
-                instance.save()
+                videoFile = request.FILES['video'].name
+                extention = os.path.splitext(videoFile)[0]
+                if extention == '.MOV':
+                    instance.videoFile = os.path.splitext(videoFile)[0] + '.mp4'
+                    form.save()
+                    # return HttpResponse(form.save())
+                else:
+                    instance.videoFile = videoFile
             else:
                 instance = form.save(commit=False)
                 instance.author = request.user

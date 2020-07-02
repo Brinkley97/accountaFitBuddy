@@ -2,6 +2,8 @@ from django.db import models
 from django.contrib.auth.models import User
 
 
+
+
 # Create your models here.
 # capital for the first letter for the class/ model name is conventional
 class Article(models.Model):

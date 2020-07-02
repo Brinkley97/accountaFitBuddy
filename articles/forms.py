@@ -7,6 +7,7 @@ class CreateArticle(forms.ModelForm):
         model = models.Article
         fields = ['title','body','slug','image','video']
 
+
         labels = {
             'image':('Upload Image'),
             'video':('Upload Video')

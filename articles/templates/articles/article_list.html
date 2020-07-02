@@ -26,7 +26,7 @@
             <br>
             {% if article.video != "default.mp4" %}
               <video class="video" controls>
-                <source src="{{ article.video.url }}">
+                <source id="videos" src="{{ article.video.url }}">
               </video>
             {% endif %}
           </div>
@@ -34,8 +34,8 @@
             <h2>
               <a class="giveColor" href="{% url 'article:detail' slug=article.slug %}">{{article.title}}</a>
             </h2>
-            <p>{{article.snippet}}</p>
-            <p>{{article.date}}</p>
+            <p class="wrapWord">{{ article.snippet }}</p>
+            <p>{{ article.date }}</p>
             {% for user in users %}
               <a href="{% url 'dashboard:profilePage_with_pk' pk=user.pk %}">
                 <h3>{{ user.username }}</h3>
@@ -47,4 +47,6 @@
       {% endfor %}
     </div>
   </div>
+  <script src="/static/fileExtentionChange.js"></script>
+
 {% endblock %}
