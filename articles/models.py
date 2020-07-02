@@ -2,6 +2,8 @@ from django.db import models
 from django.contrib.auth.models import User
 
 
+
+
 # Create your models here.
 # capital for the first letter for the class/ model name is conventional
 class Article(models.Model):
@@ -11,7 +13,8 @@ class Article(models.Model):
     body = models.TextField()
     date = models.DateTimeField(auto_now_add=True)
     author = models.ForeignKey(User, default=None, on_delete=models.CASCADE)
-    uploadFile = models.FileField(blank=True)
+    image = models.ImageField(default="default.png", blank=True)
+    video = models.FileField(default="default.mp4", blank=True)
 
 
     def __str__(self):

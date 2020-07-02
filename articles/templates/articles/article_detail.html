@@ -13,11 +13,8 @@
         <h2 class="text-center">{{article.title}}</h2>
 
         <p class="giveColor">{{article.body}}</p>
-        <img class="article" src="{{ article.uploadFile.url }}">
-        <video src="{{ article.uploadFile.url }}" autoplay>
-
-        </video>
-
+        <img class="article" src="{{ article.image.url }}">
+        <video src="{{ article.video.url }}" autoplay></video>
       </div>
       <a href="{% url 'article:list' %}">
         <button class="btn btn-primary">Back</button>
@@ -25,5 +22,7 @@
     </div>
   </div>
 </div>
+<script src="/static/slugify.js"></script>
+
 
 {% endblock %}

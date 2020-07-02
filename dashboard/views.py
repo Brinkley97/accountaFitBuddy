@@ -4,8 +4,7 @@ from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from .import forms
 from django.contrib.auth.models import User
-
-
+from django.contrib.auth.forms import UserChangeForm
 
 # Create your views here.
 def dashboard_detail(request):
@@ -34,7 +33,6 @@ def profile_detail(request, pk=None):
         generalInfo = General.objects.filter(author=request.user)
     return render(request, 'dashboard/profile.html', context={'infoH_list':healthInfo,'infoG_list':generalInfo, 'users':users})
 
-
 @login_required(login_url="/accounts/login/")
 def awards_detail(request):
     return render(request, 'dashboard/awards.html')
@@ -42,7 +40,6 @@ def awards_detail(request):
 @login_required(login_url="/accounts/login/")
 def myAccountabilityPartners_detail(request):
     healthInfoList = Health.objects.exclude(author=request.user.id)
-    # set exclude(author=request.user.id) for healthInfo above and for healthInfo and generalInfo in findAP function
     generalInfo = General.objects.exclude(author=request.user.id)
     users = User.objects.exclude(id=request.user.id)
     friend, created = Friend.objects.get_or_create(current_user=request.user)
@@ -63,13 +60,11 @@ def findAccountabilityPartners_detail(request):
     friend, created = Friend.objects.get_or_create(current_user=request.user)
     friends = friend.users.all()
 
-
     args = {
         'healthInfo_list':healthInfoList,'infoG':generalInfo, 'users':users, 'friends':friends
     }
 
     return render(request, 'dashboard/findingAccountabilityPartner.html', args)
-
 
 @login_required(login_url="/accounts/login/")
 def health_view(request):
@@ -108,11 +103,10 @@ def editHealth_view(request):
         if form.is_valid():
             form.save()
             return redirect('dashboard:profilePage')
-
     else:
         form = forms.EditProfileForm(instance=request.user)
         args = {'form': form}
-        return render(request, 'dashboard/edit_health.html', args)
+    return render(request, 'dashboard/edit_health.html', args)
 
 def change_friends(request, operation, pk):
     friend = User.objects.get(pk=pk)

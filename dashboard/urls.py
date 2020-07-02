@@ -14,7 +14,7 @@ urlpatterns = [
     url(r'^findAccountabilityPartners/$', views.findAccountabilityPartners_detail, name='fapPage'),
     # http://localhost:8000/dashboard/healthData/
     url(r'^healthData/$', views.health_view, name='health'),
-    url(r'^healthData/edit$', views.editHealth_view, name='edit_health'),
+    url(r'^healthData/edit/$', views.editHealth_view, name='edit_health'),
     # http://localhost:8000/dashboard/genralData/
     url(r'^generalData/$', views.general_view, name='general'),
     # lose and add friends

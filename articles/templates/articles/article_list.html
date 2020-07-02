@@ -2,45 +2,51 @@
 
 {% load static %}
 
-
 {% block content %}
 <!-- JUMBOTRON -->
-<div class="jumbotron jumbotron-fluid">
-  <div class="container">
-    <h1 class="display-4">Share Achievements <i> with others</h1>
-
-
-    <p>Freely express yourself by sharing the meals you enjoy:)</p>
-    <button class="btn btn-warning" id="logoutNow" type="button" name="button">
-      <a href="{% url 'article:create' %}">Start a discussion</a>
-    </button>
+  <div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <h1 class="display-4">Share Achievements <i> with others</h1>
+      <p>Freely express yourself by sharing your workouts:)</p>
+      <a href="{% url 'article:create' %}">
+        <button class="btn btn-warning" id="logoutNow" type="button" name="button">Start a discussion</button>
+      </a>
+    </div>
   </div>
-</div>
 
 <!-- ARTICLES -->
-<div class="container-fluid">
-  <div class="articles">
+  <div class="container">
+    <div class="articles">
       {% for article in theArticles %}
-      <div class="row">
-        <div class="col-lg-6 col-md-6 text-center">
-          <img class="article" src="{{ article.uploadFile.url }}">
-        </div>
-        <div class="col-lg-6 col-md-6 text-center">
-          <h2>
-            <a class="giveColor" href="{% url 'article:detail' slug=article.slug %}">{{article.title}}</a>
-          </h2>
-          <p>{{article.snippet}}</p>
-          <p>{{article.date}}</p>
-          {% for user in users %}
+        <div class="row">
+          <div class="col-md-6">
+            {% if article.image != "default.png" %}
+              <img class="image" src="{{ article.image.url }}"/>
+            {% endif %}
+            <br>
+            {% if article.video != "default.mp4" %}
+              <video class="video" controls>
+                <source id="videos" src="{{ article.video.url }}">
+              </video>
+            {% endif %}
+          </div>
+          <div class="col-md-6 text-center">
+            <h2>
+              <a class="giveColor" href="{% url 'article:detail' slug=article.slug %}">{{article.title}}</a>
+            </h2>
+            <p class="wrapWord">{{ article.snippet }}</p>
+            <p>{{ article.date }}</p>
+            {% for user in users %}
               <a href="{% url 'dashboard:profilePage_with_pk' pk=user.pk %}">
                 <h3>{{ user.username }}</h3>
               </a>
-          {% endfor %}
+            {% endfor %}
+          </div>
         </div>
-      </div>
-    <hr>
-    {% endfor %}
+        <hr>
+      {% endfor %}
+    </div>
   </div>
-</div>
+  <script src="/static/fileExtentionChange.js"></script>
 
 {% endblock %}
