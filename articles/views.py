@@ -6,6 +6,7 @@ from .import forms
 import os
 # to stop the code and view in terminal use print(text here)pdb.set_trace()
 import pdb
+from django.utils.datastructures import MultiValueDictKeyError
 
 
 
@@ -36,12 +37,20 @@ def article_create(request):
             for f in files:
                 instance = form.save(commit=False)
                 instance.author = request.user
+                try:
+                    imageFile = request.FILES['image'].name
+                    imageExtention = os.path.splitext(imageFile)[1]
+                    if imageExtention == '.jpeg':
+                        instance.videoFile = os.path.splitext(imageFile)[0] + '.jpg'
+                        instance.save()
+                except MultiValueDictKeyError:
+                    image = False
+                    
                 videoFile = request.FILES['video'].name
-                extention = os.path.splitext(videoFile)[0]
+                extention = os.path.splitext(videoFile)[1]
                 if extention == '.MOV':
                     instance.videoFile = os.path.splitext(videoFile)[0] + '.mp4'
-                    form.save()
-                    # return HttpResponse(form.save())
+                    instance.save()
                 else:
                     instance.videoFile = videoFile
             else:
