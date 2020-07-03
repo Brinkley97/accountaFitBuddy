@@ -132,14 +132,13 @@ USE_L10N = True
 
 USE_TZ = True
 
-
 #AWS S3 configuration
 STATICFILES_LOCATION = 'static'
-STATICFILES_STORAGE = 'custom_storages.StaticStorage'
+STATICFILES_STORAGE = 'customStorages.StaticStorage'
 
 #AWS S3 configuration
 MEDIAFILES_LOCATION = 'media'
-DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'
+DEFAULT_FILE_STORAGE = 'customStorages.MediaStorage'
 
 
 # Static files (CSS, JavaScript, Images)
