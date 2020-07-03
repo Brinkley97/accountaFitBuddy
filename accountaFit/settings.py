@@ -34,7 +34,7 @@ SECRET_KEY = 'tl0*l05!osx8esekuf2^*j!ulw8pfzuweodk_7uw1tzhb8y@a^'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["accountafit.herokuapp.com", "127.0.0.1", "localhost"]
+ALLOWED_HOSTS = ["accountafit.herokuapp.com", "accountafitbuddy.herokuapp.com", "accountafitbuddy.com", "127.0.0.1", "localhost"]
 
 
 # Application definition
@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'articles',
     'accounts',
     'dashboard',
+    'storages',
 ]
 
 MIDDLEWARE = [
@@ -130,6 +131,15 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+
+
+#AWS S3 configuration
+STATICFILES_LOCATION = 'static'
+STATICFILES_STORAGE = 'custom_storages.StaticStorage'
+
+#AWS S3 configuration
+MEDIAFILES_LOCATION = 'media'
+DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'
 
 
 # Static files (CSS, JavaScript, Images)
