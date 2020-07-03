@@ -152,7 +152,7 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'assets/img'),
     os.path.join(BASE_DIR, 'assets/js'),
     )
-STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+# STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
 #absolute filesystem path to the directory that will hold user-uploaded files.
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
