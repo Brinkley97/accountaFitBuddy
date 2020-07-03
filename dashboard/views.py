@@ -96,17 +96,57 @@ def general_view(request):
     return render(request, 'dashboard/generalForm.html', {'generalInfo': form})
 
 @login_required(login_url="/accounts/login/")
+@login_required(login_url="/accounts/login/")
 def editHealth_view(request):
     if request.method == 'POST':
-        form = forms.EditProfileForm(request.POST, instance=request.user)
+        form = forms.EditHealthForm(request.POST, instance=request.user)
 
         if form.is_valid():
+            health = Health.objects.get(author=request.user)
+            #getting the data from post request
+            health.thumbnail=request.POST.get('thumbnail')
+            health.gender=request.POST.get('gender')
+            health.age=request.POST.get('age')
+            health.weight=request.POST.get('weight')
+            health.fit=request.POST.get('fit')
+            health.goal=request.POST.get('goal')
+            health.location=request.POST.get('location')
+            #saving health form
+            health.save()
             form.save()
             return redirect('dashboard:profilePage')
+
     else:
-        form = forms.EditProfileForm(instance=request.user)
+        form = forms.EditHealthForm(instance=request.user)
         args = {'form': form}
-    return render(request, 'dashboard/edit_health.html', args)
+        return render(request, 'dashboard/editHealth.html', args)
+
+
+@login_required(login_url="/accounts/login/")
+def editGeneral_view(request):
+    if request.method == 'POST':
+        form = forms.EditGeneralForm(request.POST, instance=request.user)
+
+        if form.is_valid():
+            general = General.objects.get(author=request.user)
+            #getting the data from post request
+            general.group=request.POST.get('group')
+            general.often=request.POST.get('often')
+            general.ig=request.POST.get('ig')
+            general.fb=request.POST.get('fb')
+            general.twitter=request.POST.get('twitter')
+            general.snap=request.POST.get('snap')
+            general.whatsapp=request.POST.get('whatsapp')
+
+            #saving general form
+            general.save()
+            form.save()
+            return redirect('dashboard:profilePage')
+
+    else:
+        form = forms.EditGeneralForm(instance=request.user)
+        args = {'form': form}
+        return render(request, 'dashboard/editGeneral.html', args)
 
 def change_friends(request, operation, pk):
     friend = User.objects.get(pk=pk)

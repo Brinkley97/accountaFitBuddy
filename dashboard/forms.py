@@ -27,6 +27,31 @@ class InsertHealth(forms.ModelForm):
             'weight':_('Weight in lbs'),
         }
 
+class EditHealthForm(UserChangeForm):
+    class Meta:
+        model = models.Health
+        fields = (
+            'thumbnail',
+            'gender',
+            'age',
+            'weight',
+            'fit',
+            'goal',
+            'location'
+
+            )
+
+        labels = {
+            'location':_('What is your desired location?'),
+
+            'weight':_('Weight in lbs'),
+        }
+
+        def save(self, commit=True):
+            if commit:
+                user.save()
+            return user
+
 class InsertGeneral(forms.ModelForm):
     """docstring for InsertGeneral."""
 
@@ -48,28 +73,28 @@ class InsertGeneral(forms.ModelForm):
         'whatsapp':_('WhatsApp'),
         }
 
-class EditProfileForm(UserChangeForm):
-    class Meta:
-        model = models.Health
-        fields = (
-            'thumbnail',
-            'gender',
-            'age',
-            'weight',
-            'fit',
-            'goal',
-            'location'
+class EditGeneralForm(forms.ModelForm):
+    """docstring for EditGeneralForm."""
 
-            )
+    class Meta:
+        model = models.General
+
+        fields = ['group','often','ig','fb','twitter','snap','whatsapp']
 
         labels = {
-            'location':_('What is your desired location?'),
 
-            'weight':_('Weight in lbs'),
+        'group':_('Select up to how many you would like including yourself'),
+
+        'often':_('How often do you go per week?'),
+
+        'ig':_('Instagram'),
+        'fb':_('Facebook'),
+        'twitter':_('Twitter'),
+        'snap':_('Snapchat'),
+        'whatsapp':_('WhatsApp'),
         }
 
         def save(self, commit=True):
-            user = super().save(commit=False)
             if commit:
                 user.save()
             return user

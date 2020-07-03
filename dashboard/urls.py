@@ -17,6 +17,8 @@ urlpatterns = [
     url(r'^healthData/edit/$', views.editHealth_view, name='edit_health'),
     # http://localhost:8000/dashboard/genralData/
     url(r'^generalData/$', views.general_view, name='general'),
+    url(r'^generalData/edit/$', views.editGeneral_view, name='edit_general'),
+
     # lose and add friends
     url(r'^connect/(?P<operation>.+)/(?P<pk>\d+)/$', views.change_friends, name='changeFriend')
 ]
