@@ -102,15 +102,15 @@ def editHealth_view(request):
         form = forms.EditHealthForm(request.POST, instance=request.user)
 
         if form.is_valid():
-            health = Health.objects.filter(author=request.user)
+            health = Health.objects.get(author=request.user)
             #getting the data from post request
-            health.thumbnail=request.POST.filter('thumbnail')
-            health.gender=request.POST.filter('gender')
-            health.age=request.POST.filter('age')
-            health.weight=request.POST.filter('weight')
-            health.fit=request.POST.filter('fit')
-            health.goal=request.POST.filter('goal')
-            health.location=request.POST.filter('location')
+            health.thumbnail=request.POST.get('thumbnail')
+            health.gender=request.POST.get('gender')
+            health.age=request.POST.get('age')
+            health.weight=request.POST.get('weight')
+            health.fit=request.POST.get('fit')
+            health.goal=request.POST.get('goal')
+            health.location=request.POST.get('location')
             #saving health form
             health.save()
             form.save()
@@ -128,15 +128,15 @@ def editGeneral_view(request):
         form = forms.EditGeneralForm(request.POST, instance=request.user)
 
         if form.is_valid():
-            general = General.objects.filter(author=request.user)
+            general = General.objects.get(author=request.user)
             #getting the data from post request
-            general.group=request.POST.filter('group')
-            general.often=request.POST.filter('often')
-            general.ig=request.POST.filter('ig')
-            general.fb=request.POST.filter('fb')
-            general.twitter=request.POST.filter('twitter')
-            general.snap=request.POST.filter('snap')
-            general.whatsapp=request.POST.filter('whatsapp')
+            general.group=request.POST.get('group')
+            general.often=request.POST.get('often')
+            general.ig=request.POST.get('ig')
+            general.fb=request.POST.get('fb')
+            general.twitter=request.POST.get('twitter')
+            general.snap=request.POST.get('snap')
+            general.whatsapp=request.POST.get('whatsapp')
 
             #saving general form
             general.save()
