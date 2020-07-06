@@ -1,2 +1,0 @@
-export SECRET_KEY='5bce2aef8ec947598cd031a58a569a2eaec6d750d089028b'
-export DEBUG_VALUE="True"

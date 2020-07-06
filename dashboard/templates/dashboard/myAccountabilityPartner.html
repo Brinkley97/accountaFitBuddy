@@ -17,7 +17,7 @@
                 {% if healthInfo.author_id == friend.id %}
                   <div class="row">
                     <div class="col-md-6 text-center">
-                      <img class="article" src="{{ healthInfo.thumbnail.url }}">
+                      <img class="image" src="{{ healthInfo.thumbnail.url }}">
                     </div>
                     <div class="col-md-6 text-center">
                       <a href="{% url 'dashboard:profilePage_with_pk' pk=user.pk %}">

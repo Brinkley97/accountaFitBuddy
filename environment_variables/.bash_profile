@@ -1,0 +1,5 @@
+# export SECRET_KEY= "5bce2aef8ec947598cd031a58a569a2eaec6d750d089028b"
+# export DEBUG_VALUE= "True"
+export AWS_ACCESS_KEY_ID = 'AKIA2FLTEGF3N2VGKXOK'
+export AWS_SECRET_ACCESS_KEY = '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'
+export AWS_STORAGE_BUCKET_NAME = 'imagesvideosuserupload'
