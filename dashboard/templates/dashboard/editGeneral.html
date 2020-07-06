@@ -1,8 +1,8 @@
-{% extends 'dashboard/dashboard_detail.html' %}
+{% extends 'base_layout.html' %}
 
 {% block content %}
     <h1>Edit General Info</h1>
-<!-- need action attribute to save to db and redener -->
+<!-- need action attribute to save to db and render -->
     <form method="post" action="{% url 'dashboard:edit_general' %}">
       {% csrf_token %}
       <!-- form from views.py; {'form': form} -->

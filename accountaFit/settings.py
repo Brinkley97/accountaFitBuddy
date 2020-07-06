@@ -132,15 +132,6 @@ USE_L10N = True
 
 USE_TZ = True
 
-#AWS S3 configuration
-STATICFILES_LOCATION = 'static'
-STATICFILES_STORAGE = 'customStorages.StaticStorage'
-
-#AWS S3 configuration
-MEDIAFILES_LOCATION = 'media'
-DEFAULT_FILE_STORAGE = 'customStorages.MediaStorage'
-
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 #heroku will put files here
@@ -152,12 +143,27 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'assets/img'),
     os.path.join(BASE_DIR, 'assets/js'),
     )
-# STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
 #absolute filesystem path to the directory that will hold user-uploaded files.
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 #url that handles the media served from MEDIA_ROOT, used for managing stored files.
 MEDIA_URL = '/media/'
+
+
+#AWS S3 configuration
+# STATICFILES_LOCATION = 'static'
+# STATICFILES_STORAGE = 'customStorages.StaticStorage'
+
+#AWS S3 configuration
+# MEDIAFILES_LOCATION = 'media'
+# AWS_ACCESS_KEY_ID = ''
+# AWS_SECRET_ACCESS_KEY = ''
+# AWS_STORAGE_BUCKET_NAME = ''
+
+AWS_S3_FILE_OVERWRITE = False
+AWS_DEFAULT_ACL = None
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
 #comment out to run with local host
 django_heroku.settings(locals())
