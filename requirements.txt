@@ -10,3 +10,4 @@ requests
 Pillow
 python-dotenv
 django-storages
+boto3
