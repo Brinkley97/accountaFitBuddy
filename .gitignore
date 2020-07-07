@@ -2,6 +2,7 @@
 
 #Mac
 .DS_Store
+.bash_profile
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

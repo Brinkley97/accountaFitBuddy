@@ -8,3 +8,4 @@ dj-database-url
 postgres
 requests
 Pillow
+python-dotenv
