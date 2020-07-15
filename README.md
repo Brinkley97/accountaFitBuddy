@@ -1,4 +1,4 @@
-# Get fit with accountaFit
+# Get fit with accountaFitBuddy
 
 Version 1.0.0
 
@@ -15,7 +15,7 @@ Are you ready to take your well-being to another level with accountFit?
 1.	Clone Repo
 2.  Install or update to Python3	
 3.	Install Django (pip3 install Django --user)
-4.	CD to getFit folder
+4.	CD to "accountaFitBuddy-master" folder
 5.	Type “python3 manage.py runserver”
 6.	Open Browser 
 7.	Type the text after “Starting development server at” (I have http://127.0.0.1:8000/) (Can be found in the terminal)
@@ -29,4 +29,4 @@ You should be at the welcome screen
 
 ---
 ## License & copyright
-# Copyright 2018-2020 FitToCode. Released under the [FTC](https://fittocode.com) license.
+Copyright 2018-2020 FitToCode. Released under the [FTC](https://fittocode.com) license.
