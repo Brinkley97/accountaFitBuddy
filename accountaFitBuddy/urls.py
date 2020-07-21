@@ -34,9 +34,7 @@ urlpatterns = [
     url(r'^articles/', include('articles.urls')),
     url(r'^dashboard/', include('dashboard.urls')),
     url(r'^accounts/', include('accounts.urls')),
-    url(r'^about/$', views.about),
     url(r'^$', views.homepage),
-    url(r'^myPage/', views.myPage),
 ]
 
 #
