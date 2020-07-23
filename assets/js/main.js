@@ -1,11 +1,4 @@
-// alert("Hello! I am an alert box!!");
-
-/*!
-    * Start Bootstrap - Grayscale v6.0.0 (https://startbootstrap.com/themes/grayscale)
-    * Copyright 2013-2020 Start Bootstrap
-    * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-grayscale/blob/master/LICENSE)
-    */
-
+alert("Hello! I am an alert box!!");
 
 $("#menu-toggle").click(function(e) {
     e.preventDefault();

@@ -22,7 +22,9 @@ class InsertHealth(forms.ModelForm):
             )
 
         labels = {
-            'location':_('What is your desired location?'),
+            'thumbnail':_('Profile Picture'),
+
+            'location':_('What is your desired city?'),
 
             'weight':_('Weight in lbs'),
         }
@@ -42,7 +44,9 @@ class EditHealthForm(UserChangeForm):
             )
 
         labels = {
-            'location':_('What is your desired location?'),
+            'thumbnail':_('Profile Picture'),
+
+            'location':_('What is your desired city?'),
 
             'weight':_('Weight in lbs'),
         }
@@ -62,9 +66,9 @@ class InsertGeneral(forms.ModelForm):
 
         labels = {
 
-        'group':_('Select up to how many you would like including yourself'),
+        'group':_('How many buddies you would like including yourself'),
 
-        'often':_('How often do you go per week?'),
+        'often':_('How often do you exercise per week?'),
 
         'ig':_('Instagram'),
         'fb':_('Facebook'),
@@ -83,9 +87,9 @@ class EditGeneralForm(forms.ModelForm):
 
         labels = {
 
-        'group':_('Select up to how many you would like including yourself'),
+        'group':_('Select up to how many buddies you would like including yourself'),
 
-        'often':_('How often do you go per week?'),
+        'often':_('How often do you exercise per week?'),
 
         'ig':_('Instagram'),
         'fb':_('Facebook'),
@@ -98,9 +102,3 @@ class EditGeneralForm(forms.ModelForm):
             if commit:
                 user.save()
             return user
-
-
-            # https://stackoverflow.com/questions/12848605/django-modelform-what-is-savecommit-false-used-for
-            # https://www.google.com/search?sxsrf=ALeKk03BT3ijP7yWNAi4NkOGWF42wKF24Q%3A1592520882021&ei=svDrXplt0Of9BqLZq8gH&q=++++++++user+%3D+super%28%29.save%28commit%3DFalse%29&oq=++++++++user+%3D+super%28%29.save%28commit%3DFalse%29&gs_lcp=CgZwc3ktYWIQAzoECAAQR1CbuAtYm7gLYIy6C2gAcAJ4AIABkgGIAZIBkgEDMC4xmAEAoAECoAEBqgEHZ3dzLXdpeg&sclient=psy-ab&ved=0ahUKEwiZjuHLuozqAhXQc98KHaLsCnkQ4dUDCAw&uact=5
-            # https://docs.djangoproject.com/en/3.0/topics/auth/customizing/
-            # https://github.com/Brinkley97/accountaFitBuddy/commit/75f0d6a353b5be9f767fd3c38a11a547195f6cc5

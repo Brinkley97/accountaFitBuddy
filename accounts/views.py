@@ -47,4 +47,4 @@ def editProfile_view(request):
     else:
         form = MyRegistrationForm(instance=request.user)
         args = {'form': form}
-        return render(request, 'accounts/edit_profile.html', args)
+        return render(request, 'accounts/editProfile.html', args)

@@ -4,19 +4,6 @@
 
 {% block content %}
 
-<!--Navbar-->
-<nav class="nav nav-pills nav-justified">
-  <a class="nav-item nav-link" href="{% url 'accounts:edit_profile' %}">Edit Profile</a>
-  <!-- <p>Edit your username, first name, last name, email, and password.</p> -->
-
-  <a class="nav-item nav-link" href="{% url 'dashboard:edit_health' %}">Edit Health Info</a>
-  <!-- <p>Edit your gender, fitness level, age, height, and weight</p> -->
-
-  <a class="nav-item nav-link" href="{% url 'dashboard:general' %}">Edit General Info</a>
-  <!-- <p>Edit your profile picture, location, group size, and availability</p> -->
-
-</nav>
-<!--Navbar-->
 <!-- not going to correct user; check out views.py and findAccountabilityPartners.html -->
 
 <!-- Section -->
@@ -102,10 +89,4 @@
   {%  endfor %}
   </div>
 </div>
-
-<br>
-<br>
-<br>
-<br>
-
 {% endblock %}

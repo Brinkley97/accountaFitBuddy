@@ -15,7 +15,7 @@
     <link href="{{ STATIC_URL }} https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
     <title>Homepage</title>
-    <link href="{% static 'styles2.css' %}" rel="stylesheet">
+    <link href="{% static 'styles.css' %}" rel="stylesheet">
 
 <!-- BOOTSTRAP -->
     <link rel="stylesheet" href="{{ STATIC_URL }} https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
@@ -48,12 +48,6 @@
                         {% csrf_token %}
                         <a class="nav-link js-scroll-trigger" href="{% url 'accounts:login' %}">Login</a>
                       </li>
-                      <!-- <li>
-                        <form class="" action="/" method="post">
-                          {% csrf_token %}
-                          <a class="nav-link js-scroll-trigger" type="submit">Logout</a>
-                        </form>
-                      </li> -->
                     </ul>
                 </div>
             </div>
@@ -74,7 +68,7 @@
                 <div class="row">
                     <div class="col-lg-8 mx-auto">
                         <p class="text-white-50">
-                          Behind every success is a team. There is no better way to reach your goals than to have support. Why go at it alone, when you do not have to? Our app will make it easy for you to meet your ideal fitness buddies.
+                          Health, Fitness, Lifestyle, etc...
                         </p>
                     </div>
                 </div>

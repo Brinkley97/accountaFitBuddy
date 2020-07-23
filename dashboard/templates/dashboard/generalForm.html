@@ -1,25 +1,29 @@
-{% extends 'base_layout.html' %}
-
+{% extends 'accounts/signupBaseLayout.html' %}
+{% load static %}
 {% block content %}
-<a href="{% url 'dashboard:health' %}">
-  <button" class="btn btn-primary">Back</button>
-</a>
-<div class="container-fluid backImg">
-  <div class="container">
-    <h1>General Info</h1>
-
-    <form class="" action="{% url 'dashboard:general' %}" method="post" enctype="multipart/form-data">
-      {% csrf_token %}
-      <div class="card centerIt">
-        <div class="card-body">
-      <!-- generalInfo from views.py; {'generalInfo': form} -->
-          {{generalInfo.as_p}}
-        </div>
-      </div>
-      <button class="btn btn-primary" type="submit" name="button">Signup</button>
-    </form>
-
-
-   </div>
-</div>
+  <div class="image-holder">
+    <img src="{% static 'img/withWeights.jpg' %}" alt="">
+  </div>
+  <form class="mdl-textfield mdl-js-textfield" action="{% url 'dashboard:general'%}" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <h1>Create An Account</h1>
+    <br>
+    <h3>General Info</h3>
+    <div class="form-row">
+      <input class="form-control" placeholder="Partners including you: 2-20" name="group">
+      <p>How many days per week do you exercise?</p>{{generalInfo.often}}
+    </div>
+    <div class="form-row">
+      <input class="form-control" placeholder="Instagram" name="ig">
+      <input class="form-control" placeholder="Facebook" name="fb">
+    </div>
+    <div class="form-row">
+      <input type="text" class="form-control" placeholder="Twitter" name="twitter">
+      <input type="text" class="form-control" placeholder="Snapchat" name="snap">
+    </div>
+    <div class="form-row">
+      <input type="text" class="form-control" placeholder="WhatsApp" name="whatsApp">
+    </div>
+    <button class="btn btn-primary" type="submit">Next</button>
+  </form>
 {% endblock %}
