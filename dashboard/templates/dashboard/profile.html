@@ -1,24 +1,13 @@
-{% extends 'base_layout.html' %}
-
+{% extends 'baseLayout.html' %}
 {% load static %}
-
 {% block content %}
 
 <!--Navbar-->
 <nav class="nav nav-pills nav-justified">
   <a class="nav-item nav-link" href="{% url 'accounts:edit_profile' %}">Edit Profile</a>
-  <!-- <p>Edit your username, first name, last name, email, and password.</p> -->
-
   <a class="nav-item nav-link" href="{% url 'dashboard:edit_health' %}">Edit Health Info</a>
-  <!-- <p>Edit your gender, fitness level, age, height, and weight</p> -->
-
   <a class="nav-item nav-link" href="{% url 'dashboard:edit_general' %}">Edit General Info</a>
-  <!-- <p>Edit your profile picture, location, group size, and availability</p> -->
-
 </nav>
-<a href="{% url 'article:list' %}">
-  <button" class="btn btn-primary">Back</button>
-</a>
 <!--Navbar-->
 <!-- not going to correct user; check out views.py and findAccountabilityPartners.html -->
 

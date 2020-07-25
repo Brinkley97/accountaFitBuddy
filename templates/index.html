@@ -7,18 +7,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content=""/>
-    <link rel="icon" type="image/x-icon" href="{{ STATIC_URL }} assets/img/favicon.ico" />
+
+    <title>Homepage</title>
+
+    <link rel="icon" type="image/x-icon" href="{% static 'FitToCode.png' %}" />
+
+    <!-- FONT AWESOME -->
+    <script src="{{ STATIC_URL }} https://use.fontawesome.com/releases/v5.13.0/js/all.js" crossorigin="anonymous"></script>
 
     <!-- Google fonts-->
     <link href="{{ STATIC_URL }} https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
 
     <link href="{{ STATIC_URL }} https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
-    <title>Homepage</title>
-    <link href="{% static 'styles.css' %}" rel="stylesheet">
+    <link href="{% static 'index.css' %}" rel="stylesheet">
 
 <!-- BOOTSTRAP -->
-    <link rel="stylesheet" href="{{ STATIC_URL }} https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="{{ STATIC_URL }} https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"> -->
 
   </head>
     <body id="page-top">
@@ -56,9 +61,11 @@
         <header class="masthead">
           <div class="container d-flex h-100 align-items-center">
             <div class="mx-auto text-center">
-                <h1 class="mx-auto my-0">AccountaFitBuddy</h1>
-                <h2 class="text-white-50 mx-auto mt-2 mb-5">Find Your Next Workout Partner</h2>
-                <a class="btn btn-warning js-scroll-trigger" href="#about">Learn More</a>
+              <h1 class="mx-auto my-0">Accounta</h1>
+              <h1 class="mx-auto my-0">Fit</h1>
+              <h1 class="mx-auto my-0">Buddy</h1>
+              <h2 class="text-white-50 mx-auto mt-2 mb-5">Find Your Next Workout Partner</h2>
+              <a class="btn btn-warning js-scroll-trigger" href="#about">Learn More</a>
             </div>
           </div>
         </header>
@@ -163,14 +170,10 @@
         <footer class="footer bg-black small text-center text-white-50"><div class="container">Copyright © Your Website 2020</div></footer>
         <!-- Bootstrap core JS-->
         <script src="{{ STATIC_URL }} https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script src="{% static 'main.js' %}"></script>
-
         <script src="{{ STATIC_URL }} https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
         <!-- Third party plugin JS-->
         <script src="{{ STATIC_URL }} https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
-        <!-- Core theme JS-->
-        <script src="{% static 'scripts.js' %}"></script>
 
-        <script src="{{ STATIC_URL }} https://use.fontawesome.com/releases/v5.13.0/js/all.js" crossorigin="anonymous"></script>
+        <script src="{% static 'scripts.js' %}"></script>
     </body>
 </html>

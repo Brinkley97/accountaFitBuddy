@@ -2,7 +2,7 @@
 {% load static %}
 {% block content %}
   <div class="image-holder">
-    <img src="{% static 'jog.jpg' %}" alt="">
+    <img src="{% static 'img/jog.jpg' %}" alt="">
   </div>
   <form class="mdl-textfield mdl-js-textfield" action="{% url 'accounts:signup'%}" method="post" enctype="multipart/form-data">
     {% csrf_token %}
@@ -27,8 +27,6 @@
       <label class="form-check-label" for="defaultCheck1">I accept the terms and conditions.</label>
     </div>
     <p>* = Required</p>
-
-
     <button class="btn btn-primary" type="submit">Next</button>
   </form>
 {% endblock %}
