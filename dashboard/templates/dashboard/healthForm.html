@@ -1,25 +1,31 @@
-{% extends 'base_layout.html' %}
-
+{% extends 'accounts/signupBaseLayout.html' %}
+{% load static %}
 {% block content %}
-<div class="container-fluid backImg">
-  <div class="container">
-    <h1>Health Info</h1>
-
-    <form class="" action="{% url 'dashboard:health' %}" method="post" enctype="multipart/form-data">
-      {% csrf_token %}
-
-      <div class="card centerIt">
-        <div class="card-body">
-          {{healthInfo.as_p}}
-        </div>
-      </div>
-      <!-- healthInfo from views.py; {'healthInfo': form} -->
-      <button class="btn btn-primary"type="submit" name="button">Next</button>
-    </form>
-
-      <a href="{% url 'accounts:signup' %}">
-        <button" class="btn btn-primary">Back</button>
-      </a>
+  <div class="image-holder">
+    <img src="{% static 'img/partnerStretch.jpg' %}" alt="">
+  </div>
+  <form class="mdl-textfield mdl-js-textfield" action="{% url 'dashboard:health'%}" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <h1>Create An Account</h1>
+    <br>
+    <h3>Health Info</h3>
+    <div class="form-row">
+      <input class="form-control" placeholder="Age: 17-80" name="age">
+      {{healthInfo.gender}}
     </div>
-</div>
+    <div class="form-row">
+      <input class="form-control" placeholder="Weight in pounds: 50-500" name="weight">
+      {{healthInfo.fit}}
+    </div>
+    <div class="form-row">
+      <input type="text" class="form-control" placeholder="City/Location" name="location">
+      {{healthInfo.goal}}
+    </div>
+    <div class="form-row">
+      <input type="file" name="thumbnail">
+
+
+    </div>
+    <button class="btn btn-primary" type="submit">Next</button>
+  </form>
 {% endblock %}

@@ -26,3 +26,13 @@ label, #colorChange{
   font-weight: bold;
   font-size: 30px;
 }
+
+/* AWARDS */
+.uc{
+  background-image: url(/static/uc.jpg);
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  height: 84vh;
+  width: 100%;
+}

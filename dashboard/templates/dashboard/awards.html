@@ -1,31 +1,8 @@
-{% extends 'base_layout.html' %}
-
+{% extends 'baseLayout.html' %}
 {% load static %}
-
-
 {% block content %}
-<a href="{% url 'article:list' %}">
-  <button" class="btn btn-primary">Back</button>
-</a>
-<h1>Awards</h1>
+  <h1 class="text-center">Awards</h1>
+  <div class="container-fluid uc">
 
-<div class="container">
-    <div class="progress">
-      <div class="progress-bar bg-success" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">Join</div>
-    </div>
-    <br>
-    <div class="progress">
-      <div class="progress-bar bg-info" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">Create an image post</div>
-    </div>
-    <br>
-    <div class="progress">
-      <div class="progress-bar bg-primary" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">Create a video post</div>
-    </div>
-    <br>
-    <div class="progress">
-      <div class="progress-bar bg-primary" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">Create a post with an image and video.</div>
-    </div>
-</div>
-
-
+  </div>
 {% endblock %}
