@@ -10244,7 +10244,7 @@
     height: auto;
     min-height: 35rem;
     padding: 15rem 0;
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.7) 75%, #000000 100%), url("/static/bg-masthead.jpg");
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.7) 75%, #000000 100%), url("/static/bg-masthead.d3b4a514dfb1.jpg");
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: scroll;
@@ -10323,7 +10323,7 @@
 
   .signup-section {
     padding: 10rem 0;
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.5) 75%, #000000 100%), url("/static/bg-signup.jpg");
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.5) 75%, #000000 100%), url("/static/bg-signup.5ac05903cff7.jpg");
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: scroll;
@@ -20593,7 +20593,7 @@ body {
   height: auto;
   min-height: 35rem;
   padding: 15rem 0;
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.7) 75%, #000000 100%), url("/static/pondTX.jpg");
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.7) 75%, #000000 100%), url("/static/pondTX.e63110bb3808.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: scroll;
@@ -20672,7 +20672,7 @@ body {
 
 .signup-section {
   padding: 10rem 0;
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.5) 75%, #000000 100%), url("/static/bg-signup.jpg");
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.5) 75%, #000000 100%), url("/static/bg-signup.5ac05903cff7.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: scroll;

@@ -13,7 +13,7 @@
 
 /* ARTICLE CREATE */
 .bgimage{
-  background-image: url(/static/signup.jpg);
+  background-image: url("/static/signup.5ac05903cff7.jpg");
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
@@ -29,7 +29,7 @@ label, #colorChange{
 
 /* AWARDS */
 .uc{
-  background-image: url(/static/uc.jpg);
+  background-image: url("/static/uc.0d386db286fa.jpg");
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
