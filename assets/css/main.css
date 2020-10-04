@@ -1,16 +1,53 @@
-
-
+/*
+teal-ish: rgb(102, 161, 157);
+dark-green: rgb(46, 51, 56);
+ */
 /* DASHBOARD */
+#page-content-wrapper{
+  background-color: #ededed;
+}
+#shareJourney{
+  color: rgb(102, 161, 157);
+}
+.express{
+  color: rgb(46, 51, 56);
+}
+.share{
+  background-color: rgb(102, 161, 157);
+  color: #ededed;
+}
+.card{
+  border-radius: 3%;
+  margin-bottom: 25px;
+}
+#postStyle{
+  padding: 15px 0px 0px 0px;
+}
 .image, .video{
-  width: 300px;
-  height: 300px;
+  height: 500px;
+  border-radius: 3%;
+}
+.image{
+  width: 500px;
 }
 
 .barButtonColor{
   background-color: rgb(102, 161, 157);
 }
+/* click like button to change; refer to "articleList.js" */
+.clickableAwesomeFont{
+  cursor: pointer
+}
+#like.like{
+  color: rgb(102, 161, 157);
+}
 
-
+#date{
+  padding-right: 20px;
+}
+.articleTitle{
+  color: rgb(102, 161, 157);
+}
 /* ARTICLE CREATE */
 .bgimage{
   background-image: url(/static/signup.jpg);
@@ -27,6 +64,8 @@ label, #colorChange{
   font-size: 30px;
 }
 
+
+
 /* AWARDS */
 .uc{
   background-image: url(/static/uc.jpg);
@@ -35,4 +74,67 @@ label, #colorChange{
   background-repeat: no-repeat;
   height: 84vh;
   width: 100%;
+}
+
+
+/* SIDEBAR */
+
+#wrapper {
+  overflow-x: hidden;
+}
+
+#sidebar-wrapper {
+  min-height: 100vh;
+  margin-left: -15rem;
+  -webkit-transition: margin .25s ease-out;
+  -moz-transition: margin .25s ease-out;
+  -o-transition: margin .25s ease-out;
+  transition: margin .25s ease-out;
+}
+
+#sidebar-wrapper .sidebar-heading {
+  padding: 0.875rem 1.25rem;
+  font-size: 1.2rem;
+}
+
+#sidebar-wrapper .list-group {
+  width: 15rem;
+}
+
+#page-content-wrapper {
+  min-width: 100vw;
+}
+
+#wrapper.toggled #sidebar-wrapper {
+  margin-left: 0;
+}
+
+@media (min-width: 768px) {
+  #sidebar-wrapper {
+    margin-left: 0;
+  }
+
+  #page-content-wrapper {
+    min-width: 0;
+    width: 100%;
+  }
+
+  #wrapper.toggled #sidebar-wrapper {
+    margin-left: -15rem;
+  }
+}
+
+/* MOBILE VIEW */
+@media (max-width: 375px) {
+  .card{
+    margin-bottom: 50px;
+  }
+  #postStyle{
+    padding: 15px 0px 25px 0px;
+  }
+  .image, .video{
+    width: 300px;
+    height: 400px;
+  }
+
 }

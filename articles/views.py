@@ -8,13 +8,12 @@ import os
 import pdb
 from django.utils.datastructures import MultiValueDictKeyError
 
-
-
-
-# Create your views here.
 def article_list(request):
-    articles = Article.objects.all().order_by('date')
-    return render(request, "articles/article_list.html", {'theArticles':articles})
+    articles = Article.objects.all().order_by('-date')
+    args = {
+        'theArticles':articles
+    }
+    return render(request, "articles/articleList.html", args)
 
 def article_detail(request, slug):
     # return HttpResponse(slug)
@@ -45,7 +44,7 @@ def article_create(request):
                         instance.save()
                 except MultiValueDictKeyError:
                     image = False
-                    
+
                 videoFile = request.FILES['video'].name
                 extention = os.path.splitext(videoFile)[1]
                 if extention == '.MOV':

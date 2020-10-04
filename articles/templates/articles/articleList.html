@@ -15,7 +15,7 @@
     <p class="d-flex justify-content-center">
       <a href="{% url 'article:create' %}">
         <button class="btn share" type="button" name="button">
-          What's on your mind<h4>{{ author.first_name }}</h4>
+          What's on your mind,<h4>@{{ author.first_name }}</h4>
         </button>
       </a>
     </p>
@@ -29,23 +29,30 @@
     {% for article in theArticles %}
       <div class="card">
         <div class="row" id="postStyle">
+          <div class="col-md-6 text-center justify-content-center align-self-center">
+            <h2>
+              <a class="articleTitle" href="{% url 'article:detail' slug=article.slug %}">{{article.title}}</a>
+            </h2>
+            <hr>
+            <p class="wrapWord">{{ article.snippet }}</p>
+            {% for user in users %}
+              <a href="{% url 'dashboard:profilePage_with_pk' pk=user.pk %}">
+                <h3>{{ user.username }}</h3>
+              </a>
+            {% endfor %}
+          </div>
           <div class="col-md-6">
+            <p class="float-right" id="date">{{ article.date }}</p>
             {% if article.image != "default.png" %}
               <img class="image mx-auto d-block" src="{{ article.image.url }}"/>
             {% endif %}
             <br>
             {% if article.video != "default.mp4" %}
-              <video class="video" controls>
+              <video class="video mx-auto d-block" controls>
                 <source id="videos" src="{{ article.video.url }}">
               </video>
             {% endif %}
-          </div>
-          <div class="col-md-6 text-center justify-content-center align-self-center">
-            <h2>
-              <a class="giveColor" href="{% url 'article:detail' slug=article.slug %}">{{article.title}}</a>
-            </h2>
-            <p class="wrapWord">{{ article.snippet }}</p>
-            <p>{{ article.date }}</p>
+            <hr>
             <div class="row d-flex justify-content-around">
               <div class="col-xs-6">
                 <span class="clickableAwesomeFont">
@@ -58,11 +65,6 @@
                 </span>
               </div>
             </div>
-            {% for user in users %}
-              <a href="{% url 'dashboard:profilePage_with_pk' pk=user.pk %}">
-                <h3>{{ user.username }}</h3>
-              </a>
-            {% endfor %}
           </div>
         </div>
       </div>

@@ -3,90 +3,90 @@
 {% block content %}
 
 <!--Navbar-->
-<nav class="nav nav-pills nav-justified">
-  <a class="nav-item nav-link" href="{% url 'accounts:edit_profile' %}">Edit Profile</a>
-  <a class="nav-item nav-link" href="{% url 'dashboard:edit_health' %}">Edit Health Info</a>
-  <a class="nav-item nav-link" href="{% url 'dashboard:edit_general' %}">Edit General Info</a>
-</nav>
+  <nav class="nav nav-pills nav-justified">
+    <a class="nav-item nav-link" href="{% url 'accounts:edit_profile' %}">Edit Profile</a>
+    <a class="nav-item nav-link" href="{% url 'dashboard:edit_health' %}">Edit Health Info</a>
+    <a class="nav-item nav-link" href="{% url 'dashboard:edit_general' %}">Edit General Info</a>
+  </nav>
 <!--Navbar-->
 <!-- not going to correct user; check out views.py and findAccountabilityPartners.html -->
 
 <!-- Section -->
-<div class="jumbotron jumbotron-fluid">
-  <div class="col-md-12 center">
-    <span class="profile-picture">
-      {% for infoH in infoH_list %}
-        <img id="article" src=" {{ infoH.thumbnail.url }}" style="width: 200px; display: block; margin-left: auto; margin-right: auto; padding-bottom: 10px;">
-        <div class="container-fluid">
-          <div class="row">
-            <div class="col-lg-6 col-md-6 text-center">
-              <h4>{{ infoH.author.first_name }} {{ infoH.author.last_name }}</h4>
-            </div>
-            <div class="col-lg-6 col-md-6 text-center">
-              <h4>@{{ infoH.author }}</h4>
+  <div class="jumbotron jumbotron-fluid">
+    <div class="col-md-12 center">
+      <span class="profile-picture">
+        {% for infoH in infoH_list %}
+          <img id="article" src=" {{ infoH.thumbnail.url }}" style="width: 200px; display: block; margin-left: auto; margin-right: auto; padding-bottom: 10px;">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-lg-6 col-md-6 text-center">
+                <h4>{{ infoH.author.first_name }} {{ infoH.author.last_name }}</h4>
+              </div>
+              <div class="col-lg-6 col-md-6 text-center">
+                <h4>@{{ infoH.author }}</h4>
+              </div>
             </div>
           </div>
-        </div>
-        {%  endfor %}
-    </span>
-    {% for user in users %}
+          {%  endfor %}
+      </span>
+      {% for user in users %}
 
-    <!-- <a class="btn btn-sm btn-block btn-primary" href="{% url 'dashboard:changeFriend' operation='add' pk=user.pk %}">
-      <i class="ace-icon fa fa-plus-circle bigger-120"></i>
-      <span class="bigger-110">Add gym buddy</span>
-    </a> -->
+      <!-- <a class="btn btn-sm btn-block btn-primary" href="{% url 'dashboard:changeFriend' operation='add' pk=user.pk %}">
+        <i class="ace-icon fa fa-plus-circle bigger-120"></i>
+        <span class="bigger-110">Add gym buddy</span>
+      </a> -->
+      {%  endfor %}
+      <!-- <a href="#" class="btn btn-sm btn-block btn-primary">
+        <i class="ace-icon fa fa-envelope-o bigger-120"></i>
+        <span class="bigger-110">Send a message</span>
+      </a> -->
+    </div>
+  </div>
+  <!-- Section -->
+  <div class="container">
+    {% for infoH in infoH_list %}
+      <div class="row">
+        <div class="col-lg-6 col-md-12 col-sm-12 text-center">
+          <div class="card centerIt">
+            <div class="card-body">
+              <div class="healthInfo">
+                <h3>Health Info</h3>
+                <p>gender: {{infoH.gender}}</p>
+                <p>age: {{infoH.age}}</p>
+                <p>weight: {{infoH.weight}} lbs</p>
+                <p>fitness level: {{infoH.fit}}</p>
+                <p>goal: {{infoH.goal}}</p>
+                <p>location: {{infoH.location}}</p>
+              </div>
+            </div>
+          </div>
+        </div>
     {%  endfor %}
-    <!-- <a href="#" class="btn btn-sm btn-block btn-primary">
-      <i class="ace-icon fa fa-envelope-o bigger-120"></i>
-      <span class="bigger-110">Send a message</span>
-    </a> -->
-  </div>
-</div>
-<!-- Section -->
-<div class="container">
-  {% for infoH in infoH_list %}
-    <div class="row">
-      <div class="col-lg-6 col-md-12 col-sm-12 text-center">
-        <div class="card centerIt" style="width: 470px;">
-          <div class="card-body">
-            <div class="healthInfo">
-              <h3>Health Info</h3>
-              <p>gender: {{infoH.gender}}</p>
-              <p>age: {{infoH.age}}</p>
-              <p>weight: {{infoH.weight}} lbs</p>
-              <p>fitness level: {{infoH.fit}}</p>
-              <p>goal: {{infoH.goal}}</p>
-              <p>location: {{infoH.location}}</p>
+    {% for infoG in infoG_list %}
+        <div class="col-lg-6 col-md-12 col-sm-12 text-center">
+          <div class="card centerIt">
+            <div class="card-body">
+              <div class="generalInfo">
+                <h3>General Info</h3>
+                <p>group size: {{infoG.group}}</p>
+                <p>often: {{infoG.often}}</p>
+              </div>
+            </div>
+          </div>
+          <div class="card centerIt">
+            <div class="card-body">
+              <h3>Social Media</h3>
+              <p>IG: {{infoG.ig}}</p>
+              <p>Facebook: {{infoG.fb}}</p>
+              <p>Twitter: {{infoG.twitter}}</p>
+              <p>Snapchat: {{infoG.snap}}</p>
+              <p>WhatsApp: {{infoG.whatsapp}}</p>
             </div>
           </div>
         </div>
-      </div>
-  {%  endfor %}
-  {% for infoG in infoG_list %}
-      <div class="col-lg-6 col-md-12 col-sm-12 text-center">
-        <div class="card centerIt" style="width: 470px;">
-          <div class="card-body">
-            <div class="generalInfo">
-              <h3>General Info</h3>
-              <p>group size: {{infoG.group}}</p>
-              <p>often: {{infoG.often}}</p>
-            </div>
-          </div>
-        </div>
-        <div class="card centerIt" style="width: 470px;">
-          <div class="card-body">
-            <h3>Social Media</h3>
-            <p>IG: {{infoG.ig}}</p>
-            <p>Facebook: {{infoG.fb}}</p>
-            <p>Twitter: {{infoG.twitter}}</p>
-            <p>Snapchat: {{infoG.snap}}</p>
-            <p>WhatsApp: {{infoG.whatsapp}}</p>
-          </div>
-        </div>
-      </div>
-  {%  endfor %}
+    {%  endfor %}
+    </div>
   </div>
-</div>
 
 <br>
 <br>
