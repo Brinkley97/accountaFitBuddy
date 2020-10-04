@@ -1,6 +1,7 @@
 /*
 teal-ish: rgb(102, 161, 157);
 dark-green: rgb(46, 51, 56);
+grey: #ededed;
  */
 /* DASHBOARD */
 #page-content-wrapper{
@@ -48,23 +49,32 @@ dark-green: rgb(46, 51, 56);
 .articleTitle{
   color: rgb(102, 161, 157);
 }
+
+
 /* ARTICLE CREATE */
-.bgimage{
-  background-image: url(/static/signup.jpg);
-  background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
-  height: 93vh;
-  width: 100%;
-}
-
-label, #colorChange{
+#addPost{
+  margin-top: 10px;
   color: rgb(102, 161, 157);
-  font-weight: bold;
-  font-size: 30px;
 }
-
-
+/* #id_title, #id_slug{
+  border-radius: 15%;
+}
+#id_body{
+  border-radius: 10%;
+} */
+.expandInput{
+  width: 800px;
+}
+#createTitle, #createBody, #createSlug, #uploadImg, #uploadVideo{
+  color: rgb(102, 161, 157);
+}
+.moreBody{
+  height: 200px;
+}
+.createArticleButton, .backButton{
+  background-color: rgb(102, 161, 157);
+  color: #ededed;
+}
 
 /* AWARDS */
 .uc{
@@ -135,6 +145,13 @@ label, #colorChange{
   .image, .video{
     width: 300px;
     height: 400px;
+  }
+  .expandInput{
+    width: 350px;
+  }
+  #addPost{
+    margin-top: 30px;
+    color: rgb(102, 161, 157);
   }
 
 }

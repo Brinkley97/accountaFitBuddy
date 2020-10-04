@@ -15,7 +15,7 @@
     <p class="d-flex justify-content-center">
       <a href="{% url 'article:create' %}">
         <button class="btn share" type="button" name="button">
-          What's on your mind,<h4>@{{ author.first_name }}</h4>
+          What's on your mind,<h4>@{{ article.author.first_name }}</h4>
         </button>
       </a>
     </p>
@@ -35,14 +35,19 @@
             </h2>
             <hr>
             <p class="wrapWord">{{ article.snippet }}</p>
-            {% for user in users %}
-              <a href="{% url 'dashboard:profilePage_with_pk' pk=user.pk %}">
-                <h3>{{ user.username }}</h3>
-              </a>
-            {% endfor %}
+            <hr>
           </div>
           <div class="col-md-6">
-            <p class="float-right" id="date">{{ article.date }}</p>
+            <div class="row">
+              <div class="sm-6 mx-auto d-block">
+                <!-- <a href="{% url 'dashboard:profilePage_with_pk' pk=user.pk %}"> -->
+                <h3>{{ article.author.username }}</h3>
+                <!-- </a> -->
+              </div>
+              <div class="sm-6 mx-auto d-block">
+                <p class="float-right" id="date">{{ article.date }}</p>
+              </div>
+            </div>
             {% if article.image != "default.png" %}
               <img class="image mx-auto d-block" src="{{ article.image.url }}"/>
             {% endif %}

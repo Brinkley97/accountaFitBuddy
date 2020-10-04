@@ -9,5 +9,4 @@ urlpatterns = [
     url(r'^create/$', views.article_create, name="create"),
     url(r'^(?P<slug>[\w-]+)/$', views.article_detail, name="detail"),
     # url(r'^(?P<author>[\w-]+)/$', views.other_user_profile, name='otherUser'),
-    url(r'^otherUser/$', views.other_user_profile, name='otherUser')
 ]

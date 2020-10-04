@@ -20,11 +20,6 @@ def article_detail(request, slug):
     article = Article.objects.get(slug=slug)
     return render(request, 'articles/article_detail.html', {'article': article})
 
-def other_user_profile(request):
-    # return HttpResponse(author)
-    person = Article.objects.get()
-    return render(request, 'articles/other_user_profile.html', {'person': person})
-
 @login_required(login_url="/accounts/login/")
 def article_create(request):
     if request.method == 'POST':
@@ -60,11 +55,11 @@ def article_create(request):
         args = {
             'form':form
         }
-        return render(request, 'articles/article_create.html', args)
+        return render(request, 'articles/articleCreate.html', args)
     else:
         form = forms.CreateArticle()
 
         args = {
             'form':form
         }
-        return render(request, 'articles/article_create.html', args)
+        return render(request, 'articles/articleCreate.html', args)
