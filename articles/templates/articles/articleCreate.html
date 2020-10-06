@@ -2,6 +2,11 @@
 {% load static %}
 {% block content %}
 <div class="container">
+  <div class="col-xs*-12 d-flex justify-content-start">
+    <a href="{% url 'article:list' %}">
+      <button class="btn backButton">Back</button>
+    </a>
+  </div>
   <h2 class="text-center" id="addPost">Add Post...</h2>
   <div class="form-group d-flex justify-content-around">
     <form class="" action="{% url 'article:create' %}" method="post" enctype="multipart/form-data">
@@ -23,15 +28,9 @@
         <p id="uploadVideo">Video: <input type="file" name="video" accept=" video/*"></p>
       </div>
       <div class="row d-flex justify-content-around">
-        <div class="col-xs*-6">
-          <a href="{% url 'article:list' %}">
-            <button class="btn backButton">Back</button>
-          </a>
-        </div>
-        <div class="col-xs*-6">
+        <div class="col-xs*-12">
           <button class="btn createArticleButton" type="submit">Create</button>
         </div>
-
       </div>
     </form>
   </div>

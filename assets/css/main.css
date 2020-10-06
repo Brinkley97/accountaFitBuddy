@@ -21,6 +21,15 @@ grey: #ededed;
   border-radius: 3%;
   margin-bottom: 25px;
 }
+.cardFindBuddy{
+  margin-bottom: 5px;
+  margin-left: 10px;
+  max-width: 22rem;
+  /* width: 4rem; */
+}
+.card:hover{
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.6);
+}
 #postStyle{
   padding: 15px 0px 0px 0px;
 }
@@ -76,6 +85,16 @@ grey: #ededed;
   color: #ededed;
 }
 
+
+/* ARTICLE DETAILS */
+#detailsPage{
+  padding-left: 35px;
+}
+.imageDetail, .videoDetail{
+  width: 900px;
+  height: 300px;
+}
+
 /* AWARDS */
 .uc{
   background-image: url(/static/uc.jpg);
@@ -86,11 +105,24 @@ grey: #ededed;
   width: 100%;
 }
 
+/* AP */
+#imageAP{
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+}
+.addRemoveAP{
+  background-color: inherit;
+}
+.sidenav{
+  margin-left: 290px;
+}
 
 /* SIDEBAR */
 
 #wrapper {
   overflow-x: hidden;
+
 }
 
 #sidebar-wrapper {
@@ -134,10 +166,15 @@ grey: #ededed;
   }
 }
 
+
 /* MOBILE VIEW */
 @media (max-width: 375px) {
-  .card{
-    margin-bottom: 50px;
+  .cardFindBuddy{
+    margin: 0px 10px 45px 10px;
+    width: 22rem;
+  }
+  .sidenav{
+    margin-left: 280px;
   }
   #postStyle{
     padding: 15px 0px 25px 0px;
@@ -145,6 +182,10 @@ grey: #ededed;
   .image, .video{
     width: 300px;
     height: 400px;
+  }
+  .imageDetail, .videoDetail{
+    width: 340px;
+    height: 140px;
   }
   .expandInput{
     width: 350px;

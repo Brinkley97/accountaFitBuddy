@@ -1,36 +1,38 @@
 {% extends 'baseLayout.html' %}
 {% load static %}
 {% block content %}
-  <h1>Find Accountability Partners</h1>
-  <div class="container-fluid backgroundColor">
-    <div class="row">
-      {% for user in users %}
-        {% if user not in friends %}
-          <div class="col-sm-6 text-center">
-            <div class="card fixOthers">
-              {% for healthInfo in healthInfo_list %}
-                {% if healthInfo.author_id == user.id %}
-                  <div class="row">
-                    <div class="col-md-6 text-center">
-                      <img class="image" src="{{ healthInfo.thumbnail.url }}">
-                    </div>
-                    <div class="col-md-6 text-center">
-                      <a href="{% url 'dashboard:profilePage_with_pk' pk=user.pk %}">
-                        <h3>{{ user.username }}</h3>
-                      </a>
-                      <p>Location: {{ healthInfo.location }}</p>
-                      <p>Goal: {{ healthInfo.goal }}</p>
-                      <a href="{% url 'dashboard:changeFriend' operation='add' pk=user.pk %}">
-                        <button type="button" class="btn btn-success">Add AP</button>
-                      </a>
-                    </div>
-                  </div>
-                {% endif %}
-              {% endfor %}
-            </div>
-          </div>
-        {% endif %}
-      {% endfor %}
-    </div>
+<h1 class="text-center">Find Accountability Partners</h1>
+<div class="container">
+  <div class="row">
+    {% for user in users %}
+      {% if user not in friends %}
+        <div class="card col-md-4 cardFindBuddy">
+          {% for healthInfo in healthInfo_list %}
+            {% if healthInfo.author_id == user.id %}
+              <nav class="sidenav" >
+                <a href="{% url 'dashboard:changeFriend' operation='add' pk=user.pk %}">
+                  <button type="button" class="btn addRemoveAP"><i class="fas fa-user-plus fa-1x"></i></button>
+                </a>
+              </nav>
+              <div class="row d-flex justify-content-center">
+                <img id="imageAP" src="{{ healthInfo.thumbnail.url }}">
+              </div>
+              <div class="row d-flex justify-content-center">
+                <a href="{% url 'dashboard:profilePage_with_pk' pk=user.pk %}">
+                  <h3>{{ user.username }}</h3>
+                </a>
+              </div>
+              <div class="row justify-content-center">
+                <p>Location: {{ healthInfo.location }}</p>
+              </div>
+              <div class="row justify-content-center">
+                <p>Goal: {{ healthInfo.goal }}</p>
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+      {% endif %}
+    {% endfor %}
   </div>
+</div>
 {% endblock %}

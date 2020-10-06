@@ -16,7 +16,6 @@ class Article(models.Model):
     image = models.ImageField(default="default.png", blank=True)
     video = models.FileField(default="default.mp4", blank=True)
 
-
     def __str__(self):
         return self.title
 

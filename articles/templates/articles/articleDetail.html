@@ -1,0 +1,42 @@
+{% extends 'baseLayout.html' %}
+
+{% block content %}
+<div class="container" id="detailsPage">
+  <div class="row">
+    <h2 class="text-center">{{article.title}}</h2>
+  </div>
+  <hr>
+  <div class="row"">
+    <h5>By: {{article.author.username}}</h5>
+  </div>
+  <hr>
+  <div class="row">
+    <p>Posted on: {{article.date}}</p>
+  </div>
+  <hr>
+  <div class="row">
+    {% if article.image != "default.png" %}
+      <img class="imageDetail" src="{{ article.image.url }}"/>
+    {% endif %}
+    <br>
+    {% if article.video != "default.mp4" %}
+      <video class="videoDetail" controls>
+        <source src="{{ article.video.url }}">
+      </video>
+    {% endif %}
+  </div>
+  <hr>
+  <div class="row">
+    <p class="">{{article.body}}</p>
+  </div>
+  <hr>
+  <div class="col-xs*-12 d-flex justify-content-start">
+    <a href="{% url 'article:list' %}">
+      <button class="btn backButton">Back</button>
+    </a>
+  </div>
+</div>
+<script src="/static/slugify.js"></script>
+
+
+{% endblock %}
