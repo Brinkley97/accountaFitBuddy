@@ -1,5 +1,5 @@
-from django.shortcuts import render, redirect
-from .models import Article
+from django.shortcuts import render, redirect, get_object_or_404
+from .models import Article, Comment
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from .import forms
@@ -8,6 +8,7 @@ import os
 import pdb
 from django.utils.datastructures import MultiValueDictKeyError
 
+@login_required(login_url="/accounts/login/")
 def article_list(request):
     articles = Article.objects.all().order_by('-date')
     args = {
@@ -15,10 +16,33 @@ def article_list(request):
     }
     return render(request, "articles/articleList.html", args)
 
+@login_required(login_url="/accounts/login/")
 def article_detail(request, slug):
-    # return HttpResponse(slug)
     article = Article.objects.get(slug=slug)
-    return render(request, 'articles/articleDetail.html', {'article': article})
+    #queryset to retrieve all the approved comments from the database.
+    #.comments is the related_name in models.py
+    # comments = article.comments.filter(approvedComment=False)
+    comments = article.comments.all()
+    newComment = None
+    if request.method == 'POST':
+        commentForm = forms.CreateComment(data=request.POST)
+        if commentForm.is_valid():
+
+            # Create Comment object but don't save to database yet
+            newComment = commentForm.save(commit=False)
+            newComment.author = request.user
+            # Assign the current post to the comment
+            newComment.post = article
+            # Save the comment to the database
+            newComment.save()
+            return redirect('article:detail', slug=article.slug)
+    else:
+        commentForm = forms.CreateComment()
+        args = {
+            'article': article, 'comments': comments, 'newComment': newComment,
+            'commentForm': commentForm,
+        }
+    return render(request, 'articles/articleDetail.html', args)
 
 @login_required(login_url="/accounts/login/")
 def article_create(request):
