@@ -16,7 +16,7 @@
     <div class="col-md-12 center">
       <span class="profile-picture">
         {% for infoH in infoH_list %}
-          <img id="article" src=" {{ infoH.thumbnail.url }}" style="width: 200px; display: block; margin-left: auto; margin-right: auto; padding-bottom: 10px;">
+          <img id="article" src="{{ infoH.thumbnail.url }}" style="width: 200px; display: block; margin-left: auto; margin-right: auto; padding-bottom: 10px;">
           <div class="container-fluid">
             <div class="row">
               <div class="col-lg-6 col-md-6 text-center">
@@ -51,12 +51,12 @@
             <div class="card-body">
               <div class="healthInfo">
                 <h3>Health Info</h3>
-                <p>gender: {{infoH.gender}}</p>
-                <p>age: {{infoH.age}}</p>
-                <p>weight: {{infoH.weight}} lbs</p>
-                <p>fitness level: {{infoH.fit}}</p>
-                <p>goal: {{infoH.goal}}</p>
-                <p>location: {{infoH.location}}</p>
+                <p>gender: {{ infoH.gender }}</p>
+                <p>age: {{ infoH.age }}</p>
+                <p>weight: {{ infoH.weight }} lbs</p>
+                <p>fitness level: {{ infoH.fit }}</p>
+                <p>goal: {{ infoH.goal }}</p>
+                <p>location: {{ infoH.location }}</p>
               </div>
             </div>
           </div>
@@ -68,24 +68,30 @@
             <div class="card-body">
               <div class="generalInfo">
                 <h3>General Info</h3>
-                <p>group size: {{infoG.group}}</p>
-                <p>often: {{infoG.often}}</p>
+                <p>group size: {{ infoG.group }}</p>
+                <p>often: {{ infoG.often }}</p>
               </div>
             </div>
           </div>
           <div class="card centerIt">
             <div class="card-body">
               <h3>Social Media</h3>
-              <p>IG: {{infoG.ig}}</p>
-              <p>Facebook: {{infoG.fb}}</p>
-              <p>Twitter: {{infoG.twitter}}</p>
-              <p>Snapchat: {{infoG.snap}}</p>
-              <p>WhatsApp: {{infoG.whatsapp}}</p>
+              <p>IG: {{ infoG.ig }}</p>
+              <p>Facebook: {{ infoG.fb }}</p>
+              <p>Twitter: {{ infoG.twitter }}</p>
+              <p>Snapchat: {{ infoG.snap }}</p>
+              <p>WhatsApp: {{ infoG.whatsapp }}</p>
             </div>
           </div>
         </div>
     {%  endfor %}
     </div>
+  </div>
+  <div class="container">
+    <h1>Posts</h1>
+    {% for post in posts %}
+      <p>{{ post.title }}</p>
+    {%  endfor %}
   </div>
 
 <br>

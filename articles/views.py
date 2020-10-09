@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Article, Comment
+from dashboard.models import Health
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from .import forms
@@ -11,8 +12,10 @@ from django.utils.datastructures import MultiValueDictKeyError
 @login_required(login_url="/accounts/login/")
 def article_list(request):
     articles = Article.objects.all().order_by('-date')
+    userImage = Health.objects.all()
     args = {
-        'theArticles':articles
+        'theArticles':articles,
+        'userImages':userImage
     }
     return render(request, "articles/articleList.html", args)
 

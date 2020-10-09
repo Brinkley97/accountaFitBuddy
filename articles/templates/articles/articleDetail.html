@@ -2,80 +2,56 @@
 
 {% block content %}
 <div class="container" id="detailsPage">
-  <div class="row">
-    <h2 class="text-center">{{article.title}}</h2>
-  </div>
-  <hr>
-  <div class="row"">
-    <h5>By: {{article.author.username}}</h5>
-  </div>
-  <hr>
-  <div class="row">
-    <p>Posted on: {{article.date}}</p>
-  </div>
-  <hr>
-  <div class="row">
-    {% if article.image != "default.png" %}
-      <img class="imageDetail" src="{{ article.image.url }}"/>
-    {% endif %}
-    <br>
-    {% if article.video != "default.mp4" %}
-      <video class="videoDetail" controls>
-        <source src="{{ article.video.url }}">
-      </video>
-    {% endif %}
-  </div>
-  <hr>
-  <div class="row">
-    <p class="">{{article.body}}</p>
-  </div>
-  <hr>
   <div class="col-xs*-12 d-flex justify-content-start">
     <a href="{% url 'article:list' %}">
-      <button class="btn backButton">Back</button>
+      <button class="btn backAndSubmitButton">Back</button>
     </a>
   </div>
-</div>
-
-<div class="container">
-  <div class="row">
-    <div class="col-md-8 card mb-4  mt-3 ">
-      <div class="card-body">
-        <!-- comments -->
-        <h2>{{ comments.count }} comments</h2>
-
-        {% for comment in comments %}
-        <div class="comments" style="padding: 10px;">
-          <p class="font-weight-bold">
-            {{ comment.author }}
-            <span class=" text-muted font-weight-normal">
-              {{ comment.date }}
-            </span>
-          </p>
-          {{ comment.comment | linebreaks }}
+  <h2 class="">{{article.title}}</h2>
+  <hr>
+    <h5>By: {{article.author.username}}</h5>
+  <hr>
+    <p>Posted on: {{article.date}}</p>
+  <hr>
+  {% if article.image != "default.png" %}
+    <img class="imageDetail" src="{{ article.image.url }}"/>
+  {% endif %}
+  <br>
+  {% if article.video != "default.mp4" %}
+    <video class="videoDetail" controls>
+      <source src="{{ article.video.url }}">
+    </video>
+  {% endif %}
+  <hr>
+    <p class="bodyOfPost">{{ article.body }}</p>
+  <hr>
+  <h2>{{ comments.count }} comments</h2>
+  <hr>
+  <div>
+    <form method="post" style="margin-top: 1.3em;">
+      {% csrf_token %}
+      <textarea class="form-control" name="comment" id="newComment" placeholder="Add a comment..."></textarea>
+      <button type="submit" class="btn backAndSubmitButton" id="submitButton">Submit</button>
+    </form>
+  </div>
+  <hr>
+  <div>
+    {% for comment in comments %}
+      <div class="card commentCard">
+        <div class="row">
+          <div class="col-6">
+            <p>{{ comment.author }}</p>
+          </div>
+          <div class="col-6">
+            <p class="float-right">{{ comment.date }}</p>
+          </div>
         </div>
-        {% endfor %}
-      </div>
-    </div>
-    <div class="col-md-8 card mb-4  mt-3 ">
-      <div class="card-body">
-        {% if newComment %}
-        <div class="alert alert-success" role="alert">
-          Your comment is awaiting moderation
+        <div>
+          <p>{{ comment.comment }}</p>
         </div>
-        {% else %}
-        <h3>Leave a comment</h3>
-        <form method="post" style="margin-top: 1.3em;">
-          {{ commentForm.as_p }}
-          {% csrf_token %}
-          <button type="submit" class="btn btn-primary  btn-lg">Submit</button>
-        </form>
-        {% endif %}
       </div>
-    </div>
+    {% endfor %}
   </div>
 </div>
 <script src="/static/slugify.js"></script>
-
-
 {% endblock %}
