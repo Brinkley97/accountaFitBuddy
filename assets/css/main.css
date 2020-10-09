@@ -50,7 +50,7 @@ grey: #ededed;
 #userImageList{
   height: 80px;
   width: 80px;
-  border-radius: 20%;
+  border-radius: 50%;
 }
 .barButtonColor{
   background-color: rgb(102, 161, 157);
@@ -209,7 +209,7 @@ grey: #ededed;
     height: 300px;
   }
   #usernameList{
-    padding-left: 10px;
+    padding-left: 15px;
   }
   .expandInput{
     width: 350px;

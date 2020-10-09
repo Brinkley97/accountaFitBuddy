@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Article, Comment
 from dashboard.models import Health
+from django.contrib.auth.models import User
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from .import forms
@@ -15,7 +16,7 @@ def article_list(request):
     userImage = Health.objects.all()
     args = {
         'theArticles':articles,
-        'userImages':userImage
+        'userImages':userImage,
     }
     return render(request, "articles/articleList.html", args)
 
