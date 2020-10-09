@@ -20,5 +20,5 @@ urlpatterns = [
     url(r'^generalData/edit/$', views.editGeneral_view, name='edit_general'),
 
     # lose and add friends
-    url(r'^connect/(?P<operation>.+)/(?P<pk>\d+)/$', views.change_friends, name='changeFriend')
+    url(r'^connect/(?P<operation>.+)/(?P<pk>\d+)/$', views.change_friends, name='changeFriend'),
 ]

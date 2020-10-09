@@ -10,6 +10,7 @@ grey: #ededed;
 #shareJourney{
   color: rgb(102, 161, 157);
 }
+
 .express{
   color: rgb(46, 51, 56);
 }
@@ -17,9 +18,21 @@ grey: #ededed;
   background-color: rgb(102, 161, 157);
   color: #ededed;
 }
-.card{
+
+#articleList{
+  max-width: 33rem;
+  /* margin: 15px; */
   border-radius: 3%;
-  margin-bottom: 25px;
+  margin: 0px 5px 70px 5px;
+}
+.articleList:hover{
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.6);
+}
+#authorDateList{
+  padding: 10px 5px 0px 15px;
+}
+#likeCommentList{
+  padding-bottom: 15px;
 }
 .cardFindBuddy{
   margin-bottom: 5px;
@@ -27,20 +40,18 @@ grey: #ededed;
   max-width: 22rem;
   /* width: 4rem; */
 }
-.card:hover{
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.6);
-}
 #postStyle{
   padding: 15px 0px 0px 0px;
 }
-.image, .video{
-  height: 500px;
+.imageList, .videoList{
+  width: 450px;
   border-radius: 3%;
 }
-.image{
-  width: 500px;
+#userImageList{
+  height: 80px;
+  width: 80px;
+  border-radius: 50%;
 }
-
 .barButtonColor{
   background-color: rgb(102, 161, 157);
 }
@@ -52,12 +63,10 @@ grey: #ededed;
   color: rgb(102, 161, 157);
 }
 
-#date{
-  padding-right: 20px;
-}
 .articleTitle{
   color: rgb(102, 161, 157);
 }
+
 
 
 /* ARTICLE CREATE */
@@ -80,7 +89,7 @@ grey: #ededed;
 .moreBody{
   height: 200px;
 }
-.createArticleButton, .backButton{
+.createArticleButton, .backAndSubmitButton{
   background-color: rgb(102, 161, 157);
   color: #ededed;
 }
@@ -88,13 +97,24 @@ grey: #ededed;
 
 /* ARTICLE DETAILS */
 #detailsPage{
-  padding-left: 35px;
+  width: 700px;
 }
 .imageDetail, .videoDetail{
-  width: 900px;
+  width: 670px;
   height: 300px;
 }
+.commentCard, #newComment{
+  border-radius: 20px;
+  border-color: rgb(102, 161, 157);
+}
+.commentCard{
+  padding: 10px;
+  margin-bottom: 25px;
+}
 
+#submitButton{
+  margin: 10px 0px 0px 590px;
+}
 /* AWARDS */
 .uc{
   background-image: url(/static/uc.jpg);
@@ -119,10 +139,8 @@ grey: #ededed;
 }
 
 /* SIDEBAR */
-
 #wrapper {
   overflow-x: hidden;
-
 }
 
 #sidebar-wrapper {
@@ -179,13 +197,19 @@ grey: #ededed;
   #postStyle{
     padding: 15px 0px 25px 0px;
   }
-  .image, .video{
-    width: 300px;
-    height: 400px;
+  #userImageList{
+    height: 60px;
+    width: 60px;
+  }
+  .imageList, .videoList{
+    width: 285px;
   }
   .imageDetail, .videoDetail{
     width: 340px;
-    height: 140px;
+    height: 300px;
+  }
+  #usernameList{
+    padding-left: 15px;
   }
   .expandInput{
     width: 350px;
@@ -194,5 +218,13 @@ grey: #ededed;
     margin-top: 30px;
     color: rgb(102, 161, 157);
   }
-
+  .commentCard, .bodyOfPost, #newComment{
+    width: 340px;
+  }
+  .commentCard{
+    margin-bottom: 60px;
+  }
+  #submitButton{
+    margin: 10px 0px 0px 255px;
+  }
 }

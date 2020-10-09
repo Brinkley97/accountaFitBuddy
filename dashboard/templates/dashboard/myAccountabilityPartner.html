@@ -1,7 +1,5 @@
 {% extends 'baseLayout.html' %}
-
 {% load static %}
-
 {% block content %}
 <h1 class="text-center">My Accountability Partners</h1>
 <div class="container">
@@ -13,7 +11,7 @@
             {% if healthInfo.author_id == friend.id %}
               <nav class="sidenav" >
                 <a href="{% url 'dashboard:changeFriend' operation='remove' pk=friend.pk %}">
-                  <button type="button" class="btn addRemoveAP"><i class="fas fa-user-plus fa-1x"></i></button>
+                  <button type="button" class="btn addRemoveAP"><i class="fas fa-user-minus fa-1x"></i></button>
                 </a>
               </nav>
               <div class="row d-flex justify-content-center">
@@ -38,35 +36,3 @@
   </div>
 </div>
 {% endblock %}
-<!-- <h1>My Accountability Partners</h1>
-<div class="container-fluid">
-  <div class="row">
-    {% for friend in friends %}
-      {% if friend in friends  %}
-        <div class="col-sm-6 text-center">
-          <div class="card fixOthers">
-            {% for healthInfo in healthInfo_list %}
-              {% if healthInfo.author_id == friend.id %}
-                <div class="row">
-                  <div class="col-md-6 text-center">
-                    <img class="image" src="{{ healthInfo.thumbnail.url }}">
-                  </div>
-                  <div class="col-md-6 text-center">
-                    <a href="{% url 'dashboard:profilePage_with_pk' pk=user.pk %}">
-                      <h3>{{ friend.username }}</h3>
-                    </a>
-                    <p>Location: {{ healthInfo.location }}</p>
-                    <p>Goal: {{ healthInfo.goal }}</p>
-                    <a href="{% url 'dashboard:changeFriend' operation='remove' pk=friend.pk %}">
-                      <button type="button" class="btn btn-default">Remove AP</button>
-                    </a>
-                  </div>
-                </div>
-              {% endif %}
-            {% endfor %}
-          </div>
-        </div>
-      {% endif %}
-    {% endfor %}
-  </div>
-</div> -->

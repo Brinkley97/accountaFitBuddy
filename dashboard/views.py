@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import Health, General, Friend
+from articles.models import Article
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from .import forms
@@ -13,7 +14,7 @@ def dashboard_detail(request):
 
 # not going to correct user; check out profile.html and findAccountabilityPartners.html
 @login_required(login_url="/accounts/login/")
-def profile_detail(request, pk=None):
+def profile_detail(request, slug=None, pk=None):
     if pk:
         otherUser = User.objects.get(pk=pk)
         otherHealthInfo = Health.objects.filter(author_id=otherUser.pk)
@@ -25,13 +26,17 @@ def profile_detail(request, pk=None):
         args = {
             'otherH_list':otherHealthInfo,'otherG_list':otherGeneralInfo, 'users':users, 'friends':friends
         }
-
         return render(request, 'dashboard/otherUserProfile.html', args)
     else:
         users = User.objects.filter(username=request.user)
         healthInfo = Health.objects.filter(author=request.user)
         generalInfo = General.objects.filter(author=request.user)
-    return render(request, 'dashboard/profile.html', context={'infoH_list':healthInfo,'infoG_list':generalInfo, 'users':users})
+        article = Article.objects.filter(author=request.user)
+
+    return render(
+        request, 'dashboard/profile.html',
+        context={'infoH_list':healthInfo,'infoG_list':generalInfo, 'users':users, 'posts':article}
+    )
 
 @login_required(login_url="/accounts/login/")
 def awards_detail(request):
