@@ -3,177 +3,245 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta name="description" content="" />
-    <meta name="author" content=""/>
-
-    <title>Homepage</title>
-
-    <link rel="icon" type="image/x-icon" href="{% static 'FitToCode.png' %}" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- FONT AWESOME -->
     <script src="{{ STATIC_URL }} https://use.fontawesome.com/releases/v5.13.0/js/all.js" crossorigin="anonymous"></script>
-
-    <!-- Google fonts-->
+    <!-- GOOGLE FONTS-->
     <link href="{{ STATIC_URL }} https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
-
     <link href="{{ STATIC_URL }} https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <!-- BOOTSTRAP CSS -->
+    <link rel="stylesheet" href="{{ STATIC_URL }} https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
+    <link rel="icon" type="image/x-icon" href="{% static 'FitToCode.png' %}" />
+
+    <!-- MY CSS -->
     <link href="{% static 'index.css' %}" rel="stylesheet">
 
-<!-- BOOTSTRAP -->
-    <!-- <link rel="stylesheet" href="{{ STATIC_URL }} https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"> -->
-
+    <title>AccountaHealthBuddy</title>
   </head>
-    <body id="page-top">
-        <!-- Navigation-->
-        <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
-            <div class="container">
-                <a class="navbar-brand js-scroll-trigger" href="/">
-                  <img src="{% static "FitToCode.png" %}" width="110px" height="110px">
-                </a>
-                <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                    Menu
-                    <i class="fas fa-bars"></i>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarResponsive">
-                    <ul class="navbar-nav ml-auto">
-                      <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="#about">About</a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
-                      </li>
-                      <li class="nav-item">
-                          {% csrf_token %}
-                          <a class="nav-link js-scroll-trigger" href="{% url 'accounts:signup' %}">Signup</a>
-                      </li>
-                      <li class="nav-item">
-                        {% csrf_token %}
-                        <a class="nav-link js-scroll-trigger" href="{% url 'accounts:login' %}">Login</a>
-                      </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-        <!-- Masthead-->
-        <header class="masthead">
-          <div class="container d-flex h-100 align-items-center">
-            <div class="mx-auto text-center">
-              <h1 class="mx-auto my-0">Accounta</h1>
-              <h1 class="mx-auto my-0">Fit</h1>
-              <h1 class="mx-auto my-0">Buddy</h1>
-              <h2 class="text-white-50 mx-auto mt-2 mb-5">Find Your Next Workout Partner</h2>
-              <a class="btn btn-warning js-scroll-trigger" href="#about">Learn More</a>
+  <body>
+<!-- NAV BAR-->
+    <nav class="navbar navbar-expand-lg" id="mainNav">
+      <div class="container">
+        <a class="navbar-brand js-scroll-trigger" href="/">
+          <img src="{% static "FitToCode.png" %}" width="110px" height="110px">
+        </a>
+        <button id="menuButton" class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            Menu
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" id="aboutNav"href="#about">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" id="contactNav"href="#contact">Contact</a>
+            </li>
+            <li class="nav-item">
+                {% csrf_token %}
+                <a class="nav-link js-scroll-trigger" id="signupNav"href="{% url 'accounts:signup' %}">Signup</a>
+            </li>
+            <li class="nav-item">
+              {% csrf_token %}
+              <a class="nav-link js-scroll-trigger" id="loginNav"href="{% url 'accounts:login' %}">Login</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+<!-- END OF NAV BAR-->
+<!-- HEADER-->
+    <div class="container-fluid" id="header">
+      <div class="row">
+        <div class="col-md-12">
+          <h2 class="ahb text-center">Accounta Health Buddy</h2>
+          <p class="text-center" id="shareJourney">Share your health journey</p>
+        </div>
+      </div>
+      <div class="row d-flex justify-content-center" id="learnMoreDiv">
+        <a href="#about">
+          <button class="btn learnMoreButton" type="button" name="button">
+            <h4 class="learnMoreText">Learn More</h4>
+          </button>
+        </a>
+      </div>
+    </div>
+
+<!-- VALUES -->
+    <section id="values">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 text-center">
+            <h1 id="healthValueTitle">HEALTH VALUES</h1>
+            <hr class="my-4">
+          </div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-3 col-md-6 text-center">
+            <div class="service-box mt-5 mx-auto">
+              <i class="fas fa-brain fa-4x" id="brainIcon"></i>
+              <h3 class="mb-3" id="mentalValueTitle">Mental</h3>
+              <p><q>Quote book or person</q></p>
             </div>
           </div>
-        </header>
-        <!-- About-->
-        <section class="about-section text-center" id="about">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-8 mx-auto">
-                        <p class="text-white-50">
-                          Health, Fitness, Lifestyle, etc...
-                        </p>
-                    </div>
-                </div>
-                <img class="img-fluid" src="{% static "marathon.jpg" %}" alt="" />
+          <div class="col-lg-3 col-md-6 text-center">
+            <div class="service-box mt-5 mx-auto">
+              <i class="fas fa-utensils fa-4x" id="foodIcon"></i>
+              <h3 class="mb-3" id="foodValueTitle">Food</h3>
+              <p><q>Quote book or person</q></p>
             </div>
-        </section>
-        <!-- Projects-->
-        <section class="projects-section bg-light" id="projects">
-            <div class="container">
-                <div class="row align-items-center no-gutters mb-4 mb-lg-5">
-                    <div class="col-xl-8 col-lg-7"><img class="img-fluid mb-3 mb-lg-0" src="{% static "accounta.jpg" %}" /></div>
-                    <div class="col-xl-4 col-lg-5">
-                        <div class="featured-text text-center text-lg-left">
-                            <h4>Fitness</h4>
-                            <p class="text-black-50 mb-0">Improve your health through exercising</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="row justify-content-center no-gutters mb-5 mb-lg-0">
-                    <div class="col-lg-6"><img class="img-fluid" src="{% static "accounta.jpg" %}" alt="" /></div>
-                    <div class="col-lg-6">
-                        <div class="bg-black text-center h-100 project">
-                            <div class="d-flex h-100">
-                                <div class="project-text w-100 my-auto text-center text-lg-left">
-                                    <h4 class="text-white">Accountability</h4>
-                                    <p class="mb-0 text-white-50">Find others who will hold you acccountable to your fitness goals. Find your next fitness buddy.</p>
-                                    <hr class="d-none d-lg-block mb-0 ml-0" />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row justify-content-center no-gutters">
-                    <div class="col-lg-6"><img class="img-fluid" src="{% static "accounta.jpg" %}" alt="" /></div>
-                    <div class="col-lg-6 order-lg-first">
-                        <div class="bg-black text-center h-100 project">
-                            <div class="d-flex h-100">
-                                <div class="project-text w-100 my-auto text-center text-lg-right">
-                                    <h4 class="text-white">Awards</h4>
-                                    <p class="mb-0 text-white-50">Receive virtual rewards.</p>
-                                    <hr class="d-none d-lg-block mb-0 mr-0" />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+          </div>
+          <div class="col-lg-3 col-md-6 text-center">
+            <div class="service-box mt-5 mx-auto">
+              <i class="fas fa-bed fa-4x" id="sleepIcon"></i>
+              <h3 class="mb-3" id="sleepValueTitle">Sleep</h3>
+              <p><q>Quote book or person</q></p>
             </div>
-        </section>
-        <!-- Contact-->
-        <section class="contact-section bg-black" id="contact">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-4 mb-3 mb-md-0">
-                        <div class="card py-4 h-100">
-                            <div class="card-body text-center">
-                                <i class="fas fa-map-marked-alt text-primary mb-2"></i>
-                                <h4 class="text-uppercase m-0">Address</h4>
-                                <hr class="my-4" />
-                                <div class="small text-black-50">400 Magnolia Street, Orangeburg SC</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 mb-3 mb-md-0">
-                        <div class="card py-4 h-100">
-                            <div class="card-body text-center">
-                                <i class="fas fa-envelope text-primary mb-2"></i>
-                                <h4 class="text-uppercase m-0">Email</h4>
-                                <hr class="my-4" />
-                                <div class="small text-black-50"><a href="#!">detraviousbrinkley@gmail.com</a></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 mb-3 mb-md-0">
-                        <div class="card py-4 h-100">
-                            <div class="card-body text-center">
-                                <i class="fas fa-mobile-alt text-primary mb-2"></i>
-                                <h4 class="text-uppercase m-0">Phone</h4>
-                                <hr class="my-4" />
-                                <div class="small text-black-50">(706) LOL-HAHA</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="social d-flex justify-content-center">
-                    <a class="mx-2" href="#!"><i class="fab fa-twitter"></i></a>
-                    <a class="mx-2" href="#!"><i class="fab fa-facebook-f"></i></a>
-                    <a class="mx-2" href="#!"><i class="fab fa-github"></i></a>
-                </div>
+          </div>
+          <div class="col-lg-3 col-md-6 text-center">
+            <div class="service-box mt-5 mx-auto">
+              <i class="fas fa-walking fa-4x" id="exerciseIcon"></i>
+              <h3 class="mb-3" id="exerciseValueTitle">Exercise</h3>
+              <p><q>Quote book or person</q></p>
             </div>
-        </section>
-        <!-- Footer-->
-        <footer class="footer bg-black small text-center text-white-50"><div class="container">Copyright © Your Website 2020</div></footer>
-        <!-- Bootstrap core JS-->
-        <script src="{{ STATIC_URL }} https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script src="{{ STATIC_URL }} https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
-        <!-- Third party plugin JS-->
-        <script src="{{ STATIC_URL }} https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+          </div>
+        </div>
+      </div>
+    </section>
+<!-- END OF VALUES -->
+<!-- MENTAL -->
+    <div class="container-fluid" id="mfseSection">
+      <section id="mentalSection">
+        <div class="row justify-content-center no-gutters mb-5 mb-lg-0">
+          <div class="col-md-6 d-flex justify-content-center"><img class="img-fluid" id="mentalImage" src="{% static "accounta.jpg" %}" alt="" /></div>
+          <div class="col-lg-6">
+            <div class="bg-black text-center h-100 project">
+              <div class="d-flex h-100">
+                <div class="project-text w-100 my-auto text-center text-lg-left">
+                  <h2 class="text-center" id="mentalTitle">Mental</h2>
+                  <hr class="my-4" id="mentalM4">
+                  <p class="mb-0 text-center" id="mentalText">Find others who will hold you acccountable to your fitness goals. Find your next fitness buddy.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+  <!-- END OF MENTAL -->
+  <!-- FOOD -->
+      <section id="foodSection">
+        <div class="row justify-content-center no-gutters mb-5 mb-lg-0">
+          <div class="col-md-6 d-flex justify-content-center"><img class="img-fluid" id="foodImage" src="{% static "food.jpg" %}" alt="" /></div>
+          <div class="col-lg-6">
+            <div class="bg-black text-center h-100 project">
+              <div class="d-flex h-100">
+                <div class="project-text w-100 my-auto text-center text-lg-left">
+                  <h2 class="text-center" id="foodTitle">Food</h2>
+                  <hr class="my-4 d-flex justify-content-center">
+                  <p class="mb-0 text-center" id="foodText">Find others who will hold you acccountable to your fitness goals. Find your next fitness buddy.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+  <!-- END OF FOOD -->
+  <!-- SLEEP -->
+      <section id="sleepSection">
+        <div class="row justify-content-center no-gutters mb-5 mb-lg-0">
+          <div class="col-md-6 d-flex justify-content-center"><img class="img-fluid" id="sleepImage" src="{% static "marathon.jpg" %}" alt="" /></div>
+          <div class="col-lg-6">
+            <div class="bg-black text-center h-100 project">
+              <div class="d-flex h-100">
+                <div class="project-text w-100 my-auto text-center text-lg-left">
+                  <h2 class="text-center" id="sleepTitle">Sleep</h2>
+                  <hr class="my-4 sleepM4">
+                  <p class="mb-0 text-center" id="sleepText">Find others who will hold you acccountable to your fitness goals. Find your next fitness buddy.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+  <!-- END OF SLEEP -->
+  <!-- EXERCISE -->
+      <section id="exerciseSection">
+        <div class="row justify-content-center no-gutters mb-5 mb-lg-0">
+          <div class="col-md-6 d-flex justify-content-center"><img class="img-fluid" id="exerciseImage" src="{% static "login4.jpg" %}" alt="" /></div>
+          <div class="col-lg-6">
+            <div class="bg-black text-center h-100 project">
+              <div class="d-flex h-100">
+                <div class="project-text w-100 my-auto text-center text-lg-left">
+                  <h2 class="text-center" id="exerciseTitle">Exericise</h2>
+                  <hr class="my-4">
+                  <p class="mb-0 text-center" id="exerciseText">Find others who will hold you acccountable to your fitness goals. Find your next fitness buddy.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+  <!-- END OF EXERCISE -->
+    </div>
 
-        <script src="{% static 'scripts.js' %}"></script>
+<!-- CONTACT-->
+    <section id="contact">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4 contactCard">
+            <div class="card py-4 h-100">
+              <div class="card-body text-center">
+                <i class="fas fa-map-marked-alt fa-2x text-primary mb-2" id="map"></i>
+                <h4 class="text-uppercase m-0" id="addressTitle">Address</h4>
+                <hr class="my-4" />
+                <div class="small" id="address">400 Magnolia Street, Orangeburg SC</div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 contactCard">
+            <div class="card py-4 h-100">
+              <div class="card-body text-center">
+                <i class="fas fa-envelope fa-2x text-primary mb-2" id="envelope"></i>
+                <h4 class="text-uppercase m-0" id="emailTitle">Email</h4>
+                <hr class="my-4" />
+                <div class="small"><a id="email" href="#!">detraviousbrinkley@gmail.com</a></div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 contactCard">
+            <div class="card py-4 h-100">
+              <div class="card-body text-center">
+                <i class="fas fa-mobile-alt fa-2x text-primary mb-2" id="mobile"></i>
+                <h4 class="text-uppercase m-0" id="phoneTitle">Phone</h4>
+                <hr class="my-4" />
+                <div class="small" id="number">(706) LOL-HAHA</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="social d-flex justify-content-between">
+          <a class="mx-2" href="#!"><i class="fab fa-github fa-2x" id="github"></i></a>
+          <a class="mx-2" href="#!"><i class="fab fa-instagram fa-2x" id="ig"></i></a>
+        </div>
+      </div>
+    </section>
+
+<!-- FOOTER -->
+    <footer class="footer bg-black small text-center">
+      <div class="container" id="footer">Copyright © Your Website 2020</div>
+    </footer>
+
+    <!-- BOOTSTRAP -->
+    <script src="{{ STATIC_URL }} https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="{{ STATIC_URL }} https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="{{ STATIC_URL }} https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+
+    <script src="{% static 'scripts.js' %}"></script>
     </body>
 </html>
