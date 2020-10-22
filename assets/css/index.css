@@ -163,8 +163,7 @@ q, #brainIcon, #foodIcon, #sleepIcon, #exerciseIcon{
 #mentalText, #sleepText, #foodText, #exerciseText{
   font-weight: 100;
   font-size: 30px;
-  padding-left: 5px;
-  padding-right: 5px;
+  padding: 0px 10px 25px 10px;
 }
 
 #foodTitle, #foodText, #exerciseTitle, #exerciseText{
@@ -198,6 +197,10 @@ hr.my-4{
   /* color: #66a19d; */
   color: #724315;
 }
+
+#address, #email, #number{
+  font-size: 18px;
+}
 .mx-2{
   margin-top: 25px;
   margin-bottom: 50px;
@@ -207,11 +210,11 @@ footer{
   margin-top: 20px;
   margin-bottom: 70px;
   /* color: #724315; */
-  color: rgb(102, 161, 157) !important;
 }
 #footer{
   font-weight: bold;
   font-size: 20px;
+  color: rgb(102, 161, 157) !important;
 }
 
 @media (min-width: 800px) {
