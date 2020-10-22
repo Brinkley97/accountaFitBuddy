@@ -7,6 +7,10 @@ yellow: #FFD700;
 green: #66a19d;
 
 */
+html, body{
+  max-width: 100%;
+  overflow-x: hidden;
+}
 body{
   /* margin-bottom: 300px; */
   background-color: #eee;
@@ -98,6 +102,7 @@ div#header{
 }
 .knownFor{
   color: #66a19d;
+  margin: 5px 10px 0px 10px;
 }
 
 .whyUseText{
