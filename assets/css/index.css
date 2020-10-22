@@ -4,7 +4,7 @@ dark grey: #545454;
 light grey: #eee;
 red: rgb(176,0,15);
 yellow: #FFD700;
-green: rgb(102, 161, 157);
+green: #66a19d;
 
 */
 body{
@@ -12,8 +12,8 @@ body{
   background-color: #eee;
 }
 /* NAVBAR */
-#menuButton, .fa-bars, #aboutNav, #contactNav, #signupNav, #loginNav{
-  color: rgb(102, 161, 157);
+#menuButton, .fa-bars, #valuesNav, #whyUseAppNav, #aboutNav, #contactNav, #signupNav, #loginNav{
+  color: #66a19d;
 }
 /* HEADER */
 div#header{
@@ -30,12 +30,13 @@ div#header{
   font-size: 50px;
   letter-spacing: 3px !important;
   text-transform: uppercase;
-  color: rgb(102, 161, 157);
+  color: #66a19d;
 }
 #shareJourney{
   color: #eee;
   font-weight: 200;
   font-size: 30px;
+  margin: 10px 20px 10px 20px;
 }
 #learnMoreDiv{
   margin-top: 50px;
@@ -43,7 +44,7 @@ div#header{
 .learnMoreButton{
   border-radius: 8px;
   /* color: rgb(176,0,15); */
-  background-color: rgb(102, 161, 157);
+  background-color: #66a19d;
 }
 .learnMoreText{
   font-weight: 300;
@@ -51,7 +52,59 @@ div#header{
   letter-spacing: 2px !important;
   color: #eee;
 }
+.imInterestedButton{
+  border-radius: 8px;
+  background-color: #724315;
+  margin-top: 25px;
+}
+.imInterestedText{
+  font-weight: 300;
+  font-size: 2rem;
+  letter-spacing: 2px !important;
+  color: #eee;
+}
 /* END OF HEADER */
+
+/* Why Use */
+#introImage{
+  width: 90% !important;
+  height: auto !important;
+  border-radius: 3%;
+}
+#whyUseApp{
+  background: linear-gradient(#eee, #66a19d, #eee);
+}
+#createAndGo {
+    display: flex;
+    align-items: center;
+    color: #724315;
+    margin-top: 100px;
+    margin-bottom: 100px;
+}
+#createAndGo::before, #createAndGo::after {
+    content: '';
+    flex: 1;
+    border-bottom: 2px solid #724315;
+}
+#createAndGo::before {
+    margin-right: .25em;
+}
+#createAndGo::after {
+    margin-left: .25em;
+}
+#simple, #who, #commPrac{
+  color: #eee;
+  text-transform: uppercase;
+}
+.knownFor{
+  color: #66a19d;
+}
+
+.whyUseText{
+  font-size: 20px;
+  /* text-align: right; */
+}
+/* END OF WHY USE */
 
 /* VALUES */
 .allValuesCard{
@@ -61,29 +114,37 @@ q, #brainIcon, #foodIcon, #sleepIcon, #exerciseIcon{
   color: #724315;
 }
 #healthValueTitle, #mentalValueTitle, #foodValueTitle, #sleepValueTitle, #exerciseValueTitle{
-  margin-top: 100px;
-  color: rgb(102, 161, 157);
+  /* margin-top: 100px; */
+  color: #66a19d;
+  text-transform: uppercase;
 }
 #mentalValueTitle, #foodValueTitle, #sleepValueTitle, #exerciseValueTitle{
   margin-top: 30px;
 }
 #mentalSection, #sleepSection{
-  background-color: rgb(102, 161, 157);
+  background-color: #66a19d;
 }
 #foodSection, #exerciseSection{
   background-color: #724315;
 }
-#mentalSection, #sleepSection, #foodSection, #exerciseSection, .contactCard{
+#mentalSection, #sleepSection, #foodSection, #exerciseSection{
   margin-top: 50px;
   margin-bottom: 100px;
   border-radius: 2%;
 }
+.contactCard{
+  margin-top: 30px;
+}
+/* section#mentalSection:hover{
+	transition: transform 0.6s cubic-bezier(0.7, 0, 0.84, 0);
+} */
 
 #mentalImage, #foodImage, #sleepImage, #exerciseImage{
-  height: 300px !important;
-  weight: 300px !important;
+  height: 300px;
+  width: 400px;
   margin-top: 30px;
   margin-bottom: 30px;
+  border-radius: 3%;
 }
 #mentalTitle, #mentalText, #sleepTitle, #sleepText{
   color: #724315;
@@ -92,48 +153,56 @@ q, #brainIcon, #foodIcon, #sleepIcon, #exerciseIcon{
   font-weight: 800;
   font-size: 40px;
   letter-spacing: 4px !important;
+  text-transform: uppercase;
 }
 #mentalText, #sleepText, #foodText, #exerciseText{
   font-weight: 100;
   font-size: 30px;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 
 #foodTitle, #foodText, #exerciseTitle, #exerciseText{
-  color: rgb(102, 161, 157);
+  color: #66a19d;
 }
 /* END OF VALUES */
 
-/* MENTAL */
-
-
-/* END OF MENTAL */
 /* CONTACT INFO */
 /* #contact{
-  background-color: rgb(102, 161, 157);
+  background-color: #66a19d;
 } */
-#map, #envelope, #mobile, #github, #ig, #address, #email, #number{
+#map, #envelope, #mobile, #address, #email, #number{
   /* color: #724315 !important; */
   color: rgb(102, 161, 157) !important;
+}
+#github, #ig{
+  color: rgb(102, 161, 157)
+
+}
+#aboutBottom, #termsOfUse, #privacy, #support{
+  color: #724315;
+  margin: auto;
 }
 
 hr.my-4{
   background-color: #eee;
   height: 2px;
 }
+
 #addressTitle, #emailTitle, #phoneTitle{
-  /* color: rgb(102, 161, 157); */
+  /* color: #66a19d; */
   color: #724315;
 }
 .mx-2{
-  margin-top: 30px;
+  margin-top: 25px;
   margin-bottom: 50px;
 }
 /* FOOTER */
 footer{
-  margin-top: 50px;
+  margin-top: 20px;
   margin-bottom: 70px;
-  color: #724315;
-
+  /* color: #724315; */
+  color: rgb(102, 161, 157) !important;
 }
 #footer{
   font-weight: bold;
@@ -150,3 +219,9 @@ footer{
   #mentalSection, #sleepSection, #foodSection, #exerciseSection{
     width: 950px;
   }
+}
+@media (max-width: 375px) {
+  .ahb{
+    margin-top: -140px;
+  }
+}
