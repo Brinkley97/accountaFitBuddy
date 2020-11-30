@@ -3,8 +3,6 @@ from django.contrib.auth.forms import AuthenticationForm
 from accounts.forms import MyRegistrationForm
 from django.contrib.auth import login, logout
 
-
-
 # Creation your views here.
 def signup_view(request):
     if request.method == 'POST':
@@ -36,14 +34,12 @@ def logout_view(request):
         logout(request)
         return redirect('article:list')
 
-
 def editProfile_view(request):
     if request.method == 'POST':
         form = MyRegistrationForm(request.POST, instance=request.user)
         if form.is_valid:
             form.save()
             return redirect('dashboard:profilePage')
-
     else:
         form = MyRegistrationForm(instance=request.user)
         args = {'form': form}

@@ -89,9 +89,17 @@
   </div>
   <div class="container">
     <h1>Posts</h1>
+    <!-- coming from dashboard views -->
     {% for post in posts %}
-      <p>{{ post.title }}</p>
+      <p>{{ post.title }}
+        <a href="{% url 'article:edit' slug=instance.slug %}">(Edit)</a>
+        <a href="{% url 'article:delete' slug=post.slug %}">(Delete)</a>
+      </p>
     {%  endfor %}
+  </div>
+  <div class="container">
+    <h1>Comments</h1>
+    Post-Comment (Delete)
   </div>
 
 <br>

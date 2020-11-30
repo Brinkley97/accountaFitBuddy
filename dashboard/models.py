@@ -5,8 +5,6 @@ from accounts.forms import MyRegistrationForm
 from django.db.models import IntegerField, Model
 from django.core.validators import MaxValueValidator, MinValueValidator
 
-
-
 class Health(models.Model):
     """docstring for HealthForm."""
 

@@ -21,7 +21,7 @@ def profile_detail(request, slug=None, pk=None):
         otherGeneralInfo = General.objects.filter(author_id=otherUser.pk)
         users = User.objects.exclude(id=request.user.id)
         friend = Friend.objects.get(current_user=request.user)
-        friends = friend.users.all()
+        friends = friend.users.all
 
         args = {
             'otherH_list':otherHealthInfo,'otherG_list':otherGeneralInfo, 'users':users, 'friends':friends
@@ -101,7 +101,6 @@ def general_view(request):
     return render(request, 'dashboard/generalForm.html', {'generalInfo': form})
 
 @login_required(login_url="/accounts/login/")
-@login_required(login_url="/accounts/login/")
 def editHealth_view(request):
     if request.method == 'POST':
         form = forms.EditHealthForm(request.POST, instance=request.user)
@@ -125,7 +124,6 @@ def editHealth_view(request):
         form = forms.EditHealthForm(instance=request.user)
         args = {'form': form}
         return render(request, 'dashboard/editHealth.html', args)
-
 
 @login_required(login_url="/accounts/login/")
 def editGeneral_view(request):

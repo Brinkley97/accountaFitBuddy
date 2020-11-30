@@ -144,3 +144,4 @@ dmypy.json
 cython_debug/
 *.pyc
 db.sqlite3
+*.sqlite3

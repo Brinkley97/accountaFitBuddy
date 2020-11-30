@@ -3,7 +3,7 @@
 {% block content %}
     <h1>Edit General Info</h1>
 <!-- need action attribute to save to db and render -->
-    <form method="post" action="{% url 'dashboard:edit_general' %}">
+    <form method="post" action="{% url 'dashboard:edit_general' %}" enctype="multipart/form-data">
       {% csrf_token %}
       <!-- form from views.py; {'form': form} -->
       {{form.as_p}}
