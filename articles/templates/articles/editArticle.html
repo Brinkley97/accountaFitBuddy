@@ -1,39 +1,9 @@
 {% extends 'baseLayout.html' %}
 {% load static %}
 {% block content %}
-<div class="container">
-  <div class="col-xs*-12 d-flex justify-content-start">
-    <a href="{% url 'article:list' %}">
-      <button class="btn backButton">Back</button>
-    </a>
-  </div>
-  <h2 class="text-center" id="addPost">Edititng Post...</h2>
-  <div class="form-group d-flex justify-content-around">
-    <form method="post" action="{% url 'article:edit' %}" enctype="multipart/form-data">
-      {% csrf_token %}
-      <div class="form-row">
-        <p id="createTitle">Title:<input class="form-control expandInput" name="title"></p>
-      </div>
-      <div class="form-row">
-        <p id="createBody">Body:<input class="form-control expandInput moreBody" name="body"></p>
-      </div>
-      <div class="form-row">
-        <p id="createSlug">Slug:<input class="form-control expandInput"  name="slug"></p>
-      </div>
-      <div class="form-row">
-        <p id="uploadImg">Image: <input type="file" name="image"></p>
-      </div>
-      <br>
-      <div class="form-row">
-        <p id="uploadVideo">Video: <input type="file" name="video" accept=" video/*"></p>
-      </div>
-      <div class="row d-flex justify-content-around">
-        <div class="col-xs*-12">
-          <button class="btn createArticleButton" type="submit">Update</button>
-        </div>
-      </div>
-    </form>
-  </div>
-</div>
+<form method="post">{% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Update">
+</form>
 <script src="/static/slugify.js"></script>
 {% endblock %}

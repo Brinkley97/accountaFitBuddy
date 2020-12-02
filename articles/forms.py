@@ -1,5 +1,6 @@
 from django import forms
 from .import models
+from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserChangeForm
 
 class CreateArticle(forms.ModelForm):
@@ -24,6 +25,7 @@ class EditArticle(UserChangeForm):
             if commit:
                 user.save()
             return user
+
 class CreateComment(forms.ModelForm):
     """docstring for CreateComment."""
     class Meta:

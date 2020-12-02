@@ -151,6 +151,7 @@ def editGeneral_view(request):
         args = {'form': form}
         return render(request, 'dashboard/editGeneral.html', args)
 
+@login_required(login_url="/accounts/login/")
 def change_friends(request, operation, pk):
     friend = User.objects.get(pk=pk)
     if operation == 'add':

@@ -5,12 +5,13 @@ from django.contrib.auth.models import User
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from .import forms
+from .import urls
 import os
 # to stop the code and view in terminal use print(text here)pdb.set_trace()
 import pdb
 from django.utils.datastructures import MultiValueDictKeyError
-from django.views.generic.edit import DeleteView
-from django.urls import reverse_lazy
+from django.views.generic.edit import DeleteView, UpdateView
+from django.urls import reverse, reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.forms import UserChangeForm
 
@@ -96,32 +97,15 @@ def article_create(request):
         }
         return render(request, 'articles/articleCreate.html', args)
 
-@login_required(login_url="/accounts/login/")
-def article_edit(request, slug):
-    if request.method == 'POST':
-        # article = get_object_or_404(Article, id=pk)
-        form = forms.EditArticle(request.POST, instance=request.slug)
-        # form = forms.EditArticle(request.POST, instance=request.title)
-
-        if form.is_valid():
-            article = Article.objects.get(slug=request.slug)
-            #getting the data from post request
-            article.title=request.POST.get('title')
-            article.body=request.POST.get('body')
-            # article.image=request.POST.get('image')
-            # article.video=request.POST.get('video')
-            #saving health form
-            article.save()
-            form.save()
-            return redirect('dashboard:profilePage')
-
-    else:
-        form = forms.EditArticle(instance=request.user)
-        args = {'form': form}
-        return render(request, 'articles/editArticle.html', args)
-
 # class based view to delete article
 class ArticleDeleteView(LoginRequiredMixin, DeleteView):
     model = Article
     template_name = 'articles/deleteConfirm.html'
+    success_url = reverse_lazy('article:list')
+    
+# class based view to edit article
+class ArticleEditView(LoginRequiredMixin, UpdateView):
+    model = Article
+    template_name = 'articles/editArticle.html'
+    fields = ['title','body','slug']
     success_url = reverse_lazy('article:list')
