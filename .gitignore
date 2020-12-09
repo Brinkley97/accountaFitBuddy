@@ -145,3 +145,4 @@ cython_debug/
 *.pyc
 db.sqlite3
 *.sqlite3
+*.pyc

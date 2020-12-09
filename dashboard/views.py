@@ -14,7 +14,7 @@ def dashboard_detail(request):
 
 # not going to correct user; check out profile.html and findAccountabilityPartners.html
 @login_required(login_url="/accounts/login/")
-def profile_detail(request, slug=None, pk=None):
+def profile_detail(request, pk=None):
     if pk:
         otherUser = User.objects.get(pk=pk)
         otherHealthInfo = Health.objects.filter(author_id=otherUser.pk)
@@ -33,10 +33,10 @@ def profile_detail(request, slug=None, pk=None):
         generalInfo = General.objects.filter(author=request.user)
         article = Article.objects.filter(author=request.user)
 
-    return render(
-        request, 'dashboard/profile.html',
-        context={'infoH_list':healthInfo,'infoG_list':generalInfo, 'users':users, 'posts':article}
-    )
+        args = {
+            'infoH_list':healthInfo,'infoG_list':generalInfo, 'users':users, 'posts':article
+        }
+        return render(request, 'dashboard/profile.html', args)
 
 @login_required(login_url="/accounts/login/")
 def awards_detail(request):
