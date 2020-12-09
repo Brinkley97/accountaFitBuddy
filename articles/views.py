@@ -36,7 +36,6 @@ def article_detail(request, slug):
     if request.method == 'POST':
         commentForm = forms.CreateComment(data=request.POST)
         if commentForm.is_valid():
-
             # Create Comment object but don't save to database yet
             newComment = commentForm.save(commit=False)
             newComment.author = request.user
@@ -102,7 +101,7 @@ class ArticleDeleteView(LoginRequiredMixin, DeleteView):
     model = Article
     template_name = 'articles/deleteConfirm.html'
     success_url = reverse_lazy('article:list')
-    
+
 # class based view to edit article
 class ArticleEditView(LoginRequiredMixin, UpdateView):
     model = Article

@@ -36,6 +36,11 @@
   </div>
   <hr>
   <div>
+    {% if comments.count == 0 %}
+        <div class="">
+          <p>Be the first to comment.</p>
+        </div>
+    {% endif %}
     {% for comment in comments %}
       <div class="card commentCard">
         <div class="row">
@@ -51,6 +56,8 @@
         </div>
       </div>
     {% endfor %}
+
+
   </div>
 </div>
 <script src="/static/slugify.js"></script>
