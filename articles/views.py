@@ -19,9 +19,12 @@ from django.contrib.auth.forms import UserChangeForm
 def article_list(request):
     articles = Article.objects.all().order_by('-date')
     userImage = Health.objects.all()
+    otherUser = User.objects.exclude(id=request.user.id)
+    user = User.objects.filter(username=request.user)
+    # user = User.objects.all()
     args = {
-        'theArticles':articles,
-        'userImages':userImage,
+        'theArticles':articles, 'userImages':userImage, 'otherUsers':otherUser,
+        'users':user,
     }
     return render(request, "articles/articleList.html", args)
 

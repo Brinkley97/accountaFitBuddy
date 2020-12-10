@@ -9,7 +9,7 @@
         <div class="card col-md-4 cardFindBuddy">
           {% for healthInfo in healthInfo_list %}
             {% if healthInfo.author_id == user.id %}
-              <nav class="sidenav" >
+              <nav class="sidenav">
                 <a href="{% url 'dashboard:changeFriend' operation='add' pk=user.pk %}">
                   <button type="button" class="btn addRemoveAP"><i class="fas fa-user-plus fa-1x"></i></button>
                 </a>

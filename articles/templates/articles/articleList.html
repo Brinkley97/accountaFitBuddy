@@ -2,11 +2,21 @@
 {% load static %}
 {% block content %}
 
-  {% for user in users %}
-    <a href="{% url 'dashboard:profilePage_with_pk' pk=user.pk %}">
-      <h3>{{ user.username }}</h3>
-    </a>
-  {% endfor %}
+<div class="container-fluid" id="scrollbar">
+  <div class="row flex-row flex-nowrap overflow-auto">
+    {% for otherUser in otherUsers %}
+      {% for userImage in userImages %}
+        {% if otherUser.username == userImage.author.username %}
+          <img id="userImageList" src="{{ userImage.thumbnail.url }}">
+        {% endif %}
+      {% endfor %}
+      <a href="{% url 'dashboard:profilePage_with_pk' pk=otherUser.pk %}">
+        <p>{{ otherUser.username }}</p>
+      </a>
+    {% endfor %}
+  </div>
+</div>
+<hr>
 <!-- JUMBOTRON -->
 <div class="jumbotron jumbotron-fluid">
   <div class="container">
@@ -14,9 +24,11 @@
     <p class="text-center express">Freely express yourself by sharing your workouts, meals, milestone, etc.</p>
     <p class="d-flex justify-content-center">
       <a href="{% url 'article:create' %}">
-        <button class="btn share" type="button" name="button">
-          What's on your mind,<h4>@{{ article.author.first_name }}</h4>
-        </button>
+        {% for user in users %}
+          <button class="btn share" type="button" name="button">
+            What's on your mind,<h4>{{ user.username }}</h4>
+          </button>
+        {% endfor %}
       </a>
     </p>
   </div>
@@ -29,10 +41,12 @@
           <div class="col-xs*-8">
             {% for userImage in userImages %}
               {% if article.author.username == userImage.author.username %}
-                <img id="userImageList"src="{{ userImage.thumbnail.url }}">
+                <img id="userImageList" src="{{ userImage.thumbnail.url }}">
               {% endif %}
             {% endfor %}
-            <h4 class="float-right" id="usernameList">{{ article.author.username }}</h4>
+            <a href="{% url 'dashboard:profilePage_with_pk' pk=article.author.pk %}">
+              <h4 class="float-right" id="usernameList">{{ article.author.username }}</h4>
+            </a>
           </div>
           <div class="col-xs*-4">
             <p>{{ article.date }}</p>
@@ -48,7 +62,7 @@
           </video>
         {% endif %}
         <hr>
-        <a >{{ article.snippet }}</a>
+        <a href="{% url 'article:detail' slug=article.slug %}">{{ article.snippet }}</a>
         <hr>
         <div class="row d-flex justify-content-around" id="likeCommentList">
           <span class="clickableAwesomeFont align-middle">

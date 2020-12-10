@@ -4,6 +4,12 @@ dark-green: rgb(46, 51, 56);
 grey: #ededed;
  */
 /* DASHBOARD */
+
+#scrollbar{
+  color: black;
+  overflow-y: auto;
+  padding: 30px 20px 10px 20px;
+}
 #page-content-wrapper{
   background-color: #ededed;
 }
@@ -16,7 +22,7 @@ grey: #ededed;
 }
 .share{
   background-color: rgb(102, 161, 157);
-  color: #ededed;
+  color: z#ededed;
 }
 
 #articleList{
@@ -45,6 +51,9 @@ grey: #ededed;
 }
 .imageList, .videoList{
   width: 450px;
+  /* height: 400px; */
+  /* width: 100%; */
+  /* height: 50%; */
   border-radius: 3%;
 }
 #userImageList{
@@ -202,7 +211,8 @@ grey: #ededed;
     width: 60px;
   }
   .imageList, .videoList{
-    width: 285px;
+    width: 100%;
+    /* height: 90%; */
   }
   .imageDetail, .videoDetail{
     width: 340px;

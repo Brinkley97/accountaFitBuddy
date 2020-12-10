@@ -122,7 +122,7 @@ def editHealth_view(request):
 
     else:
         form = forms.EditHealthForm(instance=request.user)
-        args = {'form': form}
+        args = {'form':form}
         return render(request, 'dashboard/editHealth.html', args)
 
 @login_required(login_url="/accounts/login/")
@@ -148,7 +148,7 @@ def editGeneral_view(request):
 
     else:
         form = forms.EditGeneralForm(instance=request.user)
-        args = {'form': form}
+        args = {'form':form}
         return render(request, 'dashboard/editGeneral.html', args)
 
 @login_required(login_url="/accounts/login/")
