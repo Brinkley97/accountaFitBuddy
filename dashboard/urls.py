@@ -4,7 +4,6 @@ from .import views
 app_name= 'dashboard'
 
 urlpatterns = [
-    url(r'^$', views.dashboard_detail, name="dashPage"),
     # http://localhost:8000/dashboard/profile/
     url(r'^profile/$', views.profile_detail, name="profilePage"),
     url(r'^profile/(?P<pk>\d+)/$', views.profile_detail, name="profilePage_with_pk"),
@@ -17,7 +16,6 @@ urlpatterns = [
     # http://localhost:8000/dashboard/genralData/
     url(r'^generalData/$', views.general_view, name='general'),
     url(r'^generalData/edit/$', views.editGeneral_view, name='edit_general'),
-
     # lose and add friends
     url(r'^connect/(?P<operation>.+)/(?P<pk>\d+)/$', views.change_friends, name='changeFriend'),
 ]

@@ -1,16 +1,14 @@
 from django.shortcuts import render, redirect
-from .models import Health, General, Friend
-from articles.models import Article
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
-from .import forms
+from .models import Health, General, Friend
+from articles.models import Article
 from django.contrib.auth.models import User
+from .import forms
 from django.contrib.auth.forms import UserChangeForm
-
-# Create your views here.
-def dashboard_detail(request):
-    data = Health.objects.all()
-    return render(request, 'dashboard/dashboard_detail.html', {'healthInfo': data})
+from django.views.generic.edit import DeleteView, UpdateView
+from django.urls import reverse, reverse_lazy
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 # not going to correct user; check out profile.html and findAccountabilityPartners.html
 @login_required(login_url="/accounts/login/")

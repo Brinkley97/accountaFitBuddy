@@ -21,7 +21,6 @@ def article_list(request):
     userImage = Health.objects.all()
     otherUser = User.objects.exclude(id=request.user.id)
     user = User.objects.filter(username=request.user)
-    # user = User.objects.all()
     args = {
         'theArticles':articles, 'userImages':userImage, 'otherUsers':otherUser,
         'users':user,

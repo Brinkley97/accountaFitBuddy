@@ -19,12 +19,9 @@
     <!-- Custom styles for this template -->
     <link rel="stylesheet" href="{% static 'main.css' %}">
   </head>
-
   <body>
-
     <div class="d-flex" id="wrapper">
-
-      <!-- Sidebar -->
+      <!-- SIDE BAR -->
       <div class="bg-light border-right" id="sidebar-wrapper">
         <div class="sidebar-heading">AccountaFitBuddy</div>
         <div class="list-group list-group-flush">
@@ -53,7 +50,6 @@
               Profile
             </i>
           </a>
-
         </div>
       </div>
       <!-- /#sidebar-wrapper -->
@@ -100,15 +96,11 @@
     <script src="{{ STATIC_URL }} https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
 
     <script type="text/javascript" href="{% static 'baseLayout.js' %}"></script>
-
-    <!-- Menu Toggle Script -->
     <script>
       $("#menu-toggle").click(function(e) {
         e.preventDefault();
         $("#wrapper").toggleClass("toggled");
       });
     </script>
-
   </body>
-
 </html>

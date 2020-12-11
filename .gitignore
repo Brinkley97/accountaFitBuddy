@@ -149,3 +149,5 @@ db.sqlite3
 *.sqlite3
 *.pyc
 *.docx
+*.pyc
+*.pyc
