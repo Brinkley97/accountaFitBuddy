@@ -7,15 +7,15 @@
     {% for user in users %}
       {% if user not in friends %}
         <div class="card col-md-4 cardFindBuddy">
-          {% for healthInfo in healthInfo_list %}
-            {% if healthInfo.author_id == user.id %}
+          {% for general in generals %}
+            {% if general.author_id == user.id %}
               <nav class="sidenav">
                 <a href="{% url 'dashboard:changeFriend' operation='add' pk=user.pk %}">
                   <button type="button" class="btn addRemoveAP"><i class="fas fa-user-plus fa-1x"></i></button>
                 </a>
               </nav>
               <div class="row d-flex justify-content-center">
-                <img id="imageAP" src="{{ healthInfo.thumbnail.url }}">
+                <img id="imageAP" src="{{ general.thumbnail.url }}">
               </div>
               <div class="row d-flex justify-content-center">
                 <a href="{% url 'dashboard:profilePage_with_pk' pk=user.pk %}">
@@ -23,10 +23,7 @@
                 </a>
               </div>
               <div class="row justify-content-center">
-                <p>Location: {{ healthInfo.location }}</p>
-              </div>
-              <div class="row justify-content-center">
-                <p>Goal: {{ healthInfo.goal }}</p>
+                <p>Location: {{ general.location }}</p>
               </div>
             {% endif %}
           {% endfor %}

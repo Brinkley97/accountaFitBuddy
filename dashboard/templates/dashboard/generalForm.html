@@ -2,16 +2,15 @@
 {% load static %}
 {% block content %}
   <div class="image-holder">
-    <img src="{% static 'img/withWeights.jpg' %}" alt="">
+    <img src="{% static 'img/withWeights.jpg' %}">
   </div>
-  <form class="mdl-textfield mdl-js-textfield" action="{% url 'dashboard:general'%}" method="post" enctype="multipart/form-data">
+  <form class="mdl-textfield mdl-js-textfield" action="{% url 'dashboard:general' %}" method="post" enctype="multipart/form-data">
     {% csrf_token %}
     <h1>Create An Account</h1>
     <br>
     <h3>General Info</h3>
     <div class="form-row">
-      <input class="form-control" placeholder="Partners including you: 2-20" name="group">
-      <p>How many days per week do you exercise?</p>{{generalInfo.often}}
+      <p id="uploadImg">Image: <input type="file" name="thumbnail"></p>
     </div>
     <div class="form-row">
       <input class="form-control" placeholder="Instagram" name="ig">

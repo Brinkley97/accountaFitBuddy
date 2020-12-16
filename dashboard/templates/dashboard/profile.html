@@ -9,103 +9,123 @@
     <a class="nav-item nav-link" href="{% url 'dashboard:edit_general' %}">Edit General Info</a>
   </nav>
 <!--Navbar-->
-<!-- not going to correct user; check out views.py and findAccountabilityPartners.html -->
 
+<!-- not going to correct user; check out views.py and findAccountabilityPartners.html -->
 <!-- Section -->
   <div class="jumbotron jumbotron-fluid">
     <div class="col-md-12 center">
       <span class="profile-picture">
-        {% for infoH in infoH_list %}
-          <img id="article" src="{{ infoH.thumbnail.url }}" style="width: 200px; display: block; margin-left: auto; margin-right: auto; padding-bottom: 10px;">
+        {% for general in generals %}
+          <img id="article" src="{{ general.thumbnail.url }}" style="width: 200px; display: block; margin-left: auto; margin-right: auto; padding-bottom: 10px;">
           <div class="container-fluid">
             <div class="row">
               <div class="col-lg-6 col-md-6 text-center">
-                <h4>{{ infoH.author.first_name }} {{ infoH.author.last_name }}</h4>
+                <h4>{{ general.author.first_name }} {{ general.author.last_name }}</h4>
               </div>
               <div class="col-lg-6 col-md-6 text-center">
-                <h4>@{{ infoH.author }}</h4>
+                <h4>@{{ general.author }}</h4>
               </div>
             </div>
           </div>
-          {%  endfor %}
+        {%  endfor %}
       </span>
-      {% for user in users %}
-
-      <!-- <a class="btn btn-sm btn-block btn-primary" href="{% url 'dashboard:changeFriend' operation='add' pk=user.pk %}">
-        <i class="ace-icon fa fa-plus-circle bigger-120"></i>
-        <span class="bigger-110">Add gym buddy</span>
-      </a> -->
-      {%  endfor %}
-      <!-- <a href="#" class="btn btn-sm btn-block btn-primary">
-        <i class="ace-icon fa fa-envelope-o bigger-120"></i>
-        <span class="bigger-110">Send a message</span>
-      </a> -->
     </div>
   </div>
-  <!-- Section -->
+  <!-- ABOUT USER SECTION -->
   <div class="container">
-    {% for infoH in infoH_list %}
+    {% for health in healths %}
       <div class="row">
         <div class="col-lg-6 col-md-12 col-sm-12 text-center">
           <div class="card centerIt">
             <div class="card-body">
               <div class="healthInfo">
                 <h3>Health Info</h3>
-                <p>gender: {{ infoH.gender }}</p>
-                <p>age: {{ infoH.age }}</p>
-                <p>weight: {{ infoH.weight }} lbs</p>
-                <p>fitness level: {{ infoH.fit }}</p>
-                <p>goal: {{ infoH.goal }}</p>
-                <p>location: {{ infoH.location }}</p>
+                <!-- if bool is true, then display  -->
+                <p>gender: {{ health.gender }}</p>
+                <p>Mental: {{ health.mental }}</p>
+                <p>Nutrition: {{ health.food }}</p>
+                <p>Sleep: {{ health.sleep }}</p>
+                <p>Exercise: {{ health.exercise }}</p>
+                <p>age: {{ health.age }}</p>
               </div>
             </div>
           </div>
         </div>
     {%  endfor %}
-    {% for infoG in infoG_list %}
+    {% for general in generals %}
         <div class="col-lg-6 col-md-12 col-sm-12 text-center">
           <div class="card centerIt">
             <div class="card-body">
               <div class="generalInfo">
                 <h3>General Info</h3>
-                <p>group size: {{ infoG.group }}</p>
-                <p>often: {{ infoG.often }}</p>
+                <p>Location: {{ general.location }}</p>
+                <p>Bio: {{ general.bio }}</p>
               </div>
             </div>
           </div>
           <div class="card centerIt">
             <div class="card-body">
               <h3>Social Media</h3>
-              <p>IG: {{ infoG.ig }}</p>
-              <p>Facebook: {{ infoG.fb }}</p>
-              <p>Twitter: {{ infoG.twitter }}</p>
-              <p>Snapchat: {{ infoG.snap }}</p>
-              <p>WhatsApp: {{ infoG.whatsapp }}</p>
+              <p>IG: {{ general.ig }}</p>
+              <p>Facebook: {{ general.fb }}</p>
+              <p>Twitter: {{ general.twitter }}</p>
+              <p>Snapchat: {{ general.snap }}</p>
+              <p>WhatsApp: {{ general.whatsapp }}</p>
             </div>
           </div>
         </div>
     {%  endfor %}
     </div>
   </div>
+  <!-- POSTS & COMMENTS SECTION -->
   <div class="container">
-    <h1>Posts</h1>
-    <!-- coming from dashboard views -->
-    {% for post in posts %}
-      <p>{{ post.title }}
-        <a href="{% url 'article:edit' slug=post.slug %}">(Edit)</a>
-        <a href="{% url 'article:delete' slug=post.slug %}">(Delete)</a>
-      </p>
-    {%  endfor %}
-
+    {% if posts.count == 0 %}
+      <p>{{ user.username }} has 0 posts</p>
+    {% elif posts.count == 1 %}
+      <h1>Post</h1>
+      <div class="row">
+        {% for post in posts %}
+          <p>{{ post.title }}</p>
+          <a href="{% url 'article:detail' slug=post.slug %}">
+            {% if post.image != "default.png" %}
+              <img class="imageList mx-auto d-block" src="{{ post.image.url }}"/>
+            {% endif %}
+            {% if post.video != "default.mp4" %}
+              <video class="videoList mx-auto d-block" controls>
+                <source src="{{ post.video.url }}">
+              </video>
+            {% endif %}
+          </a>
+          <a href="{% url 'article:edit' slug=post.slug %}">(Edit)</a>
+          <a href="{% url 'article:delete' slug=post.slug %}">(Delete)</a>
+        {%  endfor %}
+      </div>
+    {% elif posts.count >= 1 %}
+      <h1>Posts</h1>
+      {% for post in posts %}
+        <div class="row">
+          <a href="{% url 'article:detail' slug=post.slug %}">
+            <p>{{ post.title }}</p>
+            {% if post.image != "default.png" %}
+              <img class="imageList mx-auto d-block" src="{{ post.image.url }}"/>
+            {% endif %}
+            {% if post.video != "default.mp4" %}
+              <video class="videoList mx-auto d-block" controls>
+                <source src="{{ post.video.url }}">
+              </video>
+            {% endif %}
+          </a>
+          <a href="{% url 'article:edit' slug=post.slug %}">(Edit)</a>
+          <a href="{% url 'article:delete' slug=post.slug %}">(Delete)</a>
+        </div>
+        <hr>
+      {%  endfor %}
+    {% endif %}
   </div>
   <div class="container">
     <h1>Comments</h1>
     Post-Comment (Delete)
   </div>
-
 <br>
 <br>
-<br>
-<br>
-
 {% endblock %}

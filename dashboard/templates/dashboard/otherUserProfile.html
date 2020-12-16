@@ -6,15 +6,15 @@
   <div class="jumbotron jumbotron-fluid">
     <div class="col-md-12 center">
       <span class="profile-picture">
-        {% for otherH in otherH_list %}
-          <img id="article" src=" {{ otherH.thumbnail.url }}" style="width: 200px; display: block; margin-left: auto; margin-right: auto; padding-bottom: 10px;">
+        {% for general in generals %}
+          <img id="article" src=" {{ general.thumbnail.url }}" style="width: 200px; display: block; margin-left: auto; margin-right: auto; padding-bottom: 10px;">
           <div class="container-fluid">
             <div class="row">
               <div class="col-lg-6 col-md-6 text-center">
-                <h4>{{ otherH.author.first_name }} {{ otherH.author.last_name }}</h4>
+                <h4>{{ general.author.first_name }} {{ general.author.last_name }}</h4>
               </div>
               <div class="col-lg-6 col-md-6 text-center">
-                <h4>@{{ otherH.author }}</h4>
+                <h4>@{{ general.author }}</h4>
               </div>
             </div>
           </div>
@@ -38,51 +38,79 @@
       </a> -->
     </div>
   </div>
-  <!-- Section -->
+  <!-- ABOUT USER SECTION -->
   <div class="container">
-    {% for otherH in otherH_list %}
+    {% for health in healths %}
       <div class="row">
         <div class="col-lg-6 col-md-12 col-sm-12 text-center">
           <div class="card centerIt">
             <div class="card-body">
               <div class="healthInfo">
                 <h3>Health Info</h3>
-                <p>gender: {{otherH.gender}}</p>
-                <p>age: {{otherH.age}}</p>
-                <p>weight: {{otherH.weight}} lbs</p>
-                <p>fitness level: {{otherH.fit}}</p>
-                <p>goal: {{otherH.goal}}</p>
-                <p>location: {{otherH.location}}</p>
+                <!-- if bool is true, then display; if you selected the adjective, then display  -->
+                <p>gender: {{ health.gender }}</p>
+                <p>Mental: {{ health.mental }}</p>
+                <p>Nutrition: {{ health.food }}</p>
+                <p>Sleep: {{ health.sleep }}</p>
+                <p>Exercise: {{ health.exercise }}</p>
+                <p>age: {{ health.age }}</p>
               </div>
             </div>
           </div>
         </div>
-    {%  endfor %}
-    {% for otherG in otherG_list %}
+      {%  endfor %}
+      {% for general in generals %}
         <div class="col-lg-6 col-md-12 col-sm-12 text-center">
           <div class="card centerIt">
             <div class="card-body">
               <div class="generalInfo">
                 <h3>General Info</h3>
-                <p>group size: {{otherG.group}}</p>
-                <p>often: {{otherG.often}}</p>
+                <p>Location: {{ general.location }}</p>
+                <p>Bio: {{ general.bio }}</p>
               </div>
             </div>
           </div>
           <div class="card centerIt">
             <div class="card-body">
               <h3>Social Media</h3>
-              <p>IG: {{otherG.ig}}</p>
-              <p>Facebook: {{otherG.fb}}</p>
-              <p>Twitter: {{otherG.twitter}}</p>
-              <p>Snapchat: {{otherG.snap}}</p>
-              <p>WhatsApp: {{otherG.whatsapp}}</p>
-              <!-- <div><a href="#"><i class="fab fa-facebook-f"></i></a></div>
-              <div><a href="#"><i class="fab fa-twitter"></i></a></div> -->
+              <p>IG: {{ general.ig }}</p>
+              <p>Facebook: {{ general.fb }}</p>
+              <p>Twitter: {{ general.twitter }}</p>
+              <p>Snapchat: {{ general.snap }}</p>
+              <p>WhatsApp: {{ general.whatsapp }}</p>
+              <div><a href="#"><i class="fab fa-facebook-f"></i></a></div>
+              <div><a href="#"><i class="fab fa-twitter"></i></a></div>
             </div>
           </div>
         </div>
-    {%  endfor %}
-    </div>
+      </div>
+    {% endfor %}
   </div>
+  <!-- POSTS & COMMENTS SECTION -->
+  <div class="container">
+    {% if posts.count == 0 %}
+      <p>has 0 posts</p>
+      <!-- <p>{{ posts.username }} has 0 posts</p> -->
+    {% elif posts.count == 1 %}
+      <h1>Post</h1>
+      {% for post in posts %}
+        <a href="{% url 'article:detail' slug=post.slug %}">
+          <p>{{ post.title }}</p>
+        </a>
+      {%  endfor %}
+    {% elif posts.count >= 1 %}
+      <h1>Posts</h1>
+      {% for post in posts %}
+        <a href="{% url 'article:detail' slug=post.slug %}">
+          <p>{{ post.title }}</p>
+        </a>
+      {%  endfor %}
+    {% endif %}
+  </div>
+  <div class="container">
+    <h1>Comments</h1>
+    Post-Comment (Delete)
+  </div>
+<br>
+<br>
 {% endblock %}
