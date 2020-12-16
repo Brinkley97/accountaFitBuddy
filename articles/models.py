@@ -1,13 +1,22 @@
 from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
+from multiselectfield import MultiSelectField
 
-# capital for the first letter for the class/ model name is conventional
 class Article(models.Model):
-    """docstring for Article. Auto_now_add will automatically add the tiime and date"""
+    TOPIC_CHOICES = (('Mental', 'Mental'), ('Food', 'Food'), ('Sleep', 'Sleep'), ('Exercise', 'Exercise'))
+
+    topic = MultiSelectField(
+        choices=TOPIC_CHOICES,
+        default=None,
+        min_choices=1,
+        error_messages={
+            "topic":"Select at least one topic your post entails."
+        }
+    )
     title = models.CharField(max_length=100, unique=True, blank=True)
     slug = models.SlugField(unique=True)
-    body = models.TextField()
+    body = models.TextField(blank=True)
     date = models.DateTimeField(default=timezone.now)
     author = models.ForeignKey(User, default=None, on_delete=models.CASCADE)
     image = models.ImageField(default="default.png", blank=True)

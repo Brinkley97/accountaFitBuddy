@@ -53,16 +53,18 @@
           </div>
         </div>
         <hr>
-        {% if article.image != "default.png" %}
-          <img class="imageList mx-auto d-block" src="{{ article.image.url }}"/>
-        {% endif %}
-        {% if article.video != "default.mp4" %}
-          <video class="videoList mx-auto d-block" controls>
-            <source src="{{ article.video.url }}">
-          </video>
-        {% endif %}
-        <hr>
-        <a href="{% url 'article:detail' slug=article.slug %}">{{ article.snippet }}</a>
+        <a href="{% url 'article:detail' slug=article.slug %}">
+          {% if article.image != "default.png" %}
+            <img class="imageList mx-auto d-block" src="{{ article.image.url }}"/>
+          {% endif %}
+          {% if article.video != "default.mp4" %}
+            <video class="videoList mx-auto d-block" controls>
+              <source src="{{ article.video.url }}">
+            </video>
+          {% endif %}
+          <hr>
+          {{ article.snippet }}
+        </a>
         <hr>
         <div class="row d-flex justify-content-around" id="likeCommentList">
           <span class="clickableAwesomeFont align-middle">

@@ -14,15 +14,12 @@
       {{healthInfo.gender}}
     </div>
     <div class="form-row">
-      <input class="form-control" placeholder="Weight in pounds: 50-500" name="weight">
-      {{healthInfo.fit}}
+      {{ healthInfo.mental }}<p>Mental</p>
+      {{ healthInfo.food }}<p>Nutrition</p>
     </div>
     <div class="form-row">
-      <input type="text" class="form-control" placeholder="City/Location" name="location">
-      {{healthInfo.goal}}
-    </div>
-    <div class="form-row">
-      <input type="file" name="thumbnail">
+      {{ healthInfo.sleep }}<p>Sleep</p>
+      {{ healthInfo.exercise }}<p>Exercise</p>
     </div>
     <button class="btn btn-primary" type="submit">Next</button>
   </form>

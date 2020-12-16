@@ -17,12 +17,14 @@ def profile_detail(request, pk=None):
         otherUser = User.objects.get(pk=pk)
         otherHealthInfo = Health.objects.filter(author_id=otherUser.pk)
         otherGeneralInfo = General.objects.filter(author_id=otherUser.pk)
+        article = Article.objects.filter(author=otherUser.pk)
         users = User.objects.exclude(id=request.user.id)
         friend = Friend.objects.get(current_user=request.user)
-        friends = friend.users.all
+        friends = friend.users.all()
 
         args = {
-            'otherH_list':otherHealthInfo,'otherG_list':otherGeneralInfo, 'users':users, 'friends':friends
+            'healths':otherHealthInfo, 'generals':otherGeneralInfo,
+            'posts':article, 'users':users, 'friends':friends
         }
         return render(request, 'dashboard/otherUserProfile.html', args)
     else:
@@ -32,7 +34,7 @@ def profile_detail(request, pk=None):
         article = Article.objects.filter(author=request.user)
 
         args = {
-            'infoH_list':healthInfo,'infoG_list':generalInfo, 'users':users, 'posts':article
+            'healths':healthInfo,'generals':generalInfo, 'users':users, 'posts':article
         }
         return render(request, 'dashboard/profile.html', args)
 
@@ -42,20 +44,20 @@ def awards_detail(request):
 
 @login_required(login_url="/accounts/login/")
 def myAccountabilityPartners_detail(request):
-    healthInfoList = Health.objects.exclude(author=request.user.id)
+    healthInfo = Health.objects.exclude(author=request.user.id)
     generalInfo = General.objects.exclude(author=request.user.id)
     users = User.objects.exclude(id=request.user.id)
     friend, created = Friend.objects.get_or_create(current_user=request.user)
-    friends = friend.users.all()
+    friends = friend.users.all().order_by('first_name')
 
     args = {
-        'healthInfo_list':healthInfoList,'infoG':generalInfo, 'users':users, 'friends':friends
+        'healths':healthInfo,'generals':generalInfo, 'users':users, 'friends':friends
     }
     return render(request, 'dashboard/myAccountabilityPartner.html', args)
 
 @login_required(login_url="/accounts/login/")
 def findAccountabilityPartners_detail(request):
-    healthInfoList = Health.objects.all()
+    healthInfo = Health.objects.all()
     generalInfo = General.objects.all()
     # exclude the current user
     users = User.objects.exclude(id=request.user.id)
@@ -64,7 +66,7 @@ def findAccountabilityPartners_detail(request):
     friends = friend.users.all()
 
     args = {
-        'healthInfo_list':healthInfoList,'infoG':generalInfo, 'users':users, 'friends':friends
+        'healths':healthInfo, 'generals':generalInfo, 'users':users, 'friends':friends
     }
 
     return render(request, 'dashboard/findingAccountabilityPartner.html', args)
@@ -95,8 +97,9 @@ def general_view(request):
             return redirect("dashboard:profilePage")
     else:
         form = forms.InsertGeneral()
-        # {'generalInfo': form} relates to "{{generalInfo.as_p}}" in generalForm.html
-    return render(request, 'dashboard/generalForm.html', {'generalInfo': form})
+        # {'generalInfo': form } relates to "{{ generalInfo.as_p }}" in generalForm.html
+        args = {'generalInfo': form}
+    return render(request, 'dashboard/generalForm.html', args)
 
 @login_required(login_url="/accounts/login/")
 def editHealth_view(request):
@@ -106,13 +109,13 @@ def editHealth_view(request):
         if form.is_valid():
             health = Health.objects.get(author=request.user)
             #getting the data from post request
-            health.thumbnail=request.POST.get('thumbnail')
             health.gender=request.POST.get('gender')
+            health.gender=request.POST.get('mental')
+            health.gender=request.POST.get('food')
+            health.gender=request.POST.get('sleep')
+            health.gender=request.POST.get('exercise')
             health.age=request.POST.get('age')
-            health.weight=request.POST.get('weight')
-            health.fit=request.POST.get('fit')
-            health.goal=request.POST.get('goal')
-            health.location=request.POST.get('location')
+
             #saving health form
             health.save()
             form.save()
@@ -131,8 +134,9 @@ def editGeneral_view(request):
         if form.is_valid():
             general = General.objects.get(author=request.user)
             #getting the data from post request
-            general.group=request.POST.get('group')
-            general.often=request.POST.get('often')
+            general.thumbnail=request.POST.get('thumbnail')
+            general.location=request.POST.get('location')
+            general.bio=request.POST.get('bio')
             general.ig=request.POST.get('ig')
             general.fb=request.POST.get('fb')
             general.twitter=request.POST.get('twitter')

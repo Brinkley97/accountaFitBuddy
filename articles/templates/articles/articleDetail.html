@@ -7,11 +7,11 @@
       <button class="btn backAndSubmitButton">Back</button>
     </a>
   </div>
-  <h2>{{article.title}}</h2>
+  <h2>{{ article.title }}</h2>
   <hr>
-    <h5>By: {{article.author.username}}</h5>
+    <h5>By: {{ article.author.username }}</h5>
   <hr>
-    <p>Posted on: {{article.date}}</p>
+    <p>Posted on: {{ article.date }}</p>
   <hr>
   {% if article.image != "default.png" %}
     <img class="imageDetail" src="{{ article.image.url }}"/>
@@ -25,7 +25,17 @@
   <hr>
     <p class="bodyOfPost">{{ article.body }}</p>
   <hr>
-  <h2>{{ comments.count }} comments</h2>
+  {% if comments.count == 1 %}
+    <div>
+      <h2>{{ comments.count }} comment</h2>
+    </div>
+  {% else %}
+    <div>
+      <h2>{{ comments.count }} comments</h2>
+    </div>
+  {% endif %}
+
+
   <hr>
   <div>
     <form method="post" style="margin-top: 1.3em;">
@@ -37,9 +47,9 @@
   <hr>
   <div>
     {% if comments.count == 0 %}
-        <div class="">
-          <p>Be the first to comment.</p>
-        </div>
+      <div>
+        <p>Be the first to comment.</p>
+      </div>
     {% endif %}
     {% for comment in comments %}
       <div class="card commentCard">
@@ -56,8 +66,6 @@
         </div>
       </div>
     {% endfor %}
-
-
   </div>
 </div>
 <script src="/static/slugify.js"></script>
