@@ -77,4 +77,4 @@ class ArticleEditView(LoginRequiredMixin, UpdateView):
 class ArticleDeleteView(LoginRequiredMixin, DeleteView):
     model = Article
     template_name = 'articles/deleteConfirm.html'
-    success_url = reverse_lazy('article:list')
+    success_url = reverse_lazy('dashboard:profilePage')
