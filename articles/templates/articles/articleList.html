@@ -2,6 +2,7 @@
 {% load static %}
 {% block content %}
 
+<!-- All users but wanna show only those that are logged in -->
 <div class="container-fluid" id="scrollbar">
   <div class="row flex-row flex-nowrap overflow-auto">
     {% for otherUser in otherUsers %}
@@ -38,7 +39,7 @@
     {% for article in theArticles %}
       <div class="card col-md-6" id="articleList">
         <div class="row justify-content-around" id="authorDateList">
-          <div class="col-xs*-8">
+          <div class="col-xs*-4">
             {% for userImage in userImages %}
               {% if article.author.username == userImage.author.username %}
                 <img id="userImageList" src="{{ userImage.thumbnail.url }}">
@@ -49,7 +50,10 @@
             </a>
           </div>
           <div class="col-xs*-4">
-            <p>{{ article.date }}</p>
+            {{ article.topic }}
+          </div>
+          <div class="col-xs*-4">
+            <p>{{ article.date|timesince }} ago</p>
           </div>
         </div>
         <hr>
