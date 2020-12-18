@@ -30,6 +30,26 @@
               Dashboard
             </i>
           </a>
+          <a class="list-group-item list-group-item-action bg-light" href="{% url 'article:mental' %}">
+            <i class="fas fa-users">
+              Mental Gains
+            </i>
+          </a>
+          <a class="list-group-item list-group-item-action bg-light" href="{% url 'article:food' %}">
+            <i class="fas fa-users">
+              Food and Nutrition Gains
+            </i>
+          </a>
+          <a class="list-group-item list-group-item-action bg-light" href="{% url 'article:sleep' %}">
+            <i class="fas fa-users">
+              Sleep Gains
+            </i>
+          </a>
+          <a class="list-group-item list-group-item-action bg-light" href="{% url 'article:exercise' %}">
+            <i class="fas fa-users">
+              Exercise Gains
+            </i>
+          </a>
           <a class="list-group-item list-group-item-action bg-light" href="{% url 'dashboard:fapPage'%}">
             <i class="fas fa-search-location">
               Find a Partner
@@ -68,7 +88,7 @@
                   <button class="btn barButtonColor">About FitToCode</button>
                 </a>
               </li>
-              <form class="" action="/" method="post">
+              <form action="{% url 'accounts:logout' %}" method="post">
                 <a class="nav-link">
                   {% csrf_token %}
                   <button class="btn barButtonColor" type="submit">Logout</button>

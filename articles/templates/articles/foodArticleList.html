@@ -1,0 +1,57 @@
+{% extends 'baseLayout.html' %}
+{% load static %}
+{% block content %}
+
+<h1>Food and Nutrition Gain</h1>
+<div class="container">
+  <div class="row justify-content-around" id="rowArticleList">
+    {% for article in articles %}
+      <div class="card col-md-6" id="articleList">
+        <div class="row justify-content-around" id="authorDateList">
+          <div class="col-xs*-4">
+            {% for userImage in userImages %}
+              {% if article.author.username == userImage.author.username %}
+                <img id="userImageList" src="{{ userImage.thumbnail.url }}">
+              {% endif %}
+            {% endfor %}
+            <a href="{% url 'dashboard:profilePage_with_pk' pk=article.author.pk %}">
+              <h4 class="float-right" id="usernameList">{{ article.author.username }}</h4>
+            </a>
+          </div>
+          <div class="col-xs*-4">
+            {{ article.topic }}
+          </div>
+          <div class="col-xs*-4">
+            <p>{{ article.date|timesince }} ago</p>
+          </div>
+        </div>
+        <hr>
+        <a href="{% url 'article:detail' slug=article.slug %}">
+          {% if article.image != "default.png" %}
+            <img class="imageList mx-auto d-block" src="{{ article.image.url }}"/>
+          {% endif %}
+          {% if article.video != "default.mp4" %}
+            <video class="videoList mx-auto d-block" controls>
+              <source src="{{ article.video.url }}">
+            </video>
+          {% endif %}
+          <hr>
+          {{ article.snippet }}
+        </a>
+        <hr>
+        <div class="row d-flex justify-content-around" id="likeCommentList">
+          <span class="clickableAwesomeFont align-middle">
+            <i class="far fa-thumbs-up fa-2x" id="like"></i>
+          </span>
+          <span class="clickableAwesomeFont align-middle">
+            <a href="{% url 'article:detail' slug=article.slug %}">
+              <i class="far fa-comment fa-2x"></i>
+            </a>
+          </span>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+<script src="/static/articleList.js"></script>
+{% endblock %}

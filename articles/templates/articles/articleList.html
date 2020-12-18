@@ -50,7 +50,36 @@
             </a>
           </div>
           <div class="col-xs*-4">
-            {{ article.topic }}
+            {% if article.topic.0 == "Mental" %}
+              <a href="{% url 'article:mental' %}">{{ article.topic.0 }}</a>
+            {% endif %}
+            {% if article.topic.0 == "Food" %}
+              <a href="{% url 'article:food' %}">{{ article.topic.0 }} & Nutrition</a>
+            {% endif %}
+            {% if article.topic.1 == "Food" %}
+              <a href="{% url 'article:food' %}">{{ article.topic.1 }} & Nutrition</a>
+            {% endif %}
+            {% if article.topic.0 == "Sleep" %}
+              <a href="{% url 'article:sleep' %}">{{ article.topic.0 }}</a>
+            {% endif %}
+            {% if article.topic.1 == "Sleep" %}
+              <a href="{% url 'article:sleep' %}">{{ article.topic.1 }}</a>
+            {% endif %}
+            {% if article.topic.2 == "Sleep" %}
+              <a href="{% url 'article:sleep' %}">{{ article.topic.2 }}</a>
+            {% endif %}
+            {% if article.topic.0 == "Exercise" %}
+              <a href="{% url 'article:exercise' %}">{{ article.topic.0 }}</a>
+            {% endif %}
+            {% if article.topic.1 == "Exercise" %}
+              <a href="{% url 'article:exercise' %}">{{ article.topic.1 }}</a>
+            {% endif %}
+            {% if article.topic.2 == "Exercise" %}
+              <a href="{% url 'article:exercise' %}">{{ article.topic.2 }}</a>
+            {% endif %}
+            {% if article.topic.3 == "Exercise" %}
+              <a href="{% url 'article:exercise' %}">{{ article.topic.3 }}</a>
+            {% endif %}
           </div>
           <div class="col-xs*-4">
             <p>{{ article.date|timesince }} ago</p>
