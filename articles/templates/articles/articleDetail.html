@@ -13,6 +13,12 @@
   <hr>
     <p>Posted on: {{ article.date }}</p>
   <hr>
+    <!-- {% if article.topic.counts == 1 %} -->
+      <p>Topic: {{ article.topic }}</p>
+    <!-- {% else %} -->
+      <p>Topics: {{ article.topic }}</p>
+    <!-- {% endif %} -->
+  <hr>
   {% if article.image != "default.png" %}
     <img class="imageDetail" src="{{ article.image.url }}"/>
   {% endif %}

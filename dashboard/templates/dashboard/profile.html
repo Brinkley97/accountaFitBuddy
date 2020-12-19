@@ -40,12 +40,19 @@
             <div class="card-body">
               <div class="healthInfo">
                 <h3>Health Info</h3>
-                <!-- if bool is true, then display  -->
                 <p>gender: {{ health.gender }}</p>
-                <p>Mental: {{ health.mental }}</p>
-                <p>Nutrition: {{ health.food }}</p>
-                <p>Sleep: {{ health.sleep }}</p>
-                <p>Exercise: {{ health.exercise }}</p>
+                {% if health.mental is True %}
+                  <p>Mental</p>
+                {% endif %}
+                {% if health.food is True %}
+                  <p>Nutrition</p>
+                {% endif %}
+                {% if health.sleep is True %}
+                  <p>Sleep</p>
+                {% endif %}
+                {% if health.exercise is True %}
+                  <p>Exercise</p>
+                {% endif %}
                 <p>age: {{ health.age }}</p>
               </div>
             </div>
@@ -66,11 +73,25 @@
           <div class="card centerIt">
             <div class="card-body">
               <h3>Social Media</h3>
-              <p>IG: {{ general.ig }}</p>
-              <p>Facebook: {{ general.fb }}</p>
-              <p>Twitter: {{ general.twitter }}</p>
-              <p>Snapchat: {{ general.snap }}</p>
-              <p>WhatsApp: {{ general.whatsapp }}</p>
+              {% if general.ig == "" %}{% else %}
+                <i class="fab fa-instagram fa-3x"></i> {{ general.ig }}
+              {% endif %}
+              <br>
+              {% if general.snap == "" %}{% else %}
+                  <i class="fab fa-snapchat fa-3x"></i> {{ general.snap }}
+              {% endif %}
+              <br>
+              {% if general.fb == "" %}{% else %}
+                <i class="fab fa-facebook-f fa-3x"></i> {{ general.fb }}
+              {% endif %}
+              <br>
+              {% if general.twitter == "" %}{% else %}
+                <i class="fab fa-twitter fa-3x"></i> {{ general.twitter }}
+              {% endif %}
+              <br>
+              {% if general.whatsapp == "" %}{% else %}
+                <i class="fab fa-whatsapp fa-3x"></i> {{ general.whatsapp }}
+              {% endif %}
             </div>
           </div>
         </div>
@@ -100,7 +121,7 @@
           <a href="{% url 'article:delete' slug=post.slug %}">(Delete)</a>
         {%  endfor %}
       </div>
-    {% elif posts.count >= 1 %}
+    {% else %}
       <h1>Posts</h1>
       {% for post in posts %}
         <div class="row">
