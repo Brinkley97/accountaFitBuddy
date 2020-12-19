@@ -18,12 +18,11 @@ import os
 @login_required(login_url="/accounts/login/")
 def articleList(request):
     article = Article.objects.all().order_by('-date')
-    mental = article.filter(topic=['Mental'])
     generalInfo = General.objects.all()
     otherUser = User.objects.exclude(id=request.user.id)
     user = User.objects.filter(username=request.user)
     args = {
-        'theArticles':article, 'mentals':mental,
+        'theArticles':article,
         'userImages':generalInfo, 'otherUsers':otherUser,
         'users':user,
     }
@@ -84,31 +83,35 @@ class ArticleDeleteView(LoginRequiredMixin, DeleteView):
 @login_required(login_url="/accounts/login/")
 def mentalArticlesList(request):
     article = Article.objects.filter(topic=['Mental']).order_by('-date')
+    generalInfo = General.objects.all()
     args = {
-        'articles':article,
+        'articles':article, 'userImages':generalInfo
     }
     return render(request, "articles/mentalArticleList.html", args)
 
 @login_required(login_url="/accounts/login/")
 def foodArticlesList(request):
     article = Article.objects.filter(topic=['Food']).order_by('-date')
+    generalInfo = General.objects.all()
     args = {
-        'articles':article,
+        'articles':article, 'userImages':generalInfo
     }
     return render(request, "articles/foodArticleList.html", args)
 
 @login_required(login_url="/accounts/login/")
 def sleepArticlesList(request):
     article = Article.objects.filter(topic=['Sleep']).order_by('-date')
+    generalInfo = General.objects.all()
     args = {
-        'articles':article,
+        'articles':article, 'userImages':generalInfo
     }
     return render(request, "articles/sleepArticlesList.html", args)
 
 @login_required(login_url="/accounts/login/")
 def exerciseArticlesList(request):
     article = Article.objects.filter(topic=['Exercise']).order_by('-date')
+    generalInfo = General.objects.all()
     args = {
-        'articles':article,
+        'articles':article, 'userImages':generalInfo
     }
     return render(request, "articles/exerciseArticlesList.html", args)

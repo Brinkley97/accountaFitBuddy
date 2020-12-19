@@ -15,9 +15,9 @@ class Health(models.Model):
     sleep = models.BooleanField(default=False, blank=False)
     exercise = models.BooleanField(default=False, blank=False)
     age = models.IntegerField(
-        validators=[MinValueValidator(17), MaxValueValidator(80)],
+        validators=[MinValueValidator(18), MaxValueValidator(80)],
         error_messages={
-            "age":"The age requirement is between 17 and 80 years old."
+            "age":"The age requirement is between 18 and 80 years old."
         }
     )
     def __str__(self):
