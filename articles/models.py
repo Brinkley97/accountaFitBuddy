@@ -21,7 +21,12 @@ class Article(models.Model):
     author = models.ForeignKey(User, default=None, on_delete=models.CASCADE)
     image = models.ImageField(default="default.png", blank=True)
     video = models.FileField(default="default.mp4", blank=True)
+    #related_name is like a ForeignKey; the way to associate like to the User
+    likes = models.ManyToManyField(User, related_name='blogPosts')
 
+    def totalLikes(self):
+        return self.likes.count()
+        
     def __str__(self):
         return self.title
 
