@@ -31,6 +31,27 @@
   <hr>
     <p class="bodyOfPost">{{ article.body }}</p>
   <hr>
+  <div class="">
+    <form action="{% url 'article:like' slug=article.slug %}" method="POST">
+      {% csrf_token %}
+
+      {% if like %}
+        <button class="btn" type="submit" name="postId" value="{{ article.id }}">
+          <span class="clickableAwesomeFont align-middle">
+            <i class="far fa-thumbs-down fa-2x" id="like"></i>
+          </span>
+        </button>
+      {% else %}
+        <button class="btn" type="submit" name="postId" value="{{ article.id }}">
+          <span class="clickableAwesomeFont align-middle">
+            <i class="far fa-thumbs-up fa-2x" id="like"></i>
+          </span>
+        </button>
+      {% endif %}
+      - {{ totalLikes }} Likes
+    </form>
+  </div>
+  <hr>
   {% if comments.count == 1 %}
     <div>
       <h2>{{ comments.count }} comment</h2>

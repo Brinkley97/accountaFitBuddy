@@ -5,6 +5,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.forms import UserChangeForm
 from django.views.generic.edit import FormView
+from django.http import HttpResponseRedirect
 from django.urls import reverse, reverse_lazy
 from dashboard.models import Health, General
 from django.contrib.auth.models import User
@@ -29,8 +30,33 @@ def articleList(request):
     return render(request, "articles/articleList.html", args)
 
 @login_required(login_url="/accounts/login/")
+def likeArticle(request, slug):
+    #filling out a form and submitting it
+    #when submit, grab request.POST.get the postId from articleList like button name
+    #look up the postId in the Article table
+    article = get_object_or_404(Article, id=request.POST.get('postId'))
+    liked = False
+    #see if current user likes the post
+    if article.likes.filter(id=request.user.id).exists():
+        article.likes.remove(request.user)
+        liked = False
+    else:
+        #save the like to the table as that specific user
+        article.likes.add(request.user)
+        liked = True
+    #return redirect to same page without noticing they have done anything
+    #return the reverse of article list and the exact id with str(slug)
+    return HttpResponseRedirect(reverse_lazy('article:detail', args=[str(slug)]))
+
+@login_required(login_url="/accounts/login/")
 def article_detail(request, slug):
-    article = Article.objects.get(slug=slug)
+    article = get_object_or_404(Article, slug=slug)
+    #totalLikes() coming from function in models
+    likesTotal = article.totalLikes()
+    liked = False
+    #if requested user likes article
+    if article.likes.filter(id=request.user.id).exists():
+        liked = True
     #queryset to retrieve all the approved comments from the database.
     #.comments is the related_name in models.py
     # comments = article.comments.filter(approvedComment=False)
@@ -50,7 +76,8 @@ def article_detail(request, slug):
     else:
         commentForm = forms.CreateComment()
         args = {
-            'article':article, 'comments':comments, 'newComment':newComment,
+            'totalLikes':likesTotal, 'article':article, 'like':liked,
+            'comments':comments,'newComment':newComment,
             'commentForm':commentForm,
         }
     return render(request, 'articles/articleDetail.html', args)
